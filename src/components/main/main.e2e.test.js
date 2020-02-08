@@ -1,6 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Main from './main.jsx';
+
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
 const FirstMovie = {
   TITLE: `First movie test title`,
@@ -111,17 +116,19 @@ const Movies = [
   },
 ];
 
-it(`Render App`, () => {
-  const tree = renderer
-   .create(<Main
-     title={FirstMovie.TITLE}
-     genre={FirstMovie.GENRE}
-     releaseDate={FirstMovie.RELEASE_DATE}
-     movies={Movies}
-     onMovieTitleClick={() => {}}
-   />)
-   .toJSON();
+it(`Should movie title be pressed`, () => {
+  const onMovieTitleClick = jest.fn();
+  const main = shallow(
+      <Main
+        title={FirstMovie.TITLE}
+        genre={FirstMovie.GENRE}
+        releaseDate={FirstMovie.RELEASE_DATE}
+        movies={Movies}
+        onMovieTitleClick={onMovieTitleClick}
+      />
+  );
 
-  expect(tree).toMatchSnapshot();
+  const movieTitle = main.find(`.movie-card__title`);
+
+  movieTitle.props().onClick();
 });
-

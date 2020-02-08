@@ -82,6 +82,7 @@ exports[`Render App 1`] = `
         >
           <h2
             className="movie-card__title"
+            onClick={[Function]}
           >
             First movie test title
           </h2>
@@ -270,6 +271,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -294,6 +296,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -318,6 +321,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -342,6 +346,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -366,6 +371,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -390,6 +396,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -414,6 +421,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -438,6 +446,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -462,6 +471,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -486,6 +496,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -510,6 +521,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -534,6 +546,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -558,6 +571,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -582,6 +596,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -606,6 +621,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -630,6 +646,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -654,6 +671,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -678,6 +696,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -702,6 +721,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -726,6 +746,7 @@ exports[`Render App 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"

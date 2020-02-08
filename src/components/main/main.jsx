@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Main = (props) => {
 
-  const {title, genre, releaseDate, movies} = props;
+  const {title, genre, releaseDate, movies, onMovieTitleClick} = props;
 
   const cards = (
     <React.Fragment>
@@ -12,7 +12,10 @@ const Main = (props) => {
           <div className="small-movie-card__image">
             <img src={movie.imgSrc} alt={movie.title} width="280" height="175" />
           </div>
-          <h3 className="small-movie-card__title">
+          <h3
+            onClick={onMovieTitleClick}
+            className="small-movie-card__title"
+          >
             <a className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
           </h3>
         </article>
@@ -51,7 +54,10 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2
+                onClick={onMovieTitleClick}
+                className="movie-card__title"
+              >{title}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{releaseDate}</span>
@@ -151,6 +157,8 @@ Main.propTypes = {
         imgSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
+
+  onMovieTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;
