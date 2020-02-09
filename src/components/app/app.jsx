@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
+const movieTitleHandler = () => {};
+
 const App = (props) => {
 
   const {title, genre, releaseDate, movies} = props;
@@ -11,6 +13,7 @@ const App = (props) => {
       genre={genre}
       releaseDate={releaseDate}
       movies={movies}
+      onMovieTitleClick={movieTitleHandler}
     />
   );
 };
@@ -22,7 +25,7 @@ App.propTypes = {
 
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         imgSrc: PropTypes.string.isRequired,
       })
