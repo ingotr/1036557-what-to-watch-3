@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
-const movieTitleHandler = () => {};
+const mouseClickHandler = () => {};
+const movieHoverHandler = () => {};
 
 const App = (props) => {
 
@@ -13,7 +14,8 @@ const App = (props) => {
       genre={genre}
       releaseDate={releaseDate}
       movies={movies}
-      onMovieTitleClick={movieTitleHandler}
+      onMouseClick={mouseClickHandler}
+      onMovieHover={movieHoverHandler}
     />
   );
 };

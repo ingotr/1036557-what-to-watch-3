@@ -1,27 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 
 const Main = (props) => {
 
-  const {title, genre, releaseDate, movies, onMovieTitleClick} = props;
+  const {title, genre, releaseDate, movies, onMouseClick, onMovieHover} = props;
 
-  const cards = (
-    <React.Fragment>
-      {movies.map((movie) => (
-        <article key={movie.id} className="small-movie-card catalog__movies-card">
-          <div className="small-movie-card__image">
-            <img src={movie.imgSrc} alt={movie.title} width="280" height="175" />
-          </div>
-          <h3
-            onClick={onMovieTitleClick}
-            className="small-movie-card__title"
-          >
-            <a className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
-          </h3>
-        </article>
-      ))}
-    </React.Fragment>
-  );
   return (
     <div className="main">
       <section className="movie-card">
@@ -55,7 +39,7 @@ const Main = (props) => {
 
             <div className="movie-card__desc">
               <h2
-                onClick={onMovieTitleClick}
+                onClick={onMouseClick}
                 className="movie-card__title"
               >{title}</h2>
               <p className="movie-card__meta">
@@ -118,9 +102,10 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {cards}
-          </div>
+          <CatalogMoviesList
+            movies={movies}
+            onMovieHover={onMovieHover}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -158,7 +143,8 @@ Main.propTypes = {
       })
   ).isRequired,
 
-  onMovieTitleClick: PropTypes.func.isRequired,
+  onMouseClick: PropTypes.func.isRequired,
+  onMovieHover: PropTypes.func.isRequired,
 };
 
 export default Main;
