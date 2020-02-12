@@ -118,7 +118,8 @@ it(`Render App`, () => {
      genre={FirstMovie.GENRE}
      releaseDate={FirstMovie.RELEASE_DATE}
      movies={Movies}
-     onMovieTitleClick={() => {}}
+     onMouseClick={() => {}}
+     onMovieHover={() => {}}
    />)
    .toJSON();
 
