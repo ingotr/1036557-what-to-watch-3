@@ -1,24 +1,41 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
+import MoviePage from '../movie-page/movie-page.jsx';
 
 const mouseClickHandler = () => {};
 const movieHoverHandler = () => {};
 
-const App = (props) => {
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  const {title, genre, releaseDate, movies} = props;
-  return (
-    <Main
-      title={title}
-      genre={genre}
-      releaseDate={releaseDate}
-      movies={movies}
-      onMouseClick={mouseClickHandler}
-      onMovieHover={movieHoverHandler}
-    />
-  );
-};
+  render() {
+    const {title, genre, releaseDate, movies} = this.props;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Main
+              title={title}
+              genre={genre}
+              releaseDate={releaseDate}
+              movies={movies}
+              onMouseClick={mouseClickHandler}
+              onMovieHover={movieHoverHandler}
+            />
+          </Route>
+          <Route exact path="/dev-component">
+            <MoviePage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+
+    );
+  }
+}
 
 App.propTypes = {
   title: PropTypes.string.isRequired,
