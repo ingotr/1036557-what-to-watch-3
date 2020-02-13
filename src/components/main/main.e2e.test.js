@@ -118,13 +118,15 @@ const Movies = [
 
 it(`Should movie title be pressed`, () => {
   const onMovieTitleClick = jest.fn();
+  const onMovieMouseHover = jest.fn();
   const main = shallow(
       <Main
         title={FirstMovie.TITLE}
         genre={FirstMovie.GENRE}
         releaseDate={FirstMovie.RELEASE_DATE}
         movies={Movies}
-        onMovieTitleClick={onMovieTitleClick}
+        onMouseClick={onMovieTitleClick}
+        onMovieHover={onMovieMouseHover}
       />
   );
 
