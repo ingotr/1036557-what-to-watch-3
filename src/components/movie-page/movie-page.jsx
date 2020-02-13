@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MoviePage = () => {
+const MoviePage = (props) => {
+  const {movieInfo} = props;
+  const {title, genre, year, poster, rating, director, description, starring} = movieInfo;
+  const {big, bigAlt} = poster;
+  const {score, level, count} = rating;
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
@@ -29,10 +34,10 @@ const MoviePage = () => {
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title">{title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">Drama</span>
-              <span className="movie-card__year">2014</span>
+              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__year">{year}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -57,7 +62,7 @@ const MoviePage = () => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={big} alt={bigAlt} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
@@ -76,27 +81,50 @@ const MoviePage = () => {
             </nav>
 
             <div className="movie-rating">
-              <div className="movie-rating__score">8,9</div>
+              <div className="movie-rating__score">{score}</div>
               <p className="movie-rating__meta">
-                <span className="movie-rating__level">Very good</span>
-                <span className="movie-rating__count">240 ratings</span>
+                <span className="movie-rating__level">{level}</span>
+                <span className="movie-rating__count">{count}</span>
               </p>
             </div>
 
             <div className="movie-card__text">
-              <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave`&#39`s friend and protege.</p>
+              <p>{description[0]}</p>
 
-              <p>Gustave prides himself on providing first-className service to the hotel`&#39`s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave`&#39`s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+              <p>{description[1]}</p>
 
-              <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
+              <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-              <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+              <p className="movie-card__starring"><strong>Starring: {starring[0]}, {starring[1]}, {starring[2]}, {starring[3]} and other</strong></p>
             </div>
           </div>
         </div>
       </div>
     </section>
   );
+};
+
+MoviePage.propTypes = {
+  movieInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+
+    poster: PropTypes.shape({
+      big: PropTypes.string.isRequired,
+      bigAlt: PropTypes.string.isRequired,
+    }).isRequired,
+
+    rating: PropTypes.shape({
+      score: PropTypes.number.isRequired,
+      level: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+
+    director: PropTypes.string.isRequired,
+    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  }).isRequired,
 };
 
 export default MoviePage;

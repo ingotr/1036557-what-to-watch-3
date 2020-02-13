@@ -13,7 +13,8 @@ class App extends PureComponent {
   }
 
   render() {
-    const {title, genre, releaseDate, movies} = this.props;
+    const {title, genre, releaseDate, movies, movieInfo} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -27,8 +28,10 @@ class App extends PureComponent {
               onMovieHover={movieHoverHandler}
             />
           </Route>
-          <Route exact path="/dev-component">
-            <MoviePage />
+          <Route exact path="/dev-film">
+            <MoviePage
+              movieInfo={movieInfo}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -49,6 +52,27 @@ App.propTypes = {
         imgSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
+
+  movieInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+
+    poster: PropTypes.shape({
+      big: PropTypes.string.isRequired,
+      bigAlt: PropTypes.string.isRequired,
+    }).isRequired,
+
+    rating: PropTypes.shape({
+      score: PropTypes.number.isRequired,
+      level: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+
+    director: PropTypes.string.isRequired,
+    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  }).isRequired,
 };
 
 export default App;
