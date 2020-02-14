@@ -25,7 +25,7 @@ class App extends PureComponent {
     const {title, genre, releaseDate, movies, movieInfo} = this.props;
     const {showMovieInfo} = this.state;
 
-    if (showMovieInfo === false) {
+    if (!showMovieInfo) {
       return (
         <Main
           title={title}
@@ -38,7 +38,7 @@ class App extends PureComponent {
       );
     }
 
-    if (showMovieInfo === true) {
+    if (showMovieInfo) {
       return (
         <MoviePage
           movieInfo={movieInfo}
