@@ -16,7 +16,9 @@ class App extends PureComponent {
   }
 
   _clickHandler() {
-    this.setState({showMovieInfo: !this.state.showMovieInfo});
+    this.setState((state) => ({
+      showMovieInfo: !state.showMovieInfo
+    }));
   }
 
   _renderMainPage() {
