@@ -4,29 +4,57 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 
-const mouseClickHandler = () => {};
 const movieHoverHandler = () => {};
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      showMovieInfo: false
+    };
+  }
+
+  _clickHandler() {
+    this.setState({showMovieInfo: !this.state.showMovieInfo});
+  }
+
+  _renderMainPage() {
+    const {title, genre, releaseDate, movies, movieInfo} = this.props;
+    const {showMovieInfo} = this.state;
+
+    if (showMovieInfo === false) {
+      return (
+        <Main
+          title={title}
+          genre={genre}
+          releaseDate={releaseDate}
+          movies={movies}
+          onMouseClick={this._clickHandler.bind(this)}
+          onMovieHover={movieHoverHandler}
+        />
+      );
+    }
+
+    if (showMovieInfo === true) {
+      return (
+        <MoviePage
+          movieInfo={movieInfo}
+        />
+      );
+    }
+
+    return null;
   }
 
   render() {
-    const {title, genre, releaseDate, movies, movieInfo} = this.props;
+    const {movieInfo} = this.props;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <Main
-              title={title}
-              genre={genre}
-              releaseDate={releaseDate}
-              movies={movies}
-              onMouseClick={mouseClickHandler}
-              onMovieHover={movieHoverHandler}
-            />
+            {this._renderMainPage()}
           </Route>
           <Route exact path="/dev-film">
             <MoviePage
@@ -35,7 +63,6 @@ class App extends PureComponent {
           </Route>
         </Switch>
       </BrowserRouter>
-
     );
   }
 }
