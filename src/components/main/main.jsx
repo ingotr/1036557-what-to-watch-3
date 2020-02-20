@@ -4,7 +4,7 @@ import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 
 const Main = (props) => {
 
-  const {title, genre, releaseDate, movies, onMouseClick, onMovieHover} = props;
+  const {title, genre, releaseDate, movies, onMouseClick} = props;
 
   return (
     <div className="main">
@@ -106,7 +106,6 @@ const Main = (props) => {
 
           <CatalogMoviesList
             movies={movies}
-            onMovieHover={onMovieHover}
           />
 
           <div className="catalog__more">
@@ -146,7 +145,6 @@ Main.propTypes = {
   ).isRequired,
 
   onMouseClick: PropTypes.func.isRequired,
-  onMovieHover: PropTypes.func.isRequired,
 };
 
 export default Main;

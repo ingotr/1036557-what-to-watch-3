@@ -1,9 +1,13 @@
-import React, {PureComponent, Fragment} from "react";
+import React, {PureComponent, Fragment, createRef} from "react";
 import PropTypes from 'prop-types';
+
+const MOVIE_OVER_TIMEOUT = 1000;
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._videoRef = createRef();
 
     this.state = {
       progress: 0,
@@ -15,34 +19,36 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    this._video = document.createElement(`VIDEO`);
+    if (!this._videoRef.current) {
+      return;
+    }
 
-    this._video.oncanplaythrough = () => this.setState({
+    const videoRef = this._videoRef.current;
+
+    videoRef.oncanplaythrough = () => this.setState({
       isLoading: false,
     });
 
-    this._video.onplay = () => {
+    videoRef.onplay = () => {
       this.setState({
         isPlaying: true,
       });
     };
 
-    this._video.onpause = () => this.setState({
+    videoRef.onpause = () => this.setState({
       isPlaying: false,
-    });
-
-    this._video.ontimeupdate = () => this.setState({
-      progress: this._video.currentTime
     });
   }
 
   componentWillUnmount() {
-    this._video.oncanplaythrough = null;
-    this._video.onplay = null;
-    this._video.onpause = null;
-    this._video.ontimeupdate = null;
-    this._video.src = ``;
-    this._video = null;
+    const videoRef = this._videoRef.current;
+
+    videoRef.oncanplaythrough = null;
+    videoRef.onplay = null;
+    videoRef.onpause = null;
+    videoRef.ontimeupdate = null;
+    videoRef.src = ``;
+    videoRef = null;
   }
 
   render() {
@@ -53,19 +59,34 @@ class VideoPlayer extends PureComponent {
         <video
           className={`player__video--${isPlaying ? `pause` : `play`}`}
           disabled={isLoading}
-          onClick={() => this.setState({isPlaying: !this.state.isPlaying})}
+          onMouseOver={() => {
+            setTimeout(this.setState({isPlaying: true}), MOVIE_OVER_TIMEOUT);
+          }}
+          onMouseOut={() => {
+            this.setState({isPlaying: false});
+          }}
           src={this.props.src}
           poster={this.props.poster}
+          muted={`muted`}
+          width={`250`}
+          ref={this._videoRef}
         />
       </Fragment>
     );
   }
 
   componentDidUpdate() {
+    if (!this._videoRef.current) {
+      return;
+    }
+
+    const videoRef = this._videoRef.current;
+
     if (this.state.isPlaying) {
-      this._video.play();
+      videoRef.play();
     } else {
-      this._video.pause();
+      videoRef.pause();
+      videoRef.load();
     }
   }
 }

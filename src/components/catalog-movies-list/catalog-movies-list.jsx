@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 
 const CatalogMoviesList = (props) => {
-  const {movies, onMovieHover} = props;
+  const {movies} = props;
 
   return (
     <div className="catalog__movies-list">
@@ -13,7 +13,7 @@ const CatalogMoviesList = (props) => {
           title={movie.title}
           previewSrc={movie.previewSrc}
           imgSrc={movie.imgSrc}
-          onMovieHover={onMovieHover}
+          // onMovieHover={onMovieHover}
         />
       ))}
     </div>
@@ -28,8 +28,6 @@ CatalogMoviesList.propTypes = {
         imgSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
-
-  onMovieHover: PropTypes.func.isRequired,
 };
 
 export default CatalogMoviesList;
