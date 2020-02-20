@@ -15,9 +15,7 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    const {src} = this.props;
-
-    this._video = new HTMLVideoElement(src);
+    this._video = document.createElement(`VIDEO`);
 
     this._video.oncanplaythrough = () => this.setState({
       isLoading: false,
@@ -52,15 +50,13 @@ class VideoPlayer extends PureComponent {
 
     return (
       <Fragment>
-        <button
-          className={`track__button track__button--${isPlaying ? `pause` : `play`}`}
-          type="button"
+        <video
+          className={`player__video--${isPlaying ? `pause` : `play`}`}
           disabled={isLoading}
           onClick={() => this.setState({isPlaying: !this.state.isPlaying})}
+          src={this.props.src}
+          poster={this.props.poster}
         />
-        <div className="track__status">
-          <video />
-        </div>
       </Fragment>
     );
   }
@@ -76,7 +72,6 @@ class VideoPlayer extends PureComponent {
 
 VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
 };

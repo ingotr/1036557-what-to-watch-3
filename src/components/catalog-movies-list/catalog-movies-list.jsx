@@ -11,6 +11,7 @@ const CatalogMoviesList = (props) => {
         <SmallMovieCard
           key={movie.id}
           title={movie.title}
+          previewSrc={movie.previewSrc}
           imgSrc={movie.imgSrc}
           onMovieHover={onMovieHover}
         />

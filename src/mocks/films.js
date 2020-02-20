@@ -3,57 +3,49 @@ const films = [
     id: `mock-011`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-012`,
     title: `Bohemian Rhapsody`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-013`,
     title: `Macbeth`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-014`,
     title: `Aviator`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-015`,
     title: `We need to talk about Kevin`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-016`,
     title: `What We Do in the Shadows`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-017`,
     title: `Revenant`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-018`,
     title: `Johnny English`,
     imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/
-      b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    previewSrc: `ttps://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
 ];
 
