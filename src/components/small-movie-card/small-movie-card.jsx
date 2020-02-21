@@ -12,7 +12,6 @@ const SmallMovieCard = (props) => {
         isPlaying={false}
         poster={imgSrc}
         src={previewSrc}
-        // onMouseOver={onMovieHover}
       />
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">{title}</a>

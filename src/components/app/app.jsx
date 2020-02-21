@@ -4,6 +4,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 
+const movieHoverHandler = () => {};
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -31,6 +33,7 @@ class App extends PureComponent {
           releaseDate={releaseDate}
           movies={movies}
           onMouseClick={this._clickHandler.bind(this)}
+          onMovieHover={movieHoverHandler}
         />
       );
     }
@@ -76,6 +79,7 @@ App.propTypes = {
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         imgSrc: PropTypes.string.isRequired,
+        previewSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
 

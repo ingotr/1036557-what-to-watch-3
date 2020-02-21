@@ -85,7 +85,7 @@ exports[`Render App 1`] = `
             className="movie-card__title"
             onClick={[Function]}
           >
-            First movie test title
+            Mock-test-The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -93,12 +93,12 @@ exports[`Render App 1`] = `
             <span
               className="movie-card__genre"
             >
-              First movie test genre
+              Mock-test-Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2009
+              2020
             </span>
           </p>
           <div
@@ -259,18 +259,17 @@ exports[`Render App 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -278,24 +277,23 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-Fantastic Beasts: The Crimes of Grindelwald
+              Fantastic Beasts: The Crimes of Grindelwald
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Bohemian Rhapsody"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -303,24 +301,23 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-Bohemian Rhapsody
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Macbeth"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -328,24 +325,23 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-Macbeth
+              Macbeth
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Aviator"
-              height="175"
-              src="img/aviator.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -353,24 +349,23 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-Aviator
+              Aviator
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-We need to talk about Kevin"
-              height="175"
-              src="img/we-need-to-talk-about-kevin.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -378,24 +373,23 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-We need to talk about Kevin
+              We need to talk about Kevin
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-What We Do in the Shadows"
-              height="175"
-              src="img/what-we-do-in-the-shadows.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -403,24 +397,23 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-What We Do in the Shadows
+              What We Do in the Shadows
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Revenant"
-              height="175"
-              src="img/revenant.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -428,24 +421,23 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-Revenant
+              Revenant
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
         >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Johnny English"
-              height="175"
-              src="img/johnny-english.jpg"
-              width="280"
-            />
-          </div>
+          <video
+            className="player__video--play"
+            disabled={true}
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
           <h3
             className="small-movie-card__title"
           >
@@ -453,307 +445,7 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              mock-test-Johnny English
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Shutter Island"
-              height="175"
-              src="img/shutter-island.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Shutter Island
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Pulp Fiction"
-              height="175"
-              src="img/pulp-fiction.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Pulp Fiction
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-No Country for Old Men"
-              height="175"
-              src="img/no-country-for-old-men.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-No Country for Old Men
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Snatch"
-              height="175"
-              src="img/snatch.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Snatch
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Moonrise Kingdom"
-              height="175"
-              src="img/moonrise-kingdom.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Moonrise Kingdom
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Seven Years in Tibet"
-              height="175"
-              src="img/seven-years-in-tibet.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Seven Years in Tibet
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Midnight Special"
-              height="175"
-              src="img/midnight-special.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Midnight Special
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-War of the Worlds"
-              height="175"
-              src="img/war-of-the-worlds.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-War of the Worlds
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Dardjeeling Limited"
-              height="175"
-              src="img/dardjeeling-limited.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Dardjeeling Limited
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Orlando"
-              height="175"
-              src="img/orlando.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Orlando
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Mindhunter"
-              height="175"
-              src="img/mindhunter.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Mindhunter
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="mock-test-Midnight Special"
-              height="175"
-              src="img/midnight-special.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              mock-test-Midnight Special
+              Johnny English
             </a>
           </h3>
         </article>

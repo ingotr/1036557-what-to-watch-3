@@ -11,7 +11,6 @@ class VideoPlayer extends PureComponent {
 
     this.state = {
       progress: 0,
-      poster: props.poster,
       isLoading: true,
       isPlaying: props.isPlaying,
       isMuted: true,
@@ -52,6 +51,7 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
+    const {poster, src} = this.props;
     const {isLoading, isPlaying} = this.state;
 
     return (
@@ -65,8 +65,8 @@ class VideoPlayer extends PureComponent {
           onMouseOut={() => {
             this.setState({isPlaying: false});
           }}
-          src={this.props.src}
-          poster={this.props.poster}
+          poster={poster}
+          src={src}
           muted={`muted`}
           width={`250`}
           ref={this._videoRef}
@@ -93,8 +93,8 @@ class VideoPlayer extends PureComponent {
 
 VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
 };
 
 export default VideoPlayer;

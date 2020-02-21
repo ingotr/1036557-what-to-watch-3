@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer is rendered correctly 1`] = `
+<video
+  className="player__video--play"
+  disabled={true}
+  muted="muted"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  poster="img/bohemian-rhapsody.jpg"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+  width="250"
+/>
+`;
