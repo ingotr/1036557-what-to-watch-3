@@ -71,7 +71,7 @@ exports[`Render App 1`] = `
         <h2
           className="movie-card__title"
         >
-          Mock-test--The Grand Budapest Hotel
+          Mock-test-The Grand Budapest Hotel
         </h2>
         <p
           className="movie-card__meta"
@@ -79,12 +79,12 @@ exports[`Render App 1`] = `
           <span
             className="movie-card__genre"
           >
-            Mock-test--Drama
+            Mock-test-Drama
           </span>
           <span
             className="movie-card__year"
           >
-            2018
+            2017
           </span>
         </p>
         <div
@@ -144,7 +144,7 @@ exports[`Render App 1`] = `
         className="movie-card__poster movie-card__poster--big"
       >
         <img
-          alt="Mock-test--The Grand Budapest Hotel poster"
+          alt="Mock-test-The Grand Budapest Hotel poster"
           height="327"
           src="img/the-grand-budapest-hotel-poster.jpg"
           width="218"
@@ -197,7 +197,7 @@ exports[`Render App 1`] = `
           <div
             className="movie-rating__score"
           >
-            7.3
+            8.9
           </div>
           <p
             className="movie-rating__meta"
@@ -205,12 +205,12 @@ exports[`Render App 1`] = `
             <span
               className="movie-rating__level"
             >
-              Mock-test--Very good
+              Mocks-Very good
             </span>
             <span
               className="movie-rating__count"
             >
-              1341
+              240
             </span>
           </p>
         </div>
@@ -218,17 +218,17 @@ exports[`Render App 1`] = `
           className="movie-card__text"
         >
           <p>
-            Mock-test--In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
+            Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
           </p>
           <p>
-            Mock-test--Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
+            Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
           </p>
           <p
             className="movie-card__director"
           >
             <strong>
               Director: 
-              Mock-test--Wes Andreson
+              Mock-Wes Andreson
             </strong>
           </p>
           <p
@@ -236,7 +236,7 @@ exports[`Render App 1`] = `
           >
             <strong>
               Starring: 
-              Mock-test--Bill Murray
+              Mock-test-Bill Murray
               , 
               Edward Norton
               , 

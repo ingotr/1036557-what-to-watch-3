@@ -1,49 +1,57 @@
-const FilmDetails = {
+const FirstMovie = {
   TITLE: `Mock-test-The Grand Budapest Hotel`,
   GENRE: `Mock-test-Drama`,
   RELEASE_DATE: 2020,
 };
 
-const films = [
+const movies = [
   {
     id: `mock-test-011`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-test-012`,
     title: `Bohemian Rhapsody`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-test-013`,
     title: `Macbeth`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-test-014`,
     title: `Aviator`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-test-015`,
     title: `We need to talk about Kevin`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-test-016`,
     title: `What We Do in the Shadows`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-test-017`,
     title: `Revenant`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     id: `mock-test-018`,
     title: `Johnny English`,
     imgSrc: `img/dardjeeling-limited.jpg`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
 ];
 
@@ -66,4 +74,4 @@ const movieInfo = {
   starring: [`Mock-test-Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
 };
 
-export {FilmDetails, films, movieInfo};
+export {FirstMovie, movies, movieInfo};

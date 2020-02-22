@@ -12,6 +12,7 @@ const CatalogMoviesList = (props) => {
           key={movie.id}
           title={movie.title}
           imgSrc={movie.imgSrc}
+          previewSrc={movie.previewSrc}
           onMovieHover={onMovieHover}
         />
       ))}
@@ -20,11 +21,13 @@ const CatalogMoviesList = (props) => {
 };
 
 CatalogMoviesList.propTypes = {
+
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         imgSrc: PropTypes.string.isRequired,
+        previewSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
 
