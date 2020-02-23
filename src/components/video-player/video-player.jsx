@@ -47,7 +47,6 @@ class VideoPlayer extends PureComponent {
     videoRef.onpause = null;
     videoRef.ontimeupdate = null;
     videoRef.src = ``;
-    videoRef = null;
   }
 
   render() {

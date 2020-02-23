@@ -53,6 +53,10 @@ const movieInfo = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
   year: 2014,
+  runtime: {
+    hours: 1,
+    minutes: 39,
+  },
   poster: {
     big: `img/the-grand-budapest-hotel-poster.jpg`,
     bigAlt: `The Grand Budapest Hotel poster`,

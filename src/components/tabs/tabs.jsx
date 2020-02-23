@@ -1,8 +1,9 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const STARRING_PREMAX_EL = 2;
-const STARRING_MAX_EL = 3;
+const STARRING_PREMAX_EL = 3;
+const STARRING_MAX_EL = 4;
+const REVIEW_HALFINDEX = 3;
 
 const TABS = {
   OVERVIEW: `overview`,
@@ -17,10 +18,18 @@ class Tabs extends PureComponent {
     this.state = {
       currentTab: TABS.OVERVIEW,
     };
+    this.tabsElements = [];
+    this.tabOverviewElement = [];
+    this.tabDetailsElement = [];
+    this.tabReviewsElement = [];
   }
 
   componentDidMount() {
-
+    this.tabsElements = document.querySelectorAll(`.movie-tab`);
+    this.tabOverviewElement = document.querySelectorAll(`.movie-tab--overview`);
+    this.tabDetailsElement = document.querySelector(`.movie-tab--details`);
+    this.tabReviewsElement = document.querySelector(`.movie-tab--reviews`);
+    this.navElements = document.querySelectorAll(`.movie-nav__item`);
   }
 
   componentWillUnmount() {
@@ -33,53 +42,56 @@ class Tabs extends PureComponent {
 
     const newStarringArr = starring.slice(0, STARRING_PREMAX_EL);
     const starrringMaxEl = starring.slice(STARRING_PREMAX_EL, STARRING_MAX_EL);
-    const starringString = newStarringArr.join(`, `).concat(starrringMaxEl);
+    const starringString = newStarringArr.join(`, `).concat(`, `, starrringMaxEl);
 
     const returnDescriptionList = () => {
+      const descriptionList = [];
       for (const key of description) {
-        return (
-          <Fragment>
-            <p>{description[key]}</p><br />
-          </Fragment>
-        );
+        const descriptionFragment =
+          <Fragment key={key + description.indexOf(key)}>
+            <p>{key}</p>
+          </Fragment>;
+        descriptionList.push(descriptionFragment);
       }
-      return ``;
+      return descriptionList;
     };
 
     const returnStarringList = () => {
-      for (const key of starring) {
-        return (
-          <Fragment>
-            {starring[key]} <br />
-          </Fragment>
-        );
-      }
-      return ``;
+      const resultFragment = starring.join(`, \n`);
+
+      return resultFragment;
     };
 
     const returnReviewList = () => {
-      for (const key of reviews) {
+      const reviewFragmentArr = [];
 
-        return (
-          <Fragment>
-            <div className="review">
-              <blockquote className="review__quote">
-                <p className="review__text">{reviews[key].text}</p>
+      for (const review of reviews) {
+        const currentFragment = <Fragment key={review + reviews.indexOf(review)}>
+          <div className="review">
+            <blockquote className="review__quote">
+              <p className="review__text">{review.text}</p>
 
-                <footer className="review__details">
-                  <cite className="review__author">{reviews[key].author}</cite>
-                  <time className="review__date" dateTime={reviews[key].dateTime.string}>
-                    {reviews[key].dateTime.month} {reviews[key].dateTime.day}, {reviews[key].dateTime.reviewYear}</time>
-                </footer>
-              </blockquote>
+              <footer className="review__details">
+                <cite className="review__author">{review.author}</cite>
+                <time className="review__date" dateTime={review.dateTime.string}>
+                  {review.dateTime.month} {review.dateTime.day}, {review.dateTime.reviewYear}</time>
+              </footer>
+            </blockquote>
 
-              <div className="review__rating">{reviews[key].rating}</div>
-            </div>
-            <br />
-          </Fragment>
-        );
+            <div className="review__rating">{review.rating}</div>
+          </div>
+          <br />
+        </Fragment>;
+        reviewFragmentArr.push(currentFragment);
       }
-      return ``;
+      return reviewFragmentArr;
+    };
+
+    const selectCurrentNavElement = () => {
+      for (const elem of this.navElements) {
+        elem.classList.remove(`movie-nav__item--active`);
+      }
+      event.target.parentElement.classList.add(`movie-nav__item--active`);
     };
 
     return (
@@ -87,17 +99,26 @@ class Tabs extends PureComponent {
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             <li
-              onClick={this.setState({currentTab: TABS.OVERVIEW})}
+              onClick={() => {
+                this.setState({currentTab: TABS.OVERVIEW});
+                selectCurrentNavElement();
+              }}
               className="movie-nav__item movie-nav__item--active">
               <a href="#" className="movie-nav__link">Overview</a>
             </li>
             <li
-              onClick={this.setState({currentTab: TABS.DETAILS})}
+              onClick={() => {
+                this.setState({currentTab: TABS.DETAILS});
+                selectCurrentNavElement();
+              }}
               className="movie-nav__item">
               <a href="#" className="movie-nav__link">Details</a>
             </li>
             <li
-              onClick={this.setState({currentTab: TABS.REVIEWS})}
+              onClick={() => {
+                this.setState({currentTab: TABS.REVIEWS});
+                selectCurrentNavElement();
+              }}
               className="movie-nav__item">
               <a href="#" className="movie-nav__link">Reviews</a>
             </li>
@@ -108,19 +129,18 @@ class Tabs extends PureComponent {
           <div className="movie-rating__score">{score}</div>
           <p className="movie-rating__meta">
             <span className="movie-rating__level">{level}</span>
-            <span className="movie-rating__count">{count}</span>
+            <span className="movie-rating__count">{count} ratings</span>
           </p>
         </div>
 
         <div className="movie-card__text movie-tab movie-tab--overview">
           {returnDescriptionList()}
-
           <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
           <p className="movie-card__starring"><strong>Starring: {starringString} and other</strong></p>
         </div>
 
-        <div className="movie-card__text movie-card__row movie-tab movie-tab--details visually-hidden">
+        <div className="movie-card__text movie-card__row movie-tab movie-tab--details">
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Director</strong>
@@ -134,7 +154,7 @@ class Tabs extends PureComponent {
             </p>
           </div>
 
-          <div className="movie-card__text-col movie-tab movie-tab--details visually-hidden">
+          <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Run Time</strong>
               <span className="movie-card__details-value">{hours}h {minutes}m</span>
@@ -150,9 +170,12 @@ class Tabs extends PureComponent {
           </div>
         </div>
 
-        <div className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews visually-hidden">
+        <div className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews">
           <div className="movie-card__reviews-col">
-            {returnReviewList()}
+            {returnReviewList().slice(0, REVIEW_HALFINDEX)}
+          </div>
+          <div className="movie-card__reviews-col">
+            {returnReviewList().slice(REVIEW_HALFINDEX)}
           </div>
         </div>
       </Fragment>
@@ -160,23 +183,26 @@ class Tabs extends PureComponent {
   }
 
   componentDidUpdate() {
-    const tabsElements = document.querySelector(`.movie-tab`);
-    const tabOverviewElement = tabsElements.querySelector(`.movie-tab--overview`);
-    const tabDetailsElement = tabsElements.querySelector(`.movie-tab--details`);
-    const tabReviewsElement = tabsElements.querySelector(`.movie-tab--reviews`);
-
     switch (this.state.currentTab) {
       case TABS.OVERVIEW:
-        tabsElements.classList.toggle(`visually-hidden`);
-        tabOverviewElement.classList.remove(`visually-hidden`);
+        for (const elem of this.tabsElements) {
+          elem.classList.add(`visually-hidden`);
+        }
+        for (const elem of this.tabOverviewElement) {
+          elem.classList.toggle(`visually-hidden`);
+        }
         break;
       case TABS.DETAILS:
-        tabsElements.classList.toggle(`visually-hidden`);
-        tabDetailsElement.classList.remove(`visually-hidden`);
+        for (const elem of this.tabsElements) {
+          elem.classList.add(`visually-hidden`);
+        }
+        this.tabDetailsElement.classList.toggle(`visually-hidden`);
         break;
       case TABS.REVIEWS:
-        tabsElements.classList.toggle(`visually-hidden`);
-        tabReviewsElement.classList.remove(`visually-hidden`);
+        for (const elem of this.tabsElements) {
+          elem.classList.add(`visually-hidden`);
+        }
+        this.tabReviewsElement.classList.toggle(`visually-hidden`);
         break;
     }
   }
