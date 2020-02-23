@@ -140,7 +140,7 @@ class Tabs extends PureComponent {
           <p className="movie-card__starring"><strong>Starring: {starringString} and other</strong></p>
         </div>
 
-        <div className="movie-card__text movie-card__row movie-tab movie-tab--details">
+        <div className="movie-card__text movie-card__row movie-tab movie-tab--details visually-hidden">
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Director</strong>
@@ -170,7 +170,7 @@ class Tabs extends PureComponent {
           </div>
         </div>
 
-        <div className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews">
+        <div className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews visually-hidden">
           <div className="movie-card__reviews-col">
             {returnReviewList().slice(0, REVIEW_HALFINDEX)}
           </div>

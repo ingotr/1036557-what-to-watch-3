@@ -42,6 +42,8 @@ class App extends PureComponent {
       return (
         <MoviePage
           movieInfo={movieInfo}
+          movies={movies.slice(0, 4)}
+          onMovieHover={movieHoverHandler}
         />
       );
     }

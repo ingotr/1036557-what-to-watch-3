@@ -67,6 +67,7 @@ class VideoPlayer extends PureComponent {
           poster={poster}
           src={src}
           muted={`muted`}
+          height={`175`}
           width={`250`}
           ref={this._videoRef}
         />
