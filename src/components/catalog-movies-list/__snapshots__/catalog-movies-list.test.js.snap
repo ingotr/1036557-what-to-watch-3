@@ -10,6 +10,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
@@ -34,6 +35,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
@@ -58,6 +60,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
@@ -82,6 +85,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
@@ -106,6 +110,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
@@ -130,6 +135,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
@@ -154,6 +160,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
@@ -178,6 +185,7 @@ exports[`Render App 1`] = `
     <video
       className="player__video--play"
       disabled={true}
+      height="175"
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}

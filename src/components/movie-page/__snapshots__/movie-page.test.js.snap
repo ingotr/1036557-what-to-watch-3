@@ -1,33 +1,711 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render App 1`] = `
-<section
-  className="movie-card movie-card--full"
->
-  <div
-    className="movie-card__hero"
+Array [
+  <section
+    className="movie-card movie-card--full"
   >
     <div
-      className="movie-card__bg"
+      className="movie-card__hero"
     >
-      <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
-      />
+      <div
+        className="movie-card__bg"
+      >
+        <img
+          alt="The Grand Budapest Hotel"
+          src="img/bg-the-grand-budapest-hotel.jpg"
+        />
+      </div>
+      <h1
+        className="visually-hidden"
+      >
+        WTW
+      </h1>
+      <header
+        className="page-header movie-card__head"
+      >
+        <div
+          className="logo"
+        >
+          <a
+            className="logo__link"
+            href="main.html"
+          >
+            <span
+              className="logo__letter logo__letter--1"
+            >
+              W
+            </span>
+            <span
+              className="logo__letter logo__letter--2"
+            >
+              T
+            </span>
+            <span
+              className="logo__letter logo__letter--3"
+            >
+              W
+            </span>
+          </a>
+        </div>
+        <div
+          className="user-block"
+        >
+          <div
+            className="user-block__avatar"
+          >
+            <img
+              alt="User avatar"
+              height="63"
+              src="img/avatar.jpg"
+              width="63"
+            />
+          </div>
+        </div>
+      </header>
+      <div
+        className="movie-card__wrap"
+      >
+        <div
+          className="movie-card__desc"
+        >
+          <h2
+            className="movie-card__title"
+          >
+            Mock-test-The Grand Budapest Hotel
+          </h2>
+          <p
+            className="movie-card__meta"
+          >
+            <span
+              className="movie-card__genre"
+            >
+              Mock-test-Drama
+            </span>
+            <span
+              className="movie-card__year"
+            >
+              2017
+            </span>
+          </p>
+          <div
+            className="movie-card__buttons"
+          >
+            <button
+              className="btn btn--play movie-card__button"
+              type="button"
+            >
+              <svg
+                height="19"
+                viewBox="0 0 19 19"
+                width="19"
+              >
+                <use
+                  xlinkHref="#play-s"
+                />
+              </svg>
+              <span>
+                Play
+              </span>
+            </button>
+            <button
+              className="btn btn--list movie-card__button"
+              type="button"
+            >
+              <svg
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
+              >
+                <use
+                  xlinkHref="#add"
+                />
+              </svg>
+              <span>
+                My list
+              </span>
+            </button>
+            <a
+              className="btn movie-card__button"
+              href="add-review.html"
+            >
+              Add review
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <h1
-      className="visually-hidden"
+    <div
+      className="movie-card__wrap movie-card__translate-top"
     >
-      WTW
-    </h1>
-    <header
-      className="page-header movie-card__head"
+      <div
+        className="movie-card__info"
+      >
+        <div
+          className="movie-card__poster movie-card__poster--big"
+        >
+          <img
+            alt="Mock-test-The Grand Budapest Hotel poster"
+            height="327"
+            src="img/the-grand-budapest-hotel-poster.jpg"
+            width="218"
+          />
+        </div>
+        <div
+          className="movie-card__desc"
+        >
+          <nav
+            className="movie-nav movie-card__nav"
+          >
+            <ul
+              className="movie-nav__list"
+            >
+              <li
+                className="movie-nav__item movie-nav__item--active"
+                onClick={[Function]}
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                >
+                  Overview
+                </a>
+              </li>
+              <li
+                className="movie-nav__item"
+                onClick={[Function]}
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                >
+                  Details
+                </a>
+              </li>
+              <li
+                className="movie-nav__item"
+                onClick={[Function]}
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                >
+                  Reviews
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div
+            className="movie-rating movie-tab movie-tab--overview"
+          >
+            <div
+              className="movie-rating__score"
+            >
+              8.9
+            </div>
+            <p
+              className="movie-rating__meta"
+            >
+              <span
+                className="movie-rating__level"
+              >
+                Mocks-Very good
+              </span>
+              <span
+                className="movie-rating__count"
+              >
+                240
+                 ratings
+              </span>
+            </p>
+          </div>
+          <div
+            className="movie-card__text movie-tab movie-tab--overview"
+          >
+            <p>
+              Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
+            </p>
+            <p>
+              Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
+            </p>
+            <p
+              className="movie-card__director"
+            >
+              <strong>
+                Director: 
+                Mock-Wes Andreson
+              </strong>
+            </p>
+            <p
+              className="movie-card__starring"
+            >
+              <strong>
+                Starring: 
+                Mock-test-Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+                 and other
+              </strong>
+            </p>
+          </div>
+          <div
+            className="movie-card__text movie-card__row movie-tab movie-tab--details visually-hidden"
+          >
+            <div
+              className="movie-card__text-col"
+            >
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Director
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  Mock-Wes Andreson
+                </span>
+              </p>
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Starring
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  Mock-test-Bill Murray, 
+Edward Norton, 
+Jude Law, 
+Willem Dafoe
+                </span>
+              </p>
+            </div>
+            <div
+              className="movie-card__text-col"
+            >
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Run Time
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  1
+                  h 
+                  39
+                  m
+                </span>
+              </p>
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Genre
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  Mock-test-Drama
+                </span>
+              </p>
+              <p
+                className="movie-card__details-item"
+              >
+                <strong
+                  className="movie-card__details-name"
+                >
+                  Released
+                </strong>
+                <span
+                  className="movie-card__details-value"
+                >
+                  2017
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews visually-hidden"
+          >
+            <div
+              className="movie-card__reviews-col"
+            >
+              <div
+                className="review"
+              >
+                <blockquote
+                  className="review__quote"
+                >
+                  <p
+                    className="review__text"
+                  >
+                    Discerning travellers and Wes Anderson fans will luxuriate
+       in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
+                  </p>
+                  <footer
+                    className="review__details"
+                  >
+                    <cite
+                      className="review__author"
+                    >
+                      Kate Muir
+                    </cite>
+                    <time
+                      className="review__date"
+                      dateTime="2016-12-24"
+                    >
+                      December
+                       
+                      24
+                      , 
+                      2016
+                    </time>
+                  </footer>
+                </blockquote>
+                <div
+                  className="review__rating"
+                >
+                  8.9
+                </div>
+              </div>
+              <br />
+              <div
+                className="review"
+              >
+                <blockquote
+                  className="review__quote"
+                >
+                  <p
+                    className="review__text"
+                  >
+                    Anderson's films are too precious for some, but for those
+      of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.
+                  </p>
+                  <footer
+                    className="review__details"
+                  >
+                    <cite
+                      className="review__author"
+                    >
+                      Bill Goodykoontz
+                    </cite>
+                    <time
+                      className="review__date"
+                      dateTime="2015-11-18"
+                    >
+                      November
+                       
+                      18
+                      , 
+                      2015
+                    </time>
+                  </footer>
+                </blockquote>
+                <div
+                  className="review__rating"
+                >
+                  8
+                </div>
+              </div>
+              <br />
+              <div
+                className="review"
+              >
+                <blockquote
+                  className="review__quote"
+                >
+                  <p
+                    className="review__text"
+                  >
+                    I didn't find it amusing, and while I can appreciate the
+      creativity, it's an hour and 40 minutes I wish I could take back.
+                  </p>
+                  <footer
+                    className="review__details"
+                  >
+                    <cite
+                      className="review__author"
+                    >
+                      Amanda Greever
+                    </cite>
+                    <time
+                      className="review__date"
+                      dateTime="2015-11-18"
+                    >
+                      November
+                       
+                      18
+                      , 
+                      2015
+                    </time>
+                  </footer>
+                </blockquote>
+                <div
+                  className="review__rating"
+                >
+                  8
+                </div>
+              </div>
+              <br />
+            </div>
+            <div
+              className="movie-card__reviews-col"
+            >
+              <div
+                className="review"
+              >
+                <blockquote
+                  className="review__quote"
+                >
+                  <p
+                    className="review__text"
+                  >
+                    The mannered, madcap proceedings are often delightful,
+      occasionally silly, and here and there, gruesome and/or heartbreaking.
+                  </p>
+                  <footer
+                    className="review__details"
+                  >
+                    <cite
+                      className="review__author"
+                    >
+                      Matthew Lickona
+                    </cite>
+                    <time
+                      className="review__date"
+                      dateTime="2016-12-20"
+                    >
+                      December
+                       
+                      20
+                      , 
+                      2016
+                    </time>
+                  </footer>
+                </blockquote>
+                <div
+                  className="review__rating"
+                >
+                  7.2
+                </div>
+              </div>
+              <br />
+              <div
+                className="review"
+              >
+                <blockquote
+                  className="review__quote"
+                >
+                  <p
+                    className="review__text"
+                  >
+                    It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+                  </p>
+                  <footer
+                    className="review__details"
+                  >
+                    <cite
+                      className="review__author"
+                    >
+                      Paula Fleri-Soler
+                    </cite>
+                    <time
+                      className="review__date"
+                      dateTime="2016-12-20"
+                    >
+                      December
+                       
+                      20
+                      , 
+                      2016
+                    </time>
+                  </footer>
+                </blockquote>
+                <div
+                  className="review__rating"
+                >
+                  7.6
+                </div>
+              </div>
+              <br />
+              <div
+                className="review"
+              >
+                <blockquote
+                  className="review__quote"
+                >
+                  <p
+                    className="review__text"
+                  >
+                    It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+                  </p>
+                  <footer
+                    className="review__details"
+                  >
+                    <cite
+                      className="review__author"
+                    >
+                      Paula Fleri-Soler
+                    </cite>
+                    <time
+                      className="review__date"
+                      dateTime="2016-12-20"
+                    >
+                      December
+                       
+                      24
+                      , 
+                      2016
+                    </time>
+                  </footer>
+                </blockquote>
+                <div
+                  className="review__rating"
+                >
+                  7
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog catalog--like-this"
+    >
+      <h2
+        className="catalog__title"
+      >
+        More like this
+      </h2>
+      <div
+        className="catalog__movies-list"
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Fantastic Beasts: The Crimes of Grindelwald
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Bohemian Rhapsody
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Macbeth
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Aviator
+            </a>
+          </h3>
+        </article>
+      </div>
+    </section>
+    <footer
+      className="page-footer"
     >
       <div
         className="logo"
       >
         <a
-          className="logo__link"
+          className="logo__link logo__link--light"
           href="main.html"
         >
           <span
@@ -48,207 +726,13 @@ exports[`Render App 1`] = `
         </a>
       </div>
       <div
-        className="user-block"
+        className="copyright"
       >
-        <div
-          className="user-block__avatar"
-        >
-          <img
-            alt="User avatar"
-            height="63"
-            src="img/avatar.jpg"
-            width="63"
-          />
-        </div>
-      </div>
-    </header>
-    <div
-      className="movie-card__wrap"
-    >
-      <div
-        className="movie-card__desc"
-      >
-        <h2
-          className="movie-card__title"
-        >
-          Mock-test-The Grand Budapest Hotel
-        </h2>
-        <p
-          className="movie-card__meta"
-        >
-          <span
-            className="movie-card__genre"
-          >
-            Mock-test-Drama
-          </span>
-          <span
-            className="movie-card__year"
-          >
-            2017
-          </span>
+        <p>
+          © 2019 What to watch Ltd.
         </p>
-        <div
-          className="movie-card__buttons"
-        >
-          <button
-            className="btn btn--play movie-card__button"
-            type="button"
-          >
-            <svg
-              height="19"
-              viewBox="0 0 19 19"
-              width="19"
-            >
-              <use
-                xlinkHref="#play-s"
-              />
-            </svg>
-            <span>
-              Play
-            </span>
-          </button>
-          <button
-            className="btn btn--list movie-card__button"
-            type="button"
-          >
-            <svg
-              height="20"
-              viewBox="0 0 19 20"
-              width="19"
-            >
-              <use
-                xlinkHref="#add"
-              />
-            </svg>
-            <span>
-              My list
-            </span>
-          </button>
-          <a
-            className="btn movie-card__button"
-            href="add-review.html"
-          >
-            Add review
-          </a>
-        </div>
       </div>
-    </div>
-  </div>
-  <div
-    className="movie-card__wrap movie-card__translate-top"
-  >
-    <div
-      className="movie-card__info"
-    >
-      <div
-        className="movie-card__poster movie-card__poster--big"
-      >
-        <img
-          alt="Mock-test-The Grand Budapest Hotel poster"
-          height="327"
-          src="img/the-grand-budapest-hotel-poster.jpg"
-          width="218"
-        />
-      </div>
-      <div
-        className="movie-card__desc"
-      >
-        <nav
-          className="movie-nav movie-card__nav"
-        >
-          <ul
-            className="movie-nav__list"
-          >
-            <li
-              className="movie-nav__item movie-nav__item--active"
-            >
-              <a
-                className="movie-nav__link"
-                href="#"
-              >
-                Overview
-              </a>
-            </li>
-            <li
-              className="movie-nav__item"
-            >
-              <a
-                className="movie-nav__link"
-                href="#"
-              >
-                Details
-              </a>
-            </li>
-            <li
-              className="movie-nav__item"
-            >
-              <a
-                className="movie-nav__link"
-                href="#"
-              >
-                Reviews
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div
-          className="movie-rating"
-        >
-          <div
-            className="movie-rating__score"
-          >
-            8.9
-          </div>
-          <p
-            className="movie-rating__meta"
-          >
-            <span
-              className="movie-rating__level"
-            >
-              Mocks-Very good
-            </span>
-            <span
-              className="movie-rating__count"
-            >
-              240
-            </span>
-          </p>
-        </div>
-        <div
-          className="movie-card__text"
-        >
-          <p>
-            Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
-          </p>
-          <p>
-            Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
-          </p>
-          <p
-            className="movie-card__director"
-          >
-            <strong>
-              Director: 
-              Mock-Wes Andreson
-            </strong>
-          </p>
-          <p
-            className="movie-card__starring"
-          >
-            <strong>
-              Starring: 
-              Mock-test-Bill Murray
-              , 
-              Edward Norton
-              , 
-              Jude Law
-              , 
-              Willem Dafoe
-               and other
-            </strong>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
+  </div>,
+]
 `;

@@ -41,9 +41,8 @@ class App extends PureComponent {
     if (showMovieInfo) {
       return (
         <MoviePage
+          movies={movies}
           movieInfo={movieInfo}
-          movies={movies.slice(0, 4)}
-          onMovieHover={movieHoverHandler}
         />
       );
     }
@@ -52,7 +51,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movieInfo} = this.props;
+    const {movieInfo, movies} = this.props;
 
     return (
       <BrowserRouter>
@@ -62,6 +61,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/dev-film">
             <MoviePage
+              movies={movies}
               movieInfo={movieInfo}
             />
           </Route>

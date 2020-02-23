@@ -4,10 +4,14 @@ import Tabs from '../tabs/tabs.jsx';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 
 const MoviePage = (props) => {
-  const {movieInfo, movies, onMovieHover} = props;
+  const {movies, movieInfo} = props;
   const {title, genre, runtime, year, poster, rating, director, description, starring, reviews} = movieInfo;
   const {big, bigAlt} = poster;
   const {score, level, count} = rating;
+
+  const getSameGenreMovies = () => {
+    return (movies.filter((movie) => movie.genre === genre)).slice(0, 4);
+  };
 
   return (
     <Fragment>
@@ -91,8 +95,8 @@ const MoviePage = (props) => {
           <h2 className="catalog__title">More like this</h2>
 
           <CatalogMoviesList
-            movies={movies}
-            onMovieHover={onMovieHover}
+            movies={getSameGenreMovies()}
+            onMovieHover={()=>{}}
           />
         </section>
 
@@ -165,8 +169,6 @@ MoviePage.propTypes = {
         previewSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
-
-  onMovieHover: PropTypes.func.isRequired,
 };
 
 export default MoviePage;
