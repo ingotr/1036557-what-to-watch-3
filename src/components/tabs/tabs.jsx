@@ -11,6 +11,8 @@ const TABS = {
   REVIEWS: `reviews`,
 };
 
+const VISUALLY_HIDDEN_CLASSNAME = `visually-hidden`;
+
 class Tabs extends PureComponent {
   constructor(props) {
     super(props);
@@ -18,22 +20,13 @@ class Tabs extends PureComponent {
     this.state = {
       currentTab: TABS.OVERVIEW,
     };
-    this.tabsElements = [];
-    this.tabOverviewElement = [];
-    this.tabDetailsElement = [];
-    this.tabReviewsElement = [];
   }
 
   componentDidMount() {
-    this.tabsElements = document.querySelectorAll(`.movie-tab`);
-    this.tabOverviewElement = document.querySelectorAll(`.movie-tab--overview`);
-    this.tabDetailsElement = document.querySelector(`.movie-tab--details`);
-    this.tabReviewsElement = document.querySelector(`.movie-tab--reviews`);
     this.navElements = document.querySelectorAll(`.movie-nav__item`);
   }
 
   componentWillUnmount() {
-
   }
 
   render() {
@@ -125,7 +118,8 @@ class Tabs extends PureComponent {
           </ul>
         </nav>
 
-        <div className="movie-rating movie-tab movie-tab--overview">
+        <div className={`movie-rating movie-tab movie-tab--overview
+        ${this.state.currentTab === TABS.OVERVIEW ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
           <div className="movie-rating__score">{score}</div>
           <p className="movie-rating__meta">
             <span className="movie-rating__level">{level}</span>
@@ -133,14 +127,16 @@ class Tabs extends PureComponent {
           </p>
         </div>
 
-        <div className="movie-card__text movie-tab movie-tab--overview">
+        <div className={`movie-card__text movie-tab movie-tab--overview
+        ${this.state.currentTab === TABS.OVERVIEW ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
           {returnDescriptionList()}
           <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
           <p className="movie-card__starring"><strong>Starring: {starringString} and other</strong></p>
         </div>
 
-        <div className="movie-card__text movie-card__row movie-tab movie-tab--details visually-hidden">
+        <div className={`movie-card__text movie-card__row movie-tab movie-tab--details
+        ${this.state.currentTab === TABS.DETAILS ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Director</strong>
@@ -170,7 +166,8 @@ class Tabs extends PureComponent {
           </div>
         </div>
 
-        <div className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews visually-hidden">
+        <div className={`movie-card__reviews movie-card__row movie-tab movie-tab--reviews
+        ${this.state.currentTab === TABS.REVIEWS ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
           <div className="movie-card__reviews-col">
             {returnReviewList().slice(0, REVIEW_HALFINDEX)}
           </div>
@@ -180,31 +177,6 @@ class Tabs extends PureComponent {
         </div>
       </Fragment>
     );
-  }
-
-  componentDidUpdate() {
-    switch (this.state.currentTab) {
-      case TABS.OVERVIEW:
-        for (const elem of this.tabsElements) {
-          elem.classList.add(`visually-hidden`);
-        }
-        for (const elem of this.tabOverviewElement) {
-          elem.classList.toggle(`visually-hidden`);
-        }
-        break;
-      case TABS.DETAILS:
-        for (const elem of this.tabsElements) {
-          elem.classList.add(`visually-hidden`);
-        }
-        this.tabDetailsElement.classList.toggle(`visually-hidden`);
-        break;
-      case TABS.REVIEWS:
-        for (const elem of this.tabsElements) {
-          elem.classList.add(`visually-hidden`);
-        }
-        this.tabReviewsElement.classList.toggle(`visually-hidden`);
-        break;
-    }
   }
 }
 

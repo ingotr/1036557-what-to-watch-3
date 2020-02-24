@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs.jsx';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 
+const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
+
 const MoviePage = (props) => {
   const {movies, movieInfo} = props;
   const {title, genre, runtime, year, poster, rating, director, description, starring, reviews} = movieInfo;
@@ -10,7 +12,7 @@ const MoviePage = (props) => {
   const {score, level, count} = rating;
 
   const getSameGenreMovies = () => {
-    return (movies.filter((movie) => movie.genre === genre)).slice(0, 4);
+    return (movies.filter((movie) => movie.genre === genre)).slice(0, SAME_GENRE_MOVIES_MAX_LENGTH);
   };
 
   return (

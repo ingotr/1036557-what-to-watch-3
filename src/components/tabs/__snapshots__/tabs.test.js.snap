@@ -44,7 +44,8 @@ Array [
     </ul>
   </nav>,
   <div
-    className="movie-rating movie-tab movie-tab--overview"
+    className="movie-rating movie-tab movie-tab--overview
+        "
   >
     <div
       className="movie-rating__score"
@@ -68,7 +69,8 @@ Array [
     </p>
   </div>,
   <div
-    className="movie-card__text movie-tab movie-tab--overview"
+    className="movie-card__text movie-tab movie-tab--overview
+        "
   >
     <p>
       Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
@@ -95,7 +97,8 @@ Array [
     </p>
   </div>,
   <div
-    className="movie-card__text movie-card__row movie-tab movie-tab--details visually-hidden"
+    className="movie-card__text movie-card__row movie-tab movie-tab--details
+        visually-hidden"
   >
     <div
       className="movie-card__text-col"
@@ -183,7 +186,8 @@ Willem Dafoe
     </div>
   </div>,
   <div
-    className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews visually-hidden"
+    className="movie-card__reviews movie-card__row movie-tab movie-tab--reviews
+        visually-hidden"
   >
     <div
       className="movie-card__reviews-col"
