@@ -12,6 +12,7 @@ const TABS = {
 };
 
 const VISUALLY_HIDDEN_CLASSNAME = `visually-hidden`;
+const ACTIVE_NAV_ELEMENT = `movie-nav__item--active`;
 
 class Tabs extends PureComponent {
   constructor(props) {
@@ -23,7 +24,6 @@ class Tabs extends PureComponent {
   }
 
   componentDidMount() {
-    this.navElements = document.querySelectorAll(`.movie-nav__item`);
   }
 
   componentWillUnmount() {
@@ -80,11 +80,12 @@ class Tabs extends PureComponent {
       return reviewFragmentArr;
     };
 
-    const selectCurrentNavElement = () => {
-      for (const elem of this.navElements) {
-        elem.classList.remove(`movie-nav__item--active`);
-      }
-      event.target.parentElement.classList.add(`movie-nav__item--active`);
+    const returnCurrentNavElement = (typeOfTab) => {
+      return this.state.currentTab === typeOfTab ? ACTIVE_NAV_ELEMENT : ``;
+    };
+
+    const returnCurrentTabsElements = (typeOfTab) => {
+      return this.state.currentTab === typeOfTab ? `` : VISUALLY_HIDDEN_CLASSNAME;
     };
 
     return (
@@ -94,32 +95,29 @@ class Tabs extends PureComponent {
             <li
               onClick={() => {
                 this.setState({currentTab: TABS.OVERVIEW});
-                selectCurrentNavElement();
               }}
-              className="movie-nav__item movie-nav__item--active">
+              className={`movie-nav__item ${returnCurrentNavElement(TABS.OVERVIEW)}`}>
               <a href="#" className="movie-nav__link">Overview</a>
             </li>
             <li
               onClick={() => {
                 this.setState({currentTab: TABS.DETAILS});
-                selectCurrentNavElement();
               }}
-              className="movie-nav__item">
+              className={`movie-nav__item ${returnCurrentNavElement(TABS.DETAILS)}`}>
               <a href="#" className="movie-nav__link">Details</a>
             </li>
             <li
               onClick={() => {
                 this.setState({currentTab: TABS.REVIEWS});
-                selectCurrentNavElement();
               }}
-              className="movie-nav__item">
+              className={`movie-nav__item ${returnCurrentNavElement(TABS.REVIEWS)}`}>
               <a href="#" className="movie-nav__link">Reviews</a>
             </li>
           </ul>
         </nav>
 
         <div className={`movie-rating movie-tab movie-tab--overview
-        ${this.state.currentTab === TABS.OVERVIEW ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
+        ${returnCurrentTabsElements(TABS.OVERVIEW)}`}>
           <div className="movie-rating__score">{score}</div>
           <p className="movie-rating__meta">
             <span className="movie-rating__level">{level}</span>
@@ -128,7 +126,7 @@ class Tabs extends PureComponent {
         </div>
 
         <div className={`movie-card__text movie-tab movie-tab--overview
-        ${this.state.currentTab === TABS.OVERVIEW ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
+        ${returnCurrentTabsElements(TABS.OVERVIEW)}`}>
           {returnDescriptionList()}
           <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
@@ -136,7 +134,7 @@ class Tabs extends PureComponent {
         </div>
 
         <div className={`movie-card__text movie-card__row movie-tab movie-tab--details
-        ${this.state.currentTab === TABS.DETAILS ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
+        ${returnCurrentTabsElements(TABS.DETAILS)}`}>
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Director</strong>
@@ -167,7 +165,7 @@ class Tabs extends PureComponent {
         </div>
 
         <div className={`movie-card__reviews movie-card__row movie-tab movie-tab--reviews
-        ${this.state.currentTab === TABS.REVIEWS ? `` : VISUALLY_HIDDEN_CLASSNAME}`}>
+        ${returnCurrentTabsElements(TABS.REVIEWS)}`}>
           <div className="movie-card__reviews-col">
             {returnReviewList().slice(0, REVIEW_HALFINDEX)}
           </div>
