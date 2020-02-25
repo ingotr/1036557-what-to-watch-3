@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
 import {films, movieInfo} from './mocks/films.js';
+import {reducer} from './reducer.js';
 
 const FilmDetails = {
   TITLE: `The Grand Budapest Hotel`,
