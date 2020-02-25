@@ -1,86 +1,33 @@
-const films = [
-  {
-    id: `mock-011`,
-    title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Drama`,
-  },
-  {
-    id: `mock-012`,
-    title: `Bohemian Rhapsody`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Drama`,
-  },
-  {
-    id: `mock-013`,
-    title: `Macbeth`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Drama`,
-  },
-  {
-    id: `mock-014`,
-    title: `Aviator`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Drama`,
-  },
-  {
-    id: `mock-015`,
-    title: `We need to talk about Kevin`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Drama`,
-  },
-  {
-    id: `mock-016`,
-    title: `What We Do in the Shadows`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Drama`,
-  },
-  {
-    id: `mock-017`,
-    title: `Revenant`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Thriller`,
-  },
-  {
-    id: `mock-018`,
-    title: `Johnny English`,
-    imgSrc: `img/aviator.jpg`,
-    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
-    genre: `Comedy`,
-  },
-];
+import React from 'react';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import Tabs from './tabs.jsx';
 
-const movieInfo = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  year: 2014,
+Enzyme.configure({
+  adapter: new Adapter(),
+});
+
+const Movie = {
+  title: `Mock-test-The Grand Budapest Hotel`,
+  genre: `Mock-test-Drama`,
+  year: 2017,
   runtime: {
     hours: 1,
     minutes: 39,
   },
   poster: {
     big: `img/the-grand-budapest-hotel-poster.jpg`,
-    bigAlt: `The Grand Budapest Hotel poster`,
+    bigAlt: `Mock-test-The Grand Budapest Hotel poster`,
   },
   rating: {
     score: 8.9,
-    level: `Very good`,
+    level: `Mocks-Very good`,
     count: 240,
   },
-  director: `Wes Andreson`,
-  description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.`,
+  director: `Mock-Wes Andreson`,
+  description: [`Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.`,
     `Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
-  starring: [
-    `Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`,
-    `Saoirse Ronan`, `Tony Revoloru`, `Tilda Swinton`, `Tom Wilkinson`,
-    `Owen Wilkinson`, `Adrien Brody`, `Ralph Fiennes`, `Jeff Goldblum`],
+  starring: [`Mock-test-Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   reviews: [
     {
       text: `Discerning travellers and Wes Anderson fans will luxuriate
@@ -155,4 +102,27 @@ const movieInfo = {
   ],
 };
 
-export {films, movieInfo};
+it(`Should NavItems be pressed`, () => {
+  const onNavItemClick = jest.fn();
+
+  const TabsElement = shallow(
+      <Tabs
+        genre={Movie.genre}
+        year={Movie.year}
+        runtime={Movie.runtime}
+        score={Movie.rating.score}
+        level={Movie.rating.level}
+        count={Movie.rating.count}
+        director={Movie.director}
+        description={Movie.description}
+        starring={Movie.starring}
+        reviews={Movie.reviews}
+      />
+  );
+
+  TabsElement.find(`.movie-nav__item`).forEach((node) => {
+    node.simulate(`onClick`, onNavItemClick({target: false}));
+  });
+
+  expect(onNavItemClick.mock.calls.length).toBe(3);
+});
