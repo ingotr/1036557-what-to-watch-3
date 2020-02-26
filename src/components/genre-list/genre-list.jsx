@@ -35,7 +35,7 @@ class GenreList extends PureComponent {
         const genreFragment =
           <Fragment key={genre + genres.indexOf(genre)}>
             <li
-              onClick={onGenreElementClick(genre)}
+              onClick={onGenreElementClick.bind(this, genre)}
               className={`catalog__genres-item ${returnCurrentGenreElement(genre)}`}>
               <a href="#" className="catalog__genres-link">{genre}</a>
             </li>
