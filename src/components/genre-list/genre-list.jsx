@@ -1,21 +1,16 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer.js';
 
 const DEFAULT_GENRE = `All genres`;
 const ACTIVE_GENRE_ELEMENT = `catalog__genres-item--active`;
 const GENRE_LIST_MAX_LENGTH = 9;
 
 class GenreList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentGenre: DEFAULT_GENRE,
-    };
-  }
 
   render() {
-    const {movies} = this.props;
+    const {movies, onGenreElementClick, currentGenre} = this.props;
 
     const returnCurrentGenres = () => {
       let currentGenres = [DEFAULT_GENRE];
@@ -31,7 +26,7 @@ class GenreList extends PureComponent {
     const genresList = returnCurrentGenres().slice(0, GENRE_LIST_MAX_LENGTH);
 
     const returnCurrentGenreElement = (genre) => {
-      return this.state.currentGenre === genre ? ACTIVE_GENRE_ELEMENT : ``;
+      return currentGenre === genre ? ACTIVE_GENRE_ELEMENT : ``;
     };
 
     const returnGenresList = (genres) => {
@@ -40,9 +35,7 @@ class GenreList extends PureComponent {
         const genreFragment =
           <Fragment key={genre + genres.indexOf(genre)}>
             <li
-              onClick={() => {
-                this.setState({currentGenre: genre});
-              }}
+              onClick={onGenreElementClick(genre)}
               className={`catalog__genres-item ${returnCurrentGenreElement(genre)}`}>
               <a href="#" className="catalog__genres-link">{genre}</a>
             </li>
@@ -71,6 +64,20 @@ GenreList.propTypes = {
         previewSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
+
+  onGenreElementClick: PropTypes.func.isRequired,
+  currentGenre: PropTypes.string.isRequired,
 };
 
-export default GenreList;
+const mapStateToProps = (state) => ({
+  currentGenre: state.currentGenre,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreElementClick(genre) {
+    dispatch(ActionCreator.setGenre(genre));
+  },
+});
+
+export {GenreList};
+export default connect(mapStateToProps, mapDispatchToProps)(GenreList);
