@@ -14,9 +14,41 @@ const returnGenre = (action, state) => {
   return action.payload === null ? state.genre : action.payload;
 };
 
-const returnMovies = (action, state) => {
+const getCurrentGenres = (movies) => {
+  let currentGenres = [];
+  for (const movie of movies) {
+    if (!getCurrentGenres.includes(movie.genre)) {
+      currentGenres.push(movie.genre);
+    }
+  }
+
+  return currentGenres;
+};
+
+const returnMoviesByGenre = (action, state) => {
   const movies = action.payload === null ? state.movies : action.payload;
-  return movies.filter((movie) => movie.genre === state.genre);
+  const currentGenres = getCurrentGenres(movies);
+
+  switch (state.genre) {
+    case (currentGenres.includes(state.genre)):
+      return movies.filter((movie) => movie.genre === state.genre);
+
+    case (state.genre = `All genres`):
+    default:
+      return movies;
+  }
+};
+
+const ActionCreator = {
+  setGenre: (genre) => ({
+    type: ActionType.SET_GENRE,
+    payload: genre,
+  }),
+
+  getMoviesByGenre: (movies) => ({
+    type: ActionType.GET_MOVIES_BY_GENRE,
+    payload: movies,
+  }),
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,11 +60,11 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.GET_MOVIES_BY_GENRE:
       return extend(state, {
-        movies: returnMovies(action, state),
+        movies: returnMoviesByGenre(action, state),
       });
   }
 
   return state;
 };
 
-export {reducer, ActionType};
+export {reducer, ActionType, ActionCreator};
