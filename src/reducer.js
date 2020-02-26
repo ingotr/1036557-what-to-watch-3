@@ -17,7 +17,7 @@ const returnGenre = (action, state) => {
 const getCurrentGenres = (movies) => {
   let currentGenres = [];
   for (const movie of movies) {
-    if (!getCurrentGenres.includes(movie.genre)) {
+    if (!currentGenres.includes(movie.genre)) {
       currentGenres.push(movie.genre);
     }
   }
