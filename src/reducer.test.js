@@ -1,4 +1,4 @@
-import {reducer, ActionType} from './reducer.js';
+import {reducer, ActionCreator, ActionType} from './reducer.js';
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
@@ -52,5 +52,23 @@ it(`Reducer should get movies by a given genre`, () => {
   })).toEqual({
     genre: `All genres`,
     movies: [],
+  });
+});
+
+describe(`Action creators work correctly`, () => {
+  it(`Action creator for set genre correct action`, (genre) => {
+    expect(ActionCreator.setGenre(genre)).toEqual({
+      type: ActionType.SET_GENRE,
+      payload: genre,
+    });
+  });
+});
+
+describe(`Action creators work correctly`, () => {
+  it(`Action creator for getMoviesByGenre correct action`, (movies, genre) => {
+    expect(ActionCreator.getMoviesByGenre(movies, genre)).toEqual({
+      type: ActionType.SET_GENRE,
+      payload: genre,
+    });
   });
 });
