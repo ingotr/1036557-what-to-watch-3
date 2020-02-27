@@ -2,7 +2,7 @@ import {reducer, ActionCreator, ActionType} from './reducer.js';
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
-    genre: `All genres`,
+    currentGenre: `All genres`,
     moviesByGenre: [],
   });
 });
@@ -16,6 +16,7 @@ it(`Reducer should set current genre by a given value`, () => {
     payload: `NewGenre`,
   })).toEqual({
     genre: `NewGenre`,
+    currentGenre: `All genres`,
     movies: [],
   });
 
@@ -39,8 +40,8 @@ it(`Reducer should get movies by a given genre`, () => {
     type: ActionType.GET_MOVIES_BY_GENRE,
     payload: `NewGenre`,
   })).toEqual({
-    genre: `NewGenre`,
-    movies: [].filter((movie) => movie.genre === `NewGenre`),
+    genre: `All genres`,
+    moviesByGenre: [].filter((movie) => movie.genre === `NewGenre`),
   });
 
   expect(reducer({
