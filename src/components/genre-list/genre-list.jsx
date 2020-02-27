@@ -35,7 +35,9 @@ class GenreList extends PureComponent {
         const genreFragment =
           <Fragment key={genre + genres.indexOf(genre)}>
             <li
-              onClick={onGenreElementClick.bind(this, genre)}
+              onClick={
+                onGenreElementClick.bind(this, genre, movies)
+              }
               className={`catalog__genres-item ${returnCurrentGenreElement(genre)}`}>
               <a href="#" className="catalog__genres-link">{genre}</a>
             </li>
@@ -74,8 +76,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onGenreElementClick(genre) {
-    dispatch(ActionCreator.setGenre(genre));
+  onGenreElementClick(genre, movies) {
+    Promise.resolve(dispatch(ActionCreator.setGenre(genre)))
+    .then(dispatch(ActionCreator.getMoviesByGenre(movies, genre)));
   },
 });
 
