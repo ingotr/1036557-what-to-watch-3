@@ -15,8 +15,8 @@ it(`Reducer should set current genre by a given value`, () => {
     type: ActionType.SET_GENRE,
     payload: `NewGenre`,
   })).toEqual({
-    genre: `NewGenre`,
-    currentGenre: `All genres`,
+    currentGenre: `NewGenre`,
+    genre: `All genres`,
     movies: [],
   });
 
@@ -27,6 +27,7 @@ it(`Reducer should set current genre by a given value`, () => {
     type: ActionType.SET_GENRE,
     payload: null,
   })).toEqual({
+    currentGenre: null,
     genre: `All genres`,
     movies: [],
   });
@@ -41,7 +42,8 @@ it(`Reducer should get movies by a given genre`, () => {
     payload: `NewGenre`,
   })).toEqual({
     genre: `All genres`,
-    moviesByGenre: [].filter((movie) => movie.genre === `NewGenre`),
+    movies: [],
+    moviesByGenre: `NewGenre`,
   });
 
   expect(reducer({
@@ -53,6 +55,7 @@ it(`Reducer should get movies by a given genre`, () => {
   })).toEqual({
     genre: `All genres`,
     movies: [],
+    moviesByGenre: null,
   });
 });
 
@@ -69,7 +72,7 @@ describe(`Action creators work correctly`, () => {
   it(`Action creator for getMoviesByGenre correct action`, (movies, genre) => {
     expect(ActionCreator.getMoviesByGenre(movies, genre)).toEqual({
       type: ActionType.SET_GENRE,
-      payload: genre,
+      payload: movies,
     });
   });
 });
