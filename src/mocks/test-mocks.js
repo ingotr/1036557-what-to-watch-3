@@ -61,6 +61,62 @@ const movies = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     genre: `Mock-test-Comedy`,
   },
+  {
+    id: `mock-test-019`,
+    title: `We need to talk about Kevin`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Drama`,
+  },
+  {
+    id: `mock-test-020`,
+    title: `What We Do in the Shadows`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Drama`,
+  },
+  {
+    id: `mock-test-021`,
+    title: `Revenant`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Drama`,
+  },
+  {
+    id: `mock-test-022`,
+    title: `Shutter Island`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Drama`,
+  },
+  {
+    id: `mock-test-023`,
+    title: `Snatch`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Drama`,
+  },
+  {
+    id: `mock-test-024`,
+    title: `Dardjeeling Limited`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Drama`,
+  },
+  {
+    id: `mock-test-025`,
+    title: `Mindhunter`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Thriller`,
+  },
+  {
+    id: `mock-test-026`,
+    title: `Midnight Special`,
+    imgSrc: `img/aviator.jpg`,
+    previewSrc: `https://download.blender.org/peach/trailer/trailer_400p.ogg`,
+    genre: `Comedy`,
+  },
 ];
 
 const movieInfo = {
