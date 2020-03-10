@@ -124,5 +124,5 @@ it(`Should NavItems be pressed`, () => {
     node.simulate(`onClick`, onNavItemClick({target: false}));
   });
 
-  expect(onNavItemClick.mock.calls.length).toBe(3);
+  expect(onNavItemClick.mock.calls).toHaveLength(3);
 });
