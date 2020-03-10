@@ -12,9 +12,10 @@ const mockStore = configureStore([]);
 const store = mockStore({
   currentGenre: DEFAULT_GENRE,
   moviesByGenre: [],
+  showedMovies: movies,
 });
 
-it(`Render App`, () => {
+it(`Main component shouled render correctly`, () => {
   const tree = renderer
    .create(
        <Provider store={store}>

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
+import ButtonShowMore from '../button-show-more/button-show-more.jsx';
 
 const ALL_GENRES = `All genres`;
 
@@ -90,13 +91,10 @@ class Main extends PureComponent {
             />
 
             <CatalogMoviesList
-              movies={moviesByGenre}
               onMovieHover={onMovieHover}
             />
 
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+            <ButtonShowMore />
           </section>
 
           <footer className="page-footer">

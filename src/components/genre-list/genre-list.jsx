@@ -77,8 +77,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreElementClick(genre, movies) {
-    Promise.resolve(dispatch(ActionCreator.setGenre(genre)))
-    .then(dispatch(ActionCreator.getMoviesByGenre(movies, genre)));
+    dispatch(ActionCreator.setGenre(genre));
+    dispatch(ActionCreator.getMoviesByGenre(movies, genre));
+    dispatch(ActionCreator.resetMoviesCount());
+    dispatch(ActionCreator.showMoreMovies());
   },
 });
 
