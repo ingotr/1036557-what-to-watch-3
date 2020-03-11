@@ -8,9 +8,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     currentGenre: `All genres`,
     moviesByGenre: films,
-    showedMoves: films.slice(0, 8),
-    moviesCount: 8,
-    movies: films,
+    showedMovies: films.slice(0, DEFAULT_MOVIES_COUNT),
+    moviesCount: DEFAULT_MOVIES_COUNT,
   });
 });
 
@@ -20,13 +19,11 @@ it(`Reducer should set current genre by a given value`, () => {
     movies: films,
   }, {
     type: ActionType.SET_GENRE,
-    payload: `NewGenre`,
+    payload: `Drama`,
   })).toEqual({
-    currentGenre: `NewGenre`,
+    currentGenre: `Drama`,
     genre: `All genres`,
     movies: films,
-    showedMoves: films.slice(0, DEFAULT_MOVIES_COUNT),
-    moviesCount: 8,
   });
 
   expect(reducer({
@@ -38,25 +35,21 @@ it(`Reducer should set current genre by a given value`, () => {
   })).toEqual({
     currentGenre: null,
     genre: `All genres`,
-    movies: [],
-    showedMoves: films.slice(0, DEFAULT_MOVIES_COUNT),
-    moviesCount: 8,
+    movies: films,
   });
 });
 
 it(`Reducer should get movies by a given genre`, () => {
   expect(reducer({
-    genre: `All genres`,
+    genre: `Drama`,
     movies: films,
   }, {
     type: ActionType.GET_MOVIES_BY_GENRE,
-    payload: `NewGenre`,
+    payload: films.filter((movie) => movie.genre === `Drama`),
   })).toEqual({
-    genre: `All genres`,
+    genre: `Drama`,
     movies: films,
-    moviesByGenre: `NewGenre`,
-    showedMoves: films.slice(0, DEFAULT_MOVIES_COUNT),
-    moviesCount: 8,
+    moviesByGenre: films.filter((movie) => movie.genre === `Drama`),
   });
 
   expect(reducer({
@@ -64,13 +57,11 @@ it(`Reducer should get movies by a given genre`, () => {
     movies: films,
   }, {
     type: ActionType.GET_MOVIES_BY_GENRE,
-    payload: null,
+    payload: [],
   })).toEqual({
     genre: `All genres`,
-    movies: [],
-    moviesByGenre: null,
-    showedMoves: films.slice(0, DEFAULT_MOVIES_COUNT),
-    moviesCount: DEFAULT_MOVIES_COUNT,
+    movies: films,
+    moviesByGenre: [],
   });
 });
 
@@ -79,16 +70,16 @@ it(`Reducer should show more films`, () => {
     genre: `All genres`,
     movies: films,
     moviesByGenre: films,
-    showedMoves: films.slice(0, DEFAULT_MOVIES_COUNT),
+    showedMovies: films.slice(0, DEFAULT_MOVIES_COUNT),
     moviesCount: DEFAULT_MOVIES_COUNT,
   }, {
-    type: ActionType.SHOW_MORE_FILMS,
-    payload: 8,
+    type: ActionType.SHOW_MORE_MOVIES,
+    payload: DEFAULT_MOVIES_COUNT,
   })).toEqual({
-    genre: `NewGenre`,
+    genre: `All genres`,
     movies: films,
     moviesByGenre: films,
-    showedMoves: films.slice(0, SHOWED_MORE_MOVIES_COUNT),
+    showedMovies: films.slice(0, SHOWED_MORE_MOVIES_COUNT),
     moviesCount: SHOWED_MORE_MOVIES_COUNT,
   });
 });
@@ -98,15 +89,15 @@ it(`Reducer should reset films count`, () => {
     genre: `NewGenre`,
     movies: films,
     moviesByGenre: films,
-    showedMoves: films.slice(0, DEFAULT_MOVIES_COUNT),
+    showedMovies: films.slice(0, DEFAULT_MOVIES_COUNT),
     moviesCount: SHOWED_MORE_MOVIES_COUNT,
   }, {
-    type: ActionType.RESET_FILMS_COUNT,
+    type: ActionType.RESET_MOVIES_COUNT,
   })).toEqual({
     genre: `NewGenre`,
     movies: films,
     moviesByGenre: films,
-    showedMoves: films.slice(0, 8),
+    showedMovies: films.slice(0, DEFAULT_MOVIES_COUNT),
     moviesCount: 0,
   });
 });

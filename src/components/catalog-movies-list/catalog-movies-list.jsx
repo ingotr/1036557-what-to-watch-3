@@ -42,7 +42,7 @@ CatalogMoviesList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.showedFilms,
+  movies: state.showedMovies,
 });
 
 export {CatalogMoviesList};
