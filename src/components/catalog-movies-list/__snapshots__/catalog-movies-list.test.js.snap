@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render App 1`] = `
+exports[`CatalogMoviesList should render correctly 1`] = `
 <div
   className="catalog__movies-list"
 >
@@ -14,8 +14,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -39,8 +39,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -64,8 +64,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -89,8 +89,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -114,8 +114,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -139,8 +139,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -164,8 +164,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -189,8 +189,8 @@ exports[`Render App 1`] = `
       muted="muted"
       onMouseOut={[Function]}
       onMouseOver={[Function]}
-      poster="img/dardjeeling-limited.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
       width="250"
     />
     <h3
@@ -201,6 +201,206 @@ exports[`Render App 1`] = `
         href="movie-page.html"
       >
         Johnny English
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        We need to talk about Kevin
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        What We Do in the Shadows
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Revenant
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Shutter Island
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Snatch
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Dardjeeling Limited
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Mindhunter
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <video
+      className="player__video--play"
+      disabled={true}
+      height="175"
+      muted="muted"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      poster="img/aviator.jpg"
+      src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+      width="250"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Midnight Special
       </a>
     </h3>
   </article>

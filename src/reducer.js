@@ -1,15 +1,21 @@
-import {extend} from "./utils.js";
+import {extend} from './utils.js';
+import {films} from './mocks/films.js';
 
 const ALL_GENRES = `All genres`;
+const DEFAULT_MOVIES_COUNT = 8;
 
 const initialState = {
   currentGenre: `All genres`,
-  moviesByGenre: [],
+  moviesByGenre: films,
+  showedMovies: films.slice(0, DEFAULT_MOVIES_COUNT),
+  moviesCount: DEFAULT_MOVIES_COUNT,
 };
 
 const ActionType = {
   SET_GENRE: `SET_GENRE`,
   GET_MOVIES_BY_GENRE: `GET_MOVIES_BY_GENRE`,
+  SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
+  RESET_MOVIES_COUNT: `RESET_MOVIES_COUNT`,
 };
 
 const ActionCreator = {
@@ -40,6 +46,15 @@ const ActionCreator = {
       payload: moviesByGenre,
     };
   },
+
+  showMoreMovies: () => ({
+    type: ActionType.SHOW_MORE_MOVIES,
+    payload: DEFAULT_MOVIES_COUNT,
+  }),
+
+  resetMoviesCount: () => ({
+    type: ActionType.RESET_MOVIES_COUNT,
+  })
 };
 
 const reducer = (state = initialState, action) => {
@@ -52,6 +67,18 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_MOVIES_BY_GENRE:
       return extend(state, {
         moviesByGenre: action.payload,
+      });
+
+    case ActionType.SHOW_MORE_MOVIES:
+      const moviesCount = state.moviesCount + action.payload;
+      return extend(state, {
+        moviesCount,
+        showedMovies: state.moviesByGenre.slice(0, moviesCount),
+      });
+
+    case ActionType.RESET_MOVIES_COUNT:
+      return extend(state, {
+        moviesCount: 0
       });
   }
 

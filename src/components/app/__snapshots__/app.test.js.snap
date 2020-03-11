@@ -197,6 +197,39 @@ exports[`Render App 1`] = `
             Mock-test-Comedy
           </a>
         </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Drama
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Thriller
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Comedy
+          </a>
+        </li>
       </ul>
       <div
         className="catalog__movies-list"
@@ -211,8 +244,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -236,8 +269,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -261,8 +294,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -286,8 +319,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -311,8 +344,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -336,8 +369,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -361,8 +394,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -386,8 +419,8 @@ exports[`Render App 1`] = `
             muted="muted"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -407,6 +440,7 @@ exports[`Render App 1`] = `
       >
         <button
           className="catalog__button"
+          onClick={[Function]}
           type="button"
         >
           Show more

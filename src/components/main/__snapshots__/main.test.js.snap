@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render App 1`] = `
+exports[`Main component shouled render correctly 1`] = `
 <div
   className="main"
 >
@@ -197,19 +197,443 @@ exports[`Render App 1`] = `
             Mock-test-Comedy
           </a>
         </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Drama
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Thriller
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Comedy
+          </a>
+        </li>
       </ul>
       <div
         className="catalog__movies-list"
-      />
-      <div
-        className="catalog__more"
       >
-        <button
-          className="catalog__button"
-          type="button"
+        <article
+          className="small-movie-card catalog__movies-card"
         >
-          Show more
-        </button>
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Fantastic Beasts: The Crimes of Grindelwald
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Bohemian Rhapsody
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Macbeth
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Aviator
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              We need to talk about Kevin
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              What We Do in the Shadows
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Revenant
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/dardjeeling-limited.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Johnny English
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              We need to talk about Kevin
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              What We Do in the Shadows
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Revenant
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Shutter Island
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Snatch
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Dardjeeling Limited
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Mindhunter
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            className="player__video--play"
+            disabled={true}
+            height="175"
+            muted="muted"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            poster="img/aviator.jpg"
+            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Midnight Special
+            </a>
+          </h3>
+        </article>
       </div>
     </section>
     <footer

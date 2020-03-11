@@ -1,24 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 
-const CatalogMoviesList = (props) => {
-  const {movies, onMovieHover} = props;
+class CatalogMoviesList extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <div className="catalog__movies-list">
-      {movies.map((movie) => (
-        <SmallMovieCard
-          key={movie.id}
-          title={movie.title}
-          imgSrc={movie.imgSrc}
-          previewSrc={movie.previewSrc}
-          onMovieHover={onMovieHover}
-        />
-      ))}
-    </div>
-  );
-};
+  render() {
+    const {movies, onMovieHover} = this.props;
+
+    return (
+      <div className="catalog__movies-list">
+        {movies.map((movie) => (
+          <SmallMovieCard
+            key={movie.id}
+            title={movie.title}
+            imgSrc={movie.imgSrc}
+            previewSrc={movie.previewSrc}
+            onMovieHover={onMovieHover}
+          />
+        ))}
+      </div>
+    );
+  }
+}
 
 CatalogMoviesList.propTypes = {
 
@@ -34,4 +41,10 @@ CatalogMoviesList.propTypes = {
   onMovieHover: PropTypes.func.isRequired,
 };
 
-export default CatalogMoviesList;
+const mapStateToProps = (state) => ({
+  movies: state.showedMovies,
+});
+
+export {CatalogMoviesList};
+
+export default connect(mapStateToProps)(CatalogMoviesList);
