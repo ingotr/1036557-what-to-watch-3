@@ -19,18 +19,13 @@ class Tabs extends PureComponent {
     super(props);
 
     this.state = {
-      currentTab: TABS.OVERVIEW,
+      activeItem: TABS.OVERVIEW,
     };
   }
 
-  componentDidMount() {
-  }
-
-  componentWillUnmount() {
-  }
-
   render() {
-    const {genre, year, runtime, score, level, count, director, description, starring, reviews} = this.props;
+    const {genre, year, runtime, score, level, count, director, description, starring, reviews,
+      activeItem, onItemEnter} = this.props;
     const {hours, minutes} = runtime;
 
     const newStarringArr = starring.slice(0, STARRING_PREMAX_EL);
@@ -81,11 +76,11 @@ class Tabs extends PureComponent {
     };
 
     const returnCurrentNavElement = (typeOfTab) => {
-      return this.state.currentTab === typeOfTab ? ACTIVE_NAV_ELEMENT : ``;
+      return activeItem === typeOfTab ? ACTIVE_NAV_ELEMENT : ``;
     };
 
     const returnCurrentTabsElements = (typeOfTab) => {
-      return this.state.currentTab === typeOfTab ? `` : VISUALLY_HIDDEN_CLASSNAME;
+      return activeItem === typeOfTab ? `` : VISUALLY_HIDDEN_CLASSNAME;
     };
 
     return (
@@ -93,23 +88,17 @@ class Tabs extends PureComponent {
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             <li
-              onClick={() => {
-                this.setState({currentTab: TABS.OVERVIEW});
-              }}
+              onClick={() => onItemEnter({activeItem: TABS.OVERVIEW})}
               className={`movie-nav__item ${returnCurrentNavElement(TABS.OVERVIEW)}`}>
               <a href="#" className="movie-nav__link">Overview</a>
             </li>
             <li
-              onClick={() => {
-                this.setState({currentTab: TABS.DETAILS});
-              }}
+              onClick={() => onItemEnter({activeItem: TABS.DETAILS})}
               className={`movie-nav__item ${returnCurrentNavElement(TABS.DETAILS)}`}>
               <a href="#" className="movie-nav__link">Details</a>
             </li>
             <li
-              onClick={() => {
-                this.setState({currentTab: TABS.REVIEWS});
-              }}
+              onClick={() => onItemEnter({activeItem: TABS.REVIEWS})}
               className={`movie-nav__item ${returnCurrentNavElement(TABS.REVIEWS)}`}>
               <a href="#" className="movie-nav__link">Reviews</a>
             </li>
@@ -210,6 +199,9 @@ Tabs.propTypes = {
         rating: PropTypes.number.isRequired,
       }).isRequired
   ).isRequired,
+
+  activeItem: PropTypes.string.isRequired,
+  onItemEnter: PropTypes.func.isRequired,
 };
 
 export default Tabs;

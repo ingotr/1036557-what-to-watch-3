@@ -9,7 +9,7 @@ class CatalogMoviesList extends React.PureComponent {
   }
 
   render() {
-    const {movies, onMovieHover} = this.props;
+    const {movies, onItemEnter, onItemLeave} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -19,7 +19,8 @@ class CatalogMoviesList extends React.PureComponent {
             title={movie.title}
             imgSrc={movie.imgSrc}
             previewSrc={movie.previewSrc}
-            onMovieHover={onMovieHover}
+            onMovieHover={onItemEnter}
+            onMovieLeave={onItemLeave}
           />
         ))}
       </div>
@@ -39,6 +40,8 @@ CatalogMoviesList.propTypes = {
   ).isRequired,
 
   onMovieHover: PropTypes.func.isRequired,
+  onItemEnter: PropTypes.func.isRequired,
+  onItemLeave: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
