@@ -25,8 +25,8 @@ const withVideo = (Component) => {
 
       const videoRef = this._videoRef.current;
 
-      videoRef.className = `player__video--${videoRef.isPlaying ? `pause` : `play`}`;
-      videoRef.disabled = videoRef.isLoading;
+      videoRef.className = `player__video--${this.state.isPlaying ? `pause` : `play`}`;
+      videoRef.disabled = this.state.isLoading;
       videoRef.oncanplaythrough = () => this.setState({
         isLoading: false,
       });
@@ -38,13 +38,14 @@ const withVideo = (Component) => {
       videoRef.onpause = () => this.setState({
         isPlaying: false,
       });
-      videoRef.onMouseOver = () => {
+      videoRef.onmouseover = () => {
         setTimeout(this.setState({isPlaying: true}), MOVIE_OVER_TIMEOUT);
       };
-      videoRef.onMouseOut = () => {
+      videoRef.onmouseout = () => {
         this.setState({isPlaying: false});
       };
-      videoRef.poster = videoRef.src;
+      videoRef.src = this.props.src;
+      videoRef.poster = this.props.poster;
       videoRef.muted = this.state.isMuted;
     }
 

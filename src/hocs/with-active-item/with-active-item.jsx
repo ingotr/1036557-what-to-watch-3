@@ -8,7 +8,7 @@ const withActiveItem = (Component) => {
       this.state = {
         activeItem: null,
       };
-      this.onItemEnter = this.onItemActive.bind(this);
+      this.onItemEnter = this.onItemEnter.bind(this);
       this.onItemLeave = this.onItemLeave.bind(this);
     }
 
@@ -28,7 +28,6 @@ const withActiveItem = (Component) => {
       return (
         <Component
           {...this.props}
-          activeItem={this.state.activeItem}
           onItemEnter={this.onItemEnter}
           onItemLeave={this.onItemLeave}
         />

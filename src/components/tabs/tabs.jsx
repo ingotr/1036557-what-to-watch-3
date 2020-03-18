@@ -15,13 +15,6 @@ const VISUALLY_HIDDEN_CLASSNAME = `visually-hidden`;
 const ACTIVE_NAV_ELEMENT = `movie-nav__item--active`;
 
 class Tabs extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeItem: TABS.OVERVIEW,
-    };
-  }
 
   render() {
     const {genre, year, runtime, score, level, count, director, description, starring, reviews,
