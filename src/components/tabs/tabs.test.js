@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Tabs from './tabs.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 const Movie = {
   title: `Mock-test-The Grand Budapest Hotel`,
@@ -97,10 +98,12 @@ const Movie = {
   ],
 };
 
+const TabsWrapped = withActiveItem(Tabs);
+
 it(`VideoPlayer is rendered correctly`, () => {
   const tree = renderer
     .create(
-        <Tabs
+        <TabsWrapped
           genre={Movie.genre}
           year={Movie.year}
           runtime={Movie.runtime}
