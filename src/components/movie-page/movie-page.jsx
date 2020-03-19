@@ -9,12 +9,6 @@ const TabsWrapped = withActiveItem(Tabs);
 
 const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
-const TABS = {
-  OVERVIEW: `overview`,
-  DETAILS: `details`,
-  REVIEWS: `reviews`,
-};
-
 const MoviePage = (props) => {
   const {movies, movieInfo} = props;
   const {title, genre, runtime, year, poster, rating, director, description, starring, reviews} = movieInfo;
@@ -96,7 +90,6 @@ const MoviePage = (props) => {
                 description={description}
                 starring={starring}
                 reviews={reviews}
-                activeItem={TABS.OVERVIEW}
               />
             </div>
           </div>
