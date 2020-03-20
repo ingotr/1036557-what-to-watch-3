@@ -2,6 +2,10 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs.jsx';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+
+const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
+const TabsWrapped = withActiveItem(Tabs);
 
 const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
@@ -75,7 +79,7 @@ const MoviePage = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <Tabs
+              <TabsWrapped
                 genre={genre}
                 year={year}
                 runtime={runtime}
@@ -96,7 +100,7 @@ const MoviePage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <CatalogMoviesList
+          <CatalogMoviesListWrapped
             movies={getSameGenreMovies()}
             onMovieHover={()=>{}}
           />

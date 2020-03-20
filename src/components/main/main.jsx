@@ -5,8 +5,11 @@ import {ActionCreator} from '../../reducer.js';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 const ALL_GENRES = `All genres`;
+
+const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -90,7 +93,7 @@ class Main extends PureComponent {
               movies={movies}
             />
 
-            <CatalogMoviesList
+            <CatalogMoviesListWrapped
               onMovieHover={onMovieHover}
             />
 

@@ -604,14 +604,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -629,14 +622,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -654,14 +640,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -679,14 +658,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -704,14 +676,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -729,14 +694,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -754,14 +712,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -779,14 +730,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/dardjeeling-limited.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="250"
           />
           <h3
@@ -804,14 +748,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -829,14 +766,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -854,14 +784,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -879,14 +802,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -904,14 +820,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -929,14 +838,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -954,14 +856,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -979,14 +874,7 @@ Willem Dafoe
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3

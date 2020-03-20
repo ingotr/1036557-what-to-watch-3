@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../video-player/video-player.jsx';
+import withVideo from '../../hocs/with-video/with-video.jsx';
+
+const VideoPlayerWrapped = withVideo(VideoPlayer);
 
 const SmallMovieCard = (props) => {
 
@@ -8,7 +11,7 @@ const SmallMovieCard = (props) => {
 
   return (
     <article className="small-movie-card catalog__movies-card">
-      <VideoPlayer
+      <VideoPlayerWrapped
         isPlaying={false}
         poster={imgSrc}
         src={previewSrc}

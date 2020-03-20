@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import VideoPlayer from './video-player.jsx';
+import PropTypes from "prop-types";
 
 const Movie = {
   id: `mock-snap-001`,
@@ -16,7 +17,9 @@ it(`VideoPlayer is rendered correctly`, () => {
      isPlaying={false}
      poster={Movie.imgSrc}
      src={Movie.src}
-   />, {
+   >
+     children=testIntance.children
+   </VideoPlayer>, {
      createNodeMock: () => {
        return {};
      }
@@ -24,3 +27,10 @@ it(`VideoPlayer is rendered correctly`, () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+VideoPlayer.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+};

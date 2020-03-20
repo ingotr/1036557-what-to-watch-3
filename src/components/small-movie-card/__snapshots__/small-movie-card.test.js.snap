@@ -5,14 +5,7 @@ exports[`Render App 1`] = `
   className="small-movie-card catalog__movies-card"
 >
   <video
-    className="player__video--play"
-    disabled={true}
     height="175"
-    muted="muted"
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    poster="img/bohemian-rhapsody.jpg"
-    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
     width="250"
   />
   <h3

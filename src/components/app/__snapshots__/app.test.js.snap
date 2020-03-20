@@ -238,14 +238,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -263,14 +256,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -288,14 +274,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -313,14 +292,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -338,14 +310,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -363,14 +328,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -388,14 +346,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
@@ -413,14 +364,7 @@ exports[`Render App 1`] = `
           className="small-movie-card catalog__movies-card"
         >
           <video
-            className="player__video--play"
-            disabled={true}
             height="175"
-            muted="muted"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            poster="img/aviator.jpg"
-            src="https://download.blender.org/peach/trailer/trailer_400p.ogg"
             width="250"
           />
           <h3
