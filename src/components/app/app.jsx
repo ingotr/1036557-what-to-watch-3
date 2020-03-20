@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+
+const MoviePageWrapped = withActiveItem(MoviePage);
+const MainWrapped = withActiveItem(Main);
 
 const movieHoverHandler = () => {};
 
@@ -22,15 +26,13 @@ class App extends PureComponent {
   }
 
   _renderMainPage() {
-    const {title, genre, releaseDate, movies, movieInfo} = this.props;
+    const {movies, film} = this.props;
     const {showMovieInfo} = this.state;
 
     if (!showMovieInfo) {
       return (
-        <Main
-          title={title}
-          genre={genre}
-          releaseDate={releaseDate}
+        <MainWrapped
+          film={film}
           movies={movies}
           onMouseClick={this._clickHandler.bind(this)}
           onMovieHover={movieHoverHandler}
@@ -40,9 +42,9 @@ class App extends PureComponent {
 
     if (showMovieInfo) {
       return (
-        <MoviePage
+        <MoviePageWrapped
           movies={movies}
-          movieInfo={movieInfo}
+          film={film}
         />
       );
     }
@@ -51,7 +53,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movieInfo, movies} = this.props;
+    const {film, movies} = this.props;
 
     return (
       <BrowserRouter>
@@ -60,9 +62,9 @@ class App extends PureComponent {
             {this._renderMainPage()}
           </Route>
           <Route exact path="/dev-film">
-            <MoviePage
+            <MainWrapped
               movies={movies}
-              movieInfo={movieInfo}
+              film={film}
             />
           </Route>
         </Switch>
@@ -72,10 +74,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -85,25 +83,29 @@ App.propTypes = {
       })
   ).isRequired,
 
-  movieInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+  film: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-
+    runtime: PropTypes.shape({
+      hours: PropTypes.number.isRequired,
+      minutes: PropTypes.number.isRequired,
+    }),
     poster: PropTypes.shape({
       big: PropTypes.string.isRequired,
       bigAlt: PropTypes.string.isRequired,
-    }).isRequired,
-
+    }),
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
       level: PropTypes.string.isRequired,
       count: PropTypes.number.isRequired,
-    }).isRequired,
-
+    }),
+    previewSrc: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    description: PropTypes.array.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+    reviews: PropTypes.array.isRequired,
   }).isRequired,
 };
 

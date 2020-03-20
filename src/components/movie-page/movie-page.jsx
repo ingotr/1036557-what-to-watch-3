@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '../tabs/tabs.jsx';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
 
 const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
 const TabsWrapped = withActiveItem(Tabs);
@@ -10,8 +11,8 @@ const TabsWrapped = withActiveItem(Tabs);
 const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
 const MoviePage = (props) => {
-  const {movies, movieInfo} = props;
-  const {title, genre, runtime, year, poster, rating, director, description, starring, reviews} = movieInfo;
+  const {movies, film, onItemEnter, onItemLeave, activeItem} = props;
+  const {name, genre, runtime, year, poster, rating, director, description, starring, reviews} = film;
   const {big, bigAlt} = poster;
   const {score, level, count} = rating;
 
@@ -47,14 +48,20 @@ const MoviePage = (props) => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{year}</span>
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  className="btn btn--play movie-card__button"
+                  onClick={() => {
+                    onItemEnter(film);
+                  }}
+                  type="button"
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -102,7 +109,7 @@ const MoviePage = (props) => {
 
           <CatalogMoviesListWrapped
             movies={getSameGenreMovies()}
-            onMovieHover={()=>{}}
+            onMovieHover={() => { }}
           />
         </section>
 
@@ -120,36 +127,34 @@ const MoviePage = (props) => {
           </div>
         </footer>
       </div>
+      {activeItem && (<VideoPlayerFull film={film} onItemLeave={onItemLeave} />)}
     </Fragment>
   );
 };
 
 MoviePage.propTypes = {
-  movieInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+  film: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-
     runtime: PropTypes.shape({
       hours: PropTypes.number.isRequired,
       minutes: PropTypes.number.isRequired,
-    }).isRequired,
-
+    }),
     poster: PropTypes.shape({
       big: PropTypes.string.isRequired,
       bigAlt: PropTypes.string.isRequired,
-    }).isRequired,
-
+    }),
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
       level: PropTypes.string.isRequired,
       count: PropTypes.number.isRequired,
-    }).isRequired,
-
+    }),
+    previewSrc: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-
+    description: PropTypes.array.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string.isRequired,
@@ -165,7 +170,7 @@ MoviePage.propTypes = {
           rating: PropTypes.number.isRequired,
         }).isRequired
     ).isRequired,
-  }).isRequired,
+  }),
 
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -175,6 +180,10 @@ MoviePage.propTypes = {
         previewSrc: PropTypes.string.isRequired,
       })
   ).isRequired,
+
+  onItemEnter: PropTypes.func.isRequired,
+  onItemLeave: PropTypes.func.isRequired,
+  activeItem: PropTypes.any,
 };
 
 export default MoviePage;
