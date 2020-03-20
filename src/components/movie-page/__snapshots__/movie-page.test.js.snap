@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Mock-test-The Grand Budapest Hotel
+            Mock-test The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -80,7 +80,7 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Mock-test-Drama
+              Drama
             </span>
             <span
               className="movie-card__year"
@@ -93,6 +93,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -145,7 +146,7 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Mock-test-The Grand Budapest Hotel poster"
+            alt="Mock-test The Grand Budapest Hotel poster"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -210,7 +211,7 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Mocks-Very good
+                Very good
               </span>
               <span
                 className="movie-rating__count"
@@ -225,7 +226,7 @@ Array [
         "
           >
             <p>
-              Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
+              Mock-test In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
             </p>
             <p>
               Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
@@ -235,7 +236,7 @@ Array [
             >
               <strong>
                 Director: 
-                Mock-Wes Andreson
+                Wes Andreson
               </strong>
             </p>
             <p
@@ -243,7 +244,7 @@ Array [
             >
               <strong>
                 Starring: 
-                Mock-test-Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+                Bill Murray, Edward Norton, Jude Law, Willem Dafoe
                  and other
               </strong>
             </p>
@@ -266,7 +267,7 @@ Array [
                 <span
                   className="movie-card__details-value"
                 >
-                  Mock-Wes Andreson
+                  Wes Andreson
                 </span>
               </p>
               <p
@@ -280,10 +281,18 @@ Array [
                 <span
                   className="movie-card__details-value"
                 >
-                  Mock-test-Bill Murray, 
+                  Bill Murray, 
 Edward Norton, 
 Jude Law, 
-Willem Dafoe
+Willem Dafoe, 
+Saoirse Ronan, 
+Tony Revoloru, 
+Tilda Swinton, 
+Tom Wilkinson, 
+Owen Wilkinson, 
+Adrien Brody, 
+Ralph Fiennes, 
+Jeff Goldblum
                 </span>
               </p>
             </div>
@@ -318,7 +327,7 @@ Willem Dafoe
                 <span
                   className="movie-card__details-value"
                 >
-                  Mock-test-Drama
+                  Drama
                 </span>
               </p>
               <p
@@ -353,7 +362,7 @@ Willem Dafoe
                   <p
                     className="review__text"
                   >
-                    Discerning travellers and Wes Anderson fans will luxuriate
+                    Mock-test Discerning travellers and Wes Anderson fans will luxuriate
        in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
                   </p>
                   <footer
@@ -392,7 +401,7 @@ Willem Dafoe
                   <p
                     className="review__text"
                   >
-                    Anderson's films are too precious for some, but for those
+                    Mock-test Anderson's films are too precious for some, but for those
       of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.
                   </p>
                   <footer
@@ -431,7 +440,7 @@ Willem Dafoe
                   <p
                     className="review__text"
                   >
-                    I didn't find it amusing, and while I can appreciate the
+                    Mock-test I didn't find it amusing, and while I can appreciate the
       creativity, it's an hour and 40 minutes I wish I could take back.
                   </p>
                   <footer
@@ -474,7 +483,7 @@ Willem Dafoe
                   <p
                     className="review__text"
                   >
-                    The mannered, madcap proceedings are often delightful,
+                    Mock-test The mannered, madcap proceedings are often delightful,
       occasionally silly, and here and there, gruesome and/or heartbreaking.
                   </p>
                   <footer
@@ -513,7 +522,7 @@ Willem Dafoe
                   <p
                     className="review__text"
                   >
-                    It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+                    Mock-test It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
                   </p>
                   <footer
                     className="review__details"
@@ -551,7 +560,7 @@ Willem Dafoe
                   <p
                     className="review__text"
                   >
-                    It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+                    Mock-test It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
                   </p>
                   <footer
                     className="review__details"

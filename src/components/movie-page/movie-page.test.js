@@ -4,7 +4,7 @@ import MoviePage from './movie-page.jsx';
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
-import {movies, movieInfo} from '../../mocks/test-mocks.js';
+import {movies, film} from '../../mocks/test-mocks.js';
 
 const DEFAULT_GENRE = `All genres`;
 const mockStore = configureStore([]);
@@ -20,10 +20,11 @@ it(`Render App`, () => {
     .create(
         <Provider store={store}>
           <MoviePage
-            movieInfo={movieInfo}
+            film={film}
             movies={movies}
-
             onMovieHover={() => { }}
+            onItemEnter={() => { }}
+            onItemLeave={() => { }}
           />
         </Provider>)
     .toJSON();
