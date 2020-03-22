@@ -13,7 +13,7 @@ Array [
       >
         <img
           alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          src="img/the-grand-budapest-hotel-bg.jpg"
         />
       </div>
       <h1
@@ -86,7 +86,7 @@ Array [
               className="movie-card__title"
               onClick={[Function]}
             >
-              Mock-test The Grand Budapest Hotel
+              The Grand Budapest Hotel
             </h2>
             <p
               className="movie-card__meta"
@@ -99,7 +99,7 @@ Array [
               <span
                 className="movie-card__year"
               >
-                2017
+                2014
               </span>
             </p>
             <div

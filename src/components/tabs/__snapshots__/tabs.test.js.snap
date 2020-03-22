@@ -58,7 +58,7 @@ Array [
       <span
         className="movie-rating__level"
       >
-        Mocks-Very good
+        Very good
       </span>
       <span
         className="movie-rating__count"
@@ -73,7 +73,7 @@ Array [
         "
   >
     <p>
-      Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
+      In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
     </p>
     <p>
       Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
@@ -83,7 +83,7 @@ Array [
     >
       <strong>
         Director: 
-        Mock-Wes Andreson
+        Wes Andreson
       </strong>
     </p>
     <p
@@ -91,7 +91,7 @@ Array [
     >
       <strong>
         Starring: 
-        Mock-test-Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+        Bill Murray, Edward Norton, Jude Law, Willem Dafoe
          and other
       </strong>
     </p>
@@ -114,7 +114,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Mock-Wes Andreson
+          Wes Andreson
         </span>
       </p>
       <p
@@ -128,10 +128,18 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Mock-test-Bill Murray, 
+          Bill Murray, 
 Edward Norton, 
 Jude Law, 
-Willem Dafoe
+Willem Dafoe, 
+Saoirse Ronan, 
+Tony Revoloru, 
+Tilda Swinton, 
+Tom Wilkinson, 
+Owen Wilkinson, 
+Adrien Brody, 
+Ralph Fiennes, 
+Jeff Goldblum
         </span>
       </p>
     </div>
@@ -166,7 +174,7 @@ Willem Dafoe
         <span
           className="movie-card__details-value"
         >
-          Mock-test-Drama
+          Drama
         </span>
       </p>
       <p
@@ -180,7 +188,7 @@ Willem Dafoe
         <span
           className="movie-card__details-value"
         >
-          2017
+          2014
         </span>
       </p>
     </div>

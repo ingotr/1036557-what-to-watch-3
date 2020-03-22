@@ -12,12 +12,7 @@ exports[`<FullVideoPlayer /> should render correctly 1`] = `
   <video
     autoPlay={true}
     className="player__video"
-    poster={
-      Object {
-        "big": "img/the-grand-budapest-hotel-poster.jpg",
-        "bigAlt": "Mock-test The Grand Budapest Hotel poster",
-      }
-    }
+    poster="img/the-grand-budapest-hotel-poster.jpg"
   />
   <button
     className="player__exit"
@@ -81,7 +76,7 @@ exports[`<FullVideoPlayer /> should render correctly 1`] = `
       <div
         className="player__name"
       >
-        Mock-test The Grand Budapest Hotel
+        The Grand Budapest Hotel
       </div>
       <button
         className="player__full-screen"

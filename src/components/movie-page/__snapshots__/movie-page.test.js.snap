@@ -13,7 +13,7 @@ Array [
       >
         <img
           alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          src="img/the-grand-budapest-hotel-bg.jpg"
         />
       </div>
       <h1
@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Mock-test The Grand Budapest Hotel
+            The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -85,7 +85,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              2017
+              2014
             </span>
           </p>
           <div
@@ -146,7 +146,7 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Mock-test The Grand Budapest Hotel poster"
+            alt="The Grand Budapest Hotel"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -226,7 +226,7 @@ Array [
         "
           >
             <p>
-              Mock-test In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
+              In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
             </p>
             <p>
               Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
@@ -341,7 +341,7 @@ Jeff Goldblum
                 <span
                   className="movie-card__details-value"
                 >
-                  2017
+                  2014
                 </span>
               </p>
             </div>
@@ -362,7 +362,7 @@ Jeff Goldblum
                   <p
                     className="review__text"
                   >
-                    Mock-test Discerning travellers and Wes Anderson fans will luxuriate
+                    Discerning travellers and Wes Anderson fans will luxuriate
        in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
                   </p>
                   <footer
@@ -401,7 +401,7 @@ Jeff Goldblum
                   <p
                     className="review__text"
                   >
-                    Mock-test Anderson's films are too precious for some, but for those
+                    Anderson's films are too precious for some, but for those
       of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.
                   </p>
                   <footer
@@ -440,7 +440,7 @@ Jeff Goldblum
                   <p
                     className="review__text"
                   >
-                    Mock-test I didn't find it amusing, and while I can appreciate the
+                    I didn't find it amusing, and while I can appreciate the
       creativity, it's an hour and 40 minutes I wish I could take back.
                   </p>
                   <footer
@@ -483,7 +483,7 @@ Jeff Goldblum
                   <p
                     className="review__text"
                   >
-                    Mock-test The mannered, madcap proceedings are often delightful,
+                    The mannered, madcap proceedings are often delightful,
       occasionally silly, and here and there, gruesome and/or heartbreaking.
                   </p>
                   <footer
@@ -522,7 +522,7 @@ Jeff Goldblum
                   <p
                     className="review__text"
                   >
-                    Mock-test It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+                    It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
                   </p>
                   <footer
                     className="review__details"
@@ -560,7 +560,7 @@ Jeff Goldblum
                   <p
                     className="review__text"
                   >
-                    Mock-test It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+                    It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
                   </p>
                   <footer
                     className="review__details"
@@ -750,150 +750,6 @@ Jeff Goldblum
               href="movie-page.html"
             >
               Johnny English
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              We need to talk about Kevin
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              What We Do in the Shadows
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Revenant
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Shutter Island
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Snatch
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Dardjeeling Limited
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Mindhunter
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <video
-            height="175"
-            width="250"
-          />
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Midnight Special
             </a>
           </h3>
         </article>
