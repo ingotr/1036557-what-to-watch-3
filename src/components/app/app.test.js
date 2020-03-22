@@ -4,7 +4,7 @@ import App from './app.jsx';
 import {reducer} from '../../reducer.js';
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {FirstMovie, movies, movieInfo} from '../../mocks/test-mocks.js';
+import {FirstMovie, movies, movieInfo, film} from '../../mocks/test-mocks.js';
 
 const store = createStore(
     reducer,
@@ -19,6 +19,7 @@ it(`Render App`, () => {
         genre={FirstMovie.GENRE}
         releaseDate={FirstMovie.RELEASE_DATE}
         movies={movies}
+        film={film}
         movieInfo={movieInfo}
       />
     </Provider>)

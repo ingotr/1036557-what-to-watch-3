@@ -85,7 +85,7 @@ exports[`Main component shouled render correctly 1`] = `
             className="movie-card__title"
             onClick={[Function]}
           >
-            Mock-test-The Grand Budapest Hotel
+            Mock-test The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -93,12 +93,12 @@ exports[`Main component shouled render correctly 1`] = `
             <span
               className="movie-card__genre"
             >
-              Mock-test-Drama
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2020
+              2017
             </span>
           </p>
           <div
@@ -106,6 +106,7 @@ exports[`Main component shouled render correctly 1`] = `
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg

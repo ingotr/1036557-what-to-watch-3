@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 import App from './components/app/app.jsx';
-import {films, movieInfo} from './mocks/films.js';
+import {films, film} from './mocks/films.js';
 import {reducer} from './reducer.js';
 
 const FilmDetails = {
@@ -24,7 +24,7 @@ ReactDOM.render(
         genre={FilmDetails.GENRE}
         releaseDate={FilmDetails.RELEASE_DATE}
         movies={films}
-        movieInfo={movieInfo}
+        film={film}
       />
     </Provider>,
     document.querySelector(`#root`)

@@ -4,7 +4,7 @@ import Main from './main.jsx';
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
-import {FirstMovie, movies} from '../../mocks/test-mocks.js';
+import {film, movies} from '../../mocks/test-mocks.js';
 
 const DEFAULT_GENRE = `All genres`;
 const mockStore = configureStore([]);
@@ -20,12 +20,12 @@ it(`Main component shouled render correctly`, () => {
    .create(
        <Provider store={store}>
          <Main
-           title={FirstMovie.TITLE}
-           genre={FirstMovie.GENRE}
-           releaseDate={FirstMovie.RELEASE_DATE}
+           film={film}
            movies={movies}
            onMouseClick={() => {}}
            onMovieHover={() => {}}
+           onItemEnter={() => { }}
+           onItemLeave={() => { }}
          />
        </Provider>)
    .toJSON();
