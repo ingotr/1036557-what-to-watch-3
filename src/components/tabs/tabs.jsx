@@ -13,6 +13,7 @@ const TABS = {
 
 const VISUALLY_HIDDEN_CLASSNAME = `visually-hidden`;
 const ACTIVE_NAV_ELEMENT = `movie-nav__item--active`;
+const MINUTES_IN_HOUR = 60;
 
 class Tabs extends PureComponent {
   constructor(props) {
@@ -21,10 +22,33 @@ class Tabs extends PureComponent {
     this.props.onItemEnter(TABS.OVERVIEW);
   }
 
+  getMovieRatingLevel(rating) {
+    let level = ``;
+    if ((rating >= 0) && (rating < 3)) {
+      level = `Bad`;
+    }
+    if ((rating >= 3) && (rating < 5)) {
+      level = `Normal`;
+    }
+    if ((rating >= 5) && (rating < 8)) {
+      level = `Good`;
+    }
+    if ((rating >= 8) && (rating < 10)) {
+      level = `Very good`;
+    }
+    if (rating === 10.0) {
+      level = `Awesome`;
+    }
+    return level;
+  }
+
   render() {
-    const {genre, year, runtime, score, level, count, director, description, starring, reviews,
+    const {genre, year, runtime, rating, votes, director, description, starring, reviews,
       activeItem, onItemEnter} = this.props;
-    const {hours, minutes} = runtime;
+    const minutes = runtime % MINUTES_IN_HOUR;
+    const hours = Math.floor(runtime / MINUTES_IN_HOUR);
+
+    const level = this.getMovieRatingLevel(rating);
 
     const newStarringArr = starring.slice(0, STARRING_PREMAX_EL);
     const starrringMaxEl = starring.slice(STARRING_PREMAX_EL, STARRING_MAX_EL);
@@ -114,10 +138,10 @@ class Tabs extends PureComponent {
 
         <div className={`movie-rating movie-tab movie-tab--overview
         ${returnCurrentTabsElements(TABS.OVERVIEW)}`}>
-          <div className="movie-rating__score">{score}</div>
+          <div className="movie-rating__score">{rating}</div>
           <p className="movie-rating__meta">
             <span className="movie-rating__level">{level}</span>
-            <span className="movie-rating__count">{count} ratings</span>
+            <span className="movie-rating__count">{votes} ratings</span>
           </p>
         </div>
 
@@ -178,14 +202,10 @@ Tabs.propTypes = {
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
 
-  runtime: PropTypes.shape({
-    hours: PropTypes.number.isRequired,
-    minutes: PropTypes.number.isRequired,
-  }).isRequired,
+  runtime: PropTypes.number.isRequired,
 
-  score: PropTypes.number.isRequired,
-  level: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  votes: PropTypes.number.isRequired,
 
   director: PropTypes.string.isRequired,
   description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,

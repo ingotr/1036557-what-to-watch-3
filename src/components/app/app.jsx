@@ -88,20 +88,13 @@ App.propTypes = {
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    runtime: PropTypes.shape({
-      hours: PropTypes.number.isRequired,
-      minutes: PropTypes.number.isRequired,
-    }),
-    poster: PropTypes.shape({
-      big: PropTypes.string.isRequired,
-      bigAlt: PropTypes.string.isRequired,
-    }),
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
-      count: PropTypes.number.isRequired,
-    }),
+    image: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
     previewSrc: PropTypes.string.isRequired,
+    runtime: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
     description: PropTypes.array.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -110,3 +103,4 @@ App.propTypes = {
 };
 
 export default App;
+

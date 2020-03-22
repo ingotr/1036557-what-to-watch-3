@@ -1,12 +1,13 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/data/data.js';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
+import {getMoviesByGenre} from '../../reducer/data/selectors.js';
 
 const ALL_GENRES = `All genres`;
 
@@ -20,7 +21,7 @@ class Main extends PureComponent {
   render() {
     const {movies, film, onMouseClick, onMovieHover,
       moviesByGenre, getDefaultMovies, activeItem, onItemEnter, onItemLeave} = this.props;
-    const {name, genre, year} = film;
+    const {name, genre, year, cover, poster} = film;
 
     if (moviesByGenre.length === 0) {
       getDefaultMovies(movies, ALL_GENRES);
@@ -31,7 +32,7 @@ class Main extends PureComponent {
         <div className="main">
           <section className="movie-card">
             <div className="movie-card__bg">
-              <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+              <img src={cover} alt={name} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -57,7 +58,7 @@ class Main extends PureComponent {
                 <div
                   onClick={onMouseClick}
                   className="movie-card__poster">
-                  <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                  <img src={poster} alt="The Grand Budapest Hotel poster" width="218" height="327" />
                 </div>
 
                 <div className="movie-card__desc">
@@ -155,29 +156,22 @@ Main.propTypes = {
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    runtime: PropTypes.shape({
-      hours: PropTypes.number.isRequired,
-      minutes: PropTypes.number.isRequired,
-    }),
-    poster: PropTypes.shape({
-      big: PropTypes.string.isRequired,
-      bigAlt: PropTypes.string.isRequired,
-    }),
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
-      count: PropTypes.number.isRequired,
-    }),
+    image: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
     previewSrc: PropTypes.string.isRequired,
+    runtime: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
     description: PropTypes.array.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     reviews: PropTypes.array.isRequired,
-  }),
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  moviesByGenre: state.moviesByGenre,
+  moviesByGenre: getMoviesByGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

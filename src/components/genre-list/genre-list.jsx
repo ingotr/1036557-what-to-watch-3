@@ -1,7 +1,8 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/data/data.js';
+import {getCurrentGenre} from '../../reducer/data/selectors.js';
 
 const DEFAULT_GENRE = `All genres`;
 const ACTIVE_GENRE_ELEMENT = `catalog__genres-item--active`;
@@ -72,7 +73,7 @@ GenreList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentGenre: state.currentGenre,
+  currentGenre: getCurrentGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
