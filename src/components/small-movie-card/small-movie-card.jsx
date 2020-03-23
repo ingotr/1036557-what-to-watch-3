@@ -7,26 +7,26 @@ const VideoPlayerWrapped = withVideo(VideoPlayer);
 
 const SmallMovieCard = (props) => {
 
-  const {title, imgSrc, previewSrc} = props;
+  const {name, image, previewSrc} = props;
 
   return (
     <article className="small-movie-card catalog__movies-card">
       <VideoPlayerWrapped
         isPlaying={false}
-        poster={imgSrc}
+        poster={image}
         src={previewSrc}
       />
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <a className="small-movie-card__link" href="movie-page.html">{name}</a>
       </h3>
     </article>
   );
 };
 
 SmallMovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-  previewSrc: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  image: PropTypes.string,
+  previewSrc: PropTypes.string,
 };
 
 export default SmallMovieCard;
