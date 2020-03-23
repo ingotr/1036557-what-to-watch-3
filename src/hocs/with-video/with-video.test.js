@@ -6,7 +6,7 @@ import withVideo from '../with-video/with-video.jsx';
 const Movie = {
   id: `mock-snap-001`,
   title: `mock-test-Bohemian Rhapsody`,
-  imgSrc: `img/bohemian-rhapsody.jpg`,
+  poster: `img/bohemian-rhapsody.jpg`,
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 };
 
@@ -21,7 +21,7 @@ it(`Should change withVideo`, () => {
   const player = shallow(
       <MockComponentWrapped
         isPlaying={false}
-        poster={Movie.imgSrc}
+        poster={Movie.poster}
         src={Movie.src}
         onMouseOver={onPlayerOver}
         onMouseOut={onPlayerOut}

@@ -11,15 +11,7 @@ it(`VideoPlayer is rendered correctly`, () => {
   const tree = renderer
     .create(
         <TabsWrapped
-          genre={film.genre}
-          year={film.year}
-          runtime={film.runtime}
-          rating={film.rating}
-          votes={film.votes}
-          director={film.director}
-          description={film.description}
-          starring={film.starring}
-          reviews={film.reviews}
+          film={film}
         />
     ).toJSON();
 

@@ -156,77 +156,77 @@ exports[`Main component should render correctly 1`] = `
       >
         <li
           className="catalog__genres-item catalog__genres-item--active"
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             All genres
           </a>
         </li>
         <li
           className="catalog__genres-item "
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Mock-test-Drama
           </a>
         </li>
         <li
           className="catalog__genres-item "
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Mock-test-Thriller
           </a>
         </li>
         <li
           className="catalog__genres-item "
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Mock-test-Comedy
           </a>
         </li>
         <li
           className="catalog__genres-item "
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Drama
           </a>
         </li>
         <li
           className="catalog__genres-item "
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Thriller
           </a>
         </li>
         <li
           className="catalog__genres-item "
-          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Comedy
           </a>
@@ -234,7 +234,147 @@ exports[`Main component should render correctly 1`] = `
       </ul>
       <div
         className="catalog__movies-list"
-      />
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <video
+            height="175"
+            width="250"
+          />
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            />
+          </h3>
+        </article>
+      </div>
+      <div
+        className="catalog__more"
+      >
+        <button
+          className="catalog__button"
+          onClick={[Function]}
+          type="button"
+        >
+          Show more
+        </button>
+      </div>
     </section>
     <footer
       className="page-footer"

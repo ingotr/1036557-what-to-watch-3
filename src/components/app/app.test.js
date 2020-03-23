@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import NameSpace from '../../reducer/name-space.js';
 
-import {FirstMovie, movies, film} from '../../mocks/test-mocks.js';
+import {movies, film} from '../../mocks/test-mocks.js';
 
 const mockStore = configureStore([]);
 
@@ -15,6 +15,7 @@ const DEFAULT_MOVIES_COUNT = 8;
 const store = mockStore({
   [NameSpace.DATA]: {
     currentGenre: DEFAULT_GENRE,
+    film,
     movies,
     moviesByGenre: movies,
     showedMovies: movies,
@@ -26,10 +27,6 @@ it(`Render App`, () => {
   const tree = renderer
     .create(<Provider store={store}>
       <App
-        title={FirstMovie.TITLE}
-        genre={FirstMovie.GENRE}
-        releaseDate={FirstMovie.RELEASE_DATE}
-        movies={movies}
         film={film}
       />
     </Provider>, {

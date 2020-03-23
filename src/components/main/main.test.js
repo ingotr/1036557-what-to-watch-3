@@ -4,7 +4,6 @@ import Main from './main.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../reducer/name-space.js';
-
 import {film, movies} from '../../mocks/test-mocks.js';
 
 const DEFAULT_GENRE = `All genres`;
@@ -15,7 +14,8 @@ const mockStore = configureStore([]);
 const store = mockStore({
   [NameSpace.DATA]: {
     currentGenre: DEFAULT_GENRE,
-    moviesByGenre: [],
+    movies,
+    moviesByGenre: movies,
     showedMovies: movies,
     moviesCount: DEFAULT_MOVIES_COUNT,
   }
@@ -28,7 +28,6 @@ it(`Main component should render correctly`, () => {
        <Provider store={store}>
          <Main
            film={film}
-           movies={movies}
            onMouseClick={() => {}}
            onMovieHover={() => {}}
            onItemEnter={() => { }}

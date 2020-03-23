@@ -8,7 +8,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     currentGenre: `All genres`,
     moviesByGenre: [],
-    movie: [],
+    movie: {},
+    movies: [],
     showedMovies: [],
     moviesCount: DEFAULT_MOVIES_COUNT,
   });
@@ -51,7 +52,7 @@ it(`Reducer should get movies by a given genre`, () => {
     movie: film,
   }, {
     type: ActionType.GET_MOVIES_BY_GENRE,
-    payload: films.filter((movie) => movie.genre === `Drama`),
+    payload: `Drama`,
   })).toEqual({
     genre: `Drama`,
     movies: films,
@@ -95,7 +96,7 @@ it(`Reducer should show more films`, () => {
   });
 });
 
-it(`Reducer should reset films count`, () => {
+it(`Reducer should change films count`, () => {
   expect(reducer({
     genre: `NewGenre`,
     movies: films,
@@ -104,7 +105,8 @@ it(`Reducer should reset films count`, () => {
     showedMovies: films.slice(0, DEFAULT_MOVIES_COUNT),
     moviesCount: SHOWED_MORE_MOVIES_COUNT,
   }, {
-    type: ActionType.RESET_MOVIES_COUNT,
+    type: ActionType.CHANGE_MOVIES_COUNT,
+    payload: 0,
   })).toEqual({
     genre: `NewGenre`,
     movies: films,

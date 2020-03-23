@@ -9,8 +9,8 @@ Enzyme.configure({
 
 const Movie = {
   id: `mock-card-test-011`,
-  title: `mock-test-Fantastic Beasts`,
-  imgSrc: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  name: `mock-test-Fantastic Beasts`,
+  image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 };
 
@@ -19,8 +19,8 @@ it(`Should movie card active on mouse hover`, () => {
   const smallMovieCard = shallow(
       <SmallMovieCard
         id={Movie.id}
-        title={Movie.title}
-        imgSrc={Movie.imgSrc}
+        title={Movie.name}
+        imgSrc={Movie.image}
         previewSrc={Movie.previewSrc}
         onMovieHover={onMovieOver}
       />
