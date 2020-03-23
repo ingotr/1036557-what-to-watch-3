@@ -12,7 +12,7 @@ const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
 const MoviePage = (props) => {
   const {movies, film, onItemEnter, onItemLeave, activeItem} = props;
-  const {name, cover, genre, runtime, year, poster, rating, votes, director, description, starring, reviews} = film;
+  const {name, cover, genre, year, poster} = film;
 
   const getSameGenreMovies = () => {
     return (movies.filter((movie) => movie.genre === genre)).slice(0, SAME_GENRE_MOVIES_MAX_LENGTH);
@@ -85,15 +85,7 @@ const MoviePage = (props) => {
 
             <div className="movie-card__desc">
               <TabsWrapped
-                genre={genre}
-                year={year}
-                runtime={runtime}
-                rating={rating}
-                votes={votes}
-                director={director}
-                description={description}
-                starring={starring}
-                reviews={reviews}
+                film={film}
               />
             </div>
           </div>
@@ -131,45 +123,64 @@ const MoviePage = (props) => {
 
 MoviePage.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    previewSrc: PropTypes.string.isRequired,
-    runtime: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    description: PropTypes.array.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    image: PropTypes.string,
+    poster: PropTypes.string,
+    cover: PropTypes.string,
+    previewSrc: PropTypes.string,
+    runtime: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    description: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
-          text: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-
-          dateTime: PropTypes.shape({
-            string: PropTypes.string.isRequired,
-            reviewYear: PropTypes.number.isRequired,
-            month: PropTypes.string.isRequired,
-            day: PropTypes.number.isRequired,
+          text: PropTypes.string,
+          author: PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string,
           }).isRequired,
 
-          rating: PropTypes.number.isRequired,
-        }).isRequired
-    ).isRequired,
+          date: PropTypes.string,
+          rating: PropTypes.number,
+        })
+    ),
   }),
 
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        imgSrc: PropTypes.string.isRequired,
-        previewSrc: PropTypes.string.isRequired,
+        id: PropTypes.string,
+        name: PropTypes.string,
+        genre: PropTypes.string,
+        year: PropTypes.number,
+        image: PropTypes.string,
+        poster: PropTypes.string,
+        cover: PropTypes.string,
+        previewSrc: PropTypes.string,
+        runtime: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        description: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              text: PropTypes.string,
+              author: PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                name: PropTypes.string.isRequired,
+              }).isRequired,
+
+              date: PropTypes.string.isRequired,
+              rating: PropTypes.number,
+            })
+        ),
       })
-  ).isRequired,
+  ),
 
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,

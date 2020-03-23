@@ -13,28 +13,23 @@ const Adapter = (item) => {
     votes: item.scores_count,
     director: item.director,
     description: item.description,
-    reviews: [
-      {
-        rating: 10,
-        date: `March 15, 2019`,
-        author: `Jane Doe`,
-        text: `Fantastic!`
-      },
-      {
-        rating: 10,
-        date: `March 15, 2019`,
-        author: `Jane Doe`,
-        text: `Fantastic!`
-      },
-      {
-        rating: 10,
-        date: `March 15, 2019`,
-        author: `Jane Doe`,
-        text: `Fantastic!`
-      }
-    ],
     starring: item.starring,
   };
 };
+
+const commentsAdapter = (item) => {
+  return {
+    id: item.id,
+    rating: item.rating,
+    date: item.date,
+    author: {
+      id: item.user.id,
+      name: item.user.name,
+    },
+    text: item.comment,
+  };
+};
+
+export {commentsAdapter};
 
 export default Adapter;
