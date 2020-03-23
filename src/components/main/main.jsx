@@ -1,17 +1,14 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/data/data.js';
+// import {connect} from 'react-redux';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
-import {getMoviesByGenre} from '../../reducer/data/selectors.js';
-
-const ALL_GENRES = `All genres`;
 
 const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
+const GenreListWrapperd = withActiveItem(GenreList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -19,13 +16,9 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {movies, film, onMouseClick, onMovieHover,
-      moviesByGenre, getDefaultMovies, activeItem, onItemEnter, onItemLeave} = this.props;
+    const {film, onMouseClick, onMovieHover,
+      activeItem, onItemEnter, onItemLeave} = this.props;
     const {name, genre, year, cover, poster} = film;
-
-    if (moviesByGenre.length === 0) {
-      getDefaultMovies(movies, ALL_GENRES);
-    }
 
     return (
       <>
@@ -99,9 +92,7 @@ class Main extends PureComponent {
             <section className="catalog">
               <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-              <GenreList
-                movies={movies}
-              />
+              <GenreListWrapperd />
 
               <CatalogMoviesListWrapped
                 onMovieHover={onMovieHover}
@@ -132,53 +123,45 @@ class Main extends PureComponent {
 }
 
 Main.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        imgSrc: PropTypes.string.isRequired,
-        previewSrc: PropTypes.string.isRequired,
-      })
-  ).isRequired,
+  film: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    image: PropTypes.string,
+    poster: PropTypes.string,
+    cover: PropTypes.string,
+    previewSrc: PropTypes.string,
+    runtime: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    description: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string,
+          author: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+          }).isRequired,
+
+          date: PropTypes.string.isRequired,
+          rating: PropTypes.number,
+        })
+    ),
+  }),
 
   onMouseClick: PropTypes.func.isRequired,
   onMovieHover: PropTypes.func.isRequired,
 
-  moviesByGenre: PropTypes.array.isRequired,
-  getDefaultMovies: PropTypes.func.isRequired,
-
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,
   activeItem: PropTypes.any,
-
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    previewSrc: PropTypes.string.isRequired,
-    runtime: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    description: PropTypes.array.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    reviews: PropTypes.array.isRequired,
-  }).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  moviesByGenre: getMoviesByGenre(state),
-});
+// const mapStateToProps = (state) => ({
+//   film: getPromoMovie(state),
+// });
 
-const mapDispatchToProps = (dispatch) => ({
-  getDefaultMovies(movies, genre) {
-    dispatch(ActionCreator.getMoviesByGenre(movies, genre));
-  },
-});
-
-export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;
