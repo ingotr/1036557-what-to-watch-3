@@ -4,6 +4,7 @@ import App from './app.jsx';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import NameSpace from '../../reducer/name-space.js';
+import {AuthorizationStatus} from '../../reducer/user/user.js';
 
 import {movies, film} from '../../mocks/test-mocks.js';
 
@@ -13,6 +14,9 @@ const DEFAULT_GENRE = `All genres`;
 const DEFAULT_MOVIES_COUNT = 8;
 
 const store = mockStore({
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH
+  },
   [NameSpace.DATA]: {
     currentGenre: DEFAULT_GENRE,
     movie: {film},
