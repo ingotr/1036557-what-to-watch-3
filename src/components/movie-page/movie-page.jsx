@@ -12,9 +12,7 @@ const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
 const MoviePage = (props) => {
   const {movies, film, onItemEnter, onItemLeave, activeItem} = props;
-  const {name, genre, runtime, year, poster, rating, director, description, starring, reviews} = film;
-  const {big, bigAlt} = poster;
-  const {score, level, count} = rating;
+  const {name, cover, genre, year, poster} = film;
 
   const getSameGenreMovies = () => {
     return (movies.filter((movie) => movie.genre === genre)).slice(0, SAME_GENRE_MOVIES_MAX_LENGTH);
@@ -25,7 +23,7 @@ const MoviePage = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={cover} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -82,21 +80,12 @@ const MoviePage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={big} alt={bigAlt} width="218" height="327" />
+              <img src={poster} alt={name} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
               <TabsWrapped
-                genre={genre}
-                year={year}
-                runtime={runtime}
-                score={score}
-                level={level}
-                count={count}
-                director={director}
-                description={description}
-                starring={starring}
-                reviews={reviews}
+                film={film}
               />
             </div>
           </div>
@@ -134,52 +123,64 @@ const MoviePage = (props) => {
 
 MoviePage.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    runtime: PropTypes.shape({
-      hours: PropTypes.number.isRequired,
-      minutes: PropTypes.number.isRequired,
-    }),
-    poster: PropTypes.shape({
-      big: PropTypes.string.isRequired,
-      bigAlt: PropTypes.string.isRequired,
-    }),
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
-      count: PropTypes.number.isRequired,
-    }),
-    previewSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    description: PropTypes.array.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    image: PropTypes.string,
+    poster: PropTypes.string,
+    cover: PropTypes.string,
+    previewSrc: PropTypes.string,
+    runtime: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    description: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
-          text: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-
-          dateTime: PropTypes.shape({
-            string: PropTypes.string.isRequired,
-            reviewYear: PropTypes.number.isRequired,
-            month: PropTypes.string.isRequired,
-            day: PropTypes.number.isRequired,
+          text: PropTypes.string,
+          author: PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string,
           }).isRequired,
 
-          rating: PropTypes.number.isRequired,
-        }).isRequired
-    ).isRequired,
+          date: PropTypes.string,
+          rating: PropTypes.number,
+        })
+    ),
   }),
 
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        imgSrc: PropTypes.string.isRequired,
-        previewSrc: PropTypes.string.isRequired,
+        id: PropTypes.string,
+        name: PropTypes.string,
+        genre: PropTypes.string,
+        year: PropTypes.number,
+        image: PropTypes.string,
+        poster: PropTypes.string,
+        cover: PropTypes.string,
+        previewSrc: PropTypes.string,
+        runtime: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        description: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              text: PropTypes.string,
+              author: PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                name: PropTypes.string.isRequired,
+              }).isRequired,
+
+              date: PropTypes.string.isRequired,
+              rating: PropTypes.number,
+            })
+        ),
       })
-  ).isRequired,
+  ),
 
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,

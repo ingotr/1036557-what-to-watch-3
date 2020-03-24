@@ -1,16 +1,13 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
 
-const ALL_GENRES = `All genres`;
-
 const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
+const GenreListWrapperd = withActiveItem(GenreList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -18,20 +15,16 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {movies, film, onMouseClick, onMovieHover,
-      moviesByGenre, getDefaultMovies, activeItem, onItemEnter, onItemLeave} = this.props;
-    const {name, genre, year} = film;
-
-    if (moviesByGenre.length === 0) {
-      getDefaultMovies(movies, ALL_GENRES);
-    }
+    const {film, onMouseClick, onMovieHover,
+      activeItem, onItemEnter, onItemLeave} = this.props;
+    const {name, genre, year, cover, poster} = film;
 
     return (
       <>
         <div className="main">
           <section className="movie-card">
             <div className="movie-card__bg">
-              <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+              <img src={cover} alt={name} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -57,7 +50,7 @@ class Main extends PureComponent {
                 <div
                   onClick={onMouseClick}
                   className="movie-card__poster">
-                  <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                  <img src={poster} alt="The Grand Budapest Hotel poster" width="218" height="327" />
                 </div>
 
                 <div className="movie-card__desc">
@@ -98,9 +91,7 @@ class Main extends PureComponent {
             <section className="catalog">
               <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-              <GenreList
-                movies={movies}
-              />
+              <GenreListWrapperd />
 
               <CatalogMoviesListWrapped
                 onMovieHover={onMovieHover}
@@ -131,60 +122,41 @@ class Main extends PureComponent {
 }
 
 Main.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        imgSrc: PropTypes.string.isRequired,
-        previewSrc: PropTypes.string.isRequired,
-      })
-  ).isRequired,
+  film: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    image: PropTypes.string,
+    poster: PropTypes.string,
+    cover: PropTypes.string,
+    previewSrc: PropTypes.string,
+    runtime: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    description: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string,
+          author: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+          }).isRequired,
+
+          date: PropTypes.string.isRequired,
+          rating: PropTypes.number,
+        })
+    ),
+  }),
 
   onMouseClick: PropTypes.func.isRequired,
   onMovieHover: PropTypes.func.isRequired,
 
-  moviesByGenre: PropTypes.array.isRequired,
-  getDefaultMovies: PropTypes.func.isRequired,
-
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,
   activeItem: PropTypes.any,
-
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    runtime: PropTypes.shape({
-      hours: PropTypes.number.isRequired,
-      minutes: PropTypes.number.isRequired,
-    }),
-    poster: PropTypes.shape({
-      big: PropTypes.string.isRequired,
-      bigAlt: PropTypes.string.isRequired,
-    }),
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
-      count: PropTypes.number.isRequired,
-    }),
-    previewSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    description: PropTypes.array.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    reviews: PropTypes.array.isRequired,
-  }),
 };
 
-const mapStateToProps = (state) => ({
-  moviesByGenre: state.moviesByGenre,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getDefaultMovies(movies, genre) {
-    dispatch(ActionCreator.getMoviesByGenre(movies, genre));
-  },
-});
-
-export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

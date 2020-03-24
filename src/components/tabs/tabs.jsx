@@ -1,9 +1,6 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
-
-const STARRING_PREMAX_EL = 3;
-const STARRING_MAX_EL = 4;
-const REVIEW_HALFINDEX = 3;
+import moment from 'moment';
 
 const TABS = {
   OVERVIEW: `overview`,
@@ -13,6 +10,7 @@ const TABS = {
 
 const VISUALLY_HIDDEN_CLASSNAME = `visually-hidden`;
 const ACTIVE_NAV_ELEMENT = `movie-nav__item--active`;
+const MINUTES_IN_HOUR = 60;
 
 class Tabs extends PureComponent {
   constructor(props) {
@@ -21,57 +19,52 @@ class Tabs extends PureComponent {
     this.props.onItemEnter(TABS.OVERVIEW);
   }
 
+  getMovieRatingLevel(rating) {
+    let level = ``;
+    if ((rating >= 0) && (rating < 3)) {
+      level = `Bad`;
+    }
+    if ((rating >= 3) && (rating < 5)) {
+      level = `Normal`;
+    }
+    if ((rating >= 5) && (rating < 8)) {
+      level = `Good`;
+    }
+    if ((rating >= 8) && (rating < 10)) {
+      level = `Very good`;
+    }
+    if (rating === 10.0) {
+      level = `Awesome`;
+    }
+    return level;
+  }
+
   render() {
-    const {genre, year, runtime, score, level, count, director, description, starring, reviews,
-      activeItem, onItemEnter} = this.props;
-    const {hours, minutes} = runtime;
+    const {activeItem, onItemEnter, film} = this.props;
+    const minutes = film.runtime % MINUTES_IN_HOUR;
+    const hours = Math.floor(film.runtime / MINUTES_IN_HOUR);
 
-    const newStarringArr = starring.slice(0, STARRING_PREMAX_EL);
-    const starrringMaxEl = starring.slice(STARRING_PREMAX_EL, STARRING_MAX_EL);
-    const starringString = newStarringArr.join(`, `).concat(`, `, starrringMaxEl);
+    const level = this.getMovieRatingLevel(film.rating);
 
-    const returnDescriptionList = () => {
-      const descriptionList = [];
-      for (const key of description) {
-        const descriptionFragment =
-          <Fragment key={key + description.indexOf(key)}>
-            <p>{key}</p>
-          </Fragment>;
-        descriptionList.push(descriptionFragment);
-      }
-      return descriptionList;
-    };
+    const reviewFragmentArr = film.reviews.map((review) => (
+      <Fragment key={review + film.reviews.indexOf(review)}>
+        <div className="review">
+          <blockquote className="review__quote">
+            <p className="review__text">{review.text}</p>
 
-    const returnStarringList = () => {
-      const resultFragment = starring.join(`, \n`);
+            <footer className="review__details">
+              <cite className="review__author">{review.author.name}</cite>
+              <time className="review__date" dateTime={review.date}>
+                {moment(review.date).format(`MMMM D, YYYY`)}</time>
+            </footer>
+          </blockquote>
 
-      return resultFragment;
-    };
-
-    const returnReviewList = () => {
-      const reviewFragmentArr = [];
-
-      for (const review of reviews) {
-        const currentFragment = <Fragment key={review + reviews.indexOf(review)}>
-          <div className="review">
-            <blockquote className="review__quote">
-              <p className="review__text">{review.text}</p>
-
-              <footer className="review__details">
-                <cite className="review__author">{review.author}</cite>
-                <time className="review__date" dateTime={review.dateTime.string}>
-                  {review.dateTime.month} {review.dateTime.day}, {review.dateTime.reviewYear}</time>
-              </footer>
-            </blockquote>
-
-            <div className="review__rating">{review.rating}</div>
-          </div>
-          <br />
-        </Fragment>;
-        reviewFragmentArr.push(currentFragment);
-      }
-      return reviewFragmentArr;
-    };
+          <div className="review__rating">{review.rating}</div>
+        </div>
+        <br />
+      </Fragment>
+    )
+    );
 
     const returnCurrentNavElement = (typeOfTab) => {
       return activeItem === typeOfTab ? ACTIVE_NAV_ELEMENT : ``;
@@ -114,19 +107,19 @@ class Tabs extends PureComponent {
 
         <div className={`movie-rating movie-tab movie-tab--overview
         ${returnCurrentTabsElements(TABS.OVERVIEW)}`}>
-          <div className="movie-rating__score">{score}</div>
+          <div className="movie-rating__score">{film.rating}</div>
           <p className="movie-rating__meta">
             <span className="movie-rating__level">{level}</span>
-            <span className="movie-rating__count">{count} ratings</span>
+            <span className="movie-rating__count">{film.votes} ratings</span>
           </p>
         </div>
 
         <div className={`movie-card__text movie-tab movie-tab--overview
         ${returnCurrentTabsElements(TABS.OVERVIEW)}`}>
-          {returnDescriptionList()}
-          <p className="movie-card__director"><strong>Director: {director}</strong></p>
+          {film.description}
+          <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
 
-          <p className="movie-card__starring"><strong>Starring: {starringString} and other</strong></p>
+          <p className="movie-card__starring"><strong>Starring: {film.starring.slice(0, 4).join(`, `)} and other</strong></p>
         </div>
 
         <div className={`movie-card__text movie-card__row movie-tab movie-tab--details
@@ -134,12 +127,16 @@ class Tabs extends PureComponent {
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Director</strong>
-              <span className="movie-card__details-value">{director}</span>
+              <span className="movie-card__details-value">{film.director}</span>
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Starring</strong>
               <span className="movie-card__details-value">
-                {returnStarringList()}
+                {film.starring.map((actor, index) => (
+                  <Fragment key={actor + index}>
+                    {actor} <br />
+                  </Fragment>
+                ))}
               </span>
             </p>
           </div>
@@ -151,11 +148,11 @@ class Tabs extends PureComponent {
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Genre</strong>
-              <span className="movie-card__details-value">{genre}</span>
+              <span className="movie-card__details-value">{film.genre}</span>
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Released</strong>
-              <span className="movie-card__details-value">{year}</span>
+              <span className="movie-card__details-value">{film.year}</span>
             </p>
           </div>
         </div>
@@ -163,10 +160,7 @@ class Tabs extends PureComponent {
         <div className={`movie-card__reviews movie-card__row movie-tab movie-tab--reviews
         ${returnCurrentTabsElements(TABS.REVIEWS)}`}>
           <div className="movie-card__reviews-col">
-            {returnReviewList().slice(0, REVIEW_HALFINDEX)}
-          </div>
-          <div className="movie-card__reviews-col">
-            {returnReviewList().slice(REVIEW_HALFINDEX)}
+            {reviewFragmentArr}
           </div>
         </div>
       </Fragment>
@@ -175,37 +169,34 @@ class Tabs extends PureComponent {
 }
 
 Tabs.propTypes = {
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
+  film: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    image: PropTypes.string,
+    poster: PropTypes.string,
+    cover: PropTypes.string,
+    previewSrc: PropTypes.string,
+    runtime: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    description: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string,
+          author: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+          }).isRequired,
 
-  runtime: PropTypes.shape({
-    hours: PropTypes.number.isRequired,
-    minutes: PropTypes.number.isRequired,
-  }).isRequired,
-
-  score: PropTypes.number.isRequired,
-  level: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
-
-  director: PropTypes.string.isRequired,
-  description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        text: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-
-        dateTime: PropTypes.shape({
-          string: PropTypes.string.isRequired,
-          reviewYear: PropTypes.number.isRequired,
-          month: PropTypes.string.isRequired,
-          day: PropTypes.number.isRequired,
-        }).isRequired,
-
-        rating: PropTypes.number.isRequired,
-      }).isRequired
-  ).isRequired,
+          date: PropTypes.string.isRequired,
+          rating: PropTypes.number,
+        })
+    ),
+  }),
 
   activeItem: PropTypes.string.isRequired,
   onItemEnter: PropTypes.func.isRequired,

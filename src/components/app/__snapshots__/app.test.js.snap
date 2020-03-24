@@ -11,10 +11,7 @@ Array [
       <div
         className="movie-card__bg"
       >
-        <img
-          alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
-        />
+        <img />
       </div>
       <h1
         className="visually-hidden"
@@ -75,7 +72,6 @@ Array [
             <img
               alt="The Grand Budapest Hotel poster"
               height="327"
-              src="img/the-grand-budapest-hotel-poster.jpg"
               width="218"
             />
           </div>
@@ -85,22 +81,16 @@ Array [
             <h2
               className="movie-card__title"
               onClick={[Function]}
-            >
-              Mock-test The Grand Budapest Hotel
-            </h2>
+            />
             <p
               className="movie-card__meta"
             >
               <span
                 className="movie-card__genre"
-              >
-                Drama
-              </span>
+              />
               <span
                 className="movie-card__year"
-              >
-                2017
-              </span>
+              />
             </p>
             <div
               className="movie-card__buttons"
@@ -157,77 +147,77 @@ Array [
         >
           <li
             className="catalog__genres-item catalog__genres-item--active"
-            onClick={[Function]}
           >
             <a
               className="catalog__genres-link"
               href="#"
+              onClick={[Function]}
             >
               All genres
             </a>
           </li>
           <li
             className="catalog__genres-item "
-            onClick={[Function]}
           >
             <a
               className="catalog__genres-link"
               href="#"
+              onClick={[Function]}
             >
               Mock-test-Drama
             </a>
           </li>
           <li
             className="catalog__genres-item "
-            onClick={[Function]}
           >
             <a
               className="catalog__genres-link"
               href="#"
+              onClick={[Function]}
             >
               Mock-test-Thriller
             </a>
           </li>
           <li
             className="catalog__genres-item "
-            onClick={[Function]}
           >
             <a
               className="catalog__genres-link"
               href="#"
+              onClick={[Function]}
             >
               Mock-test-Comedy
             </a>
           </li>
           <li
             className="catalog__genres-item "
-            onClick={[Function]}
           >
             <a
               className="catalog__genres-link"
               href="#"
+              onClick={[Function]}
             >
               Drama
             </a>
           </li>
           <li
             className="catalog__genres-item "
-            onClick={[Function]}
           >
             <a
               className="catalog__genres-link"
               href="#"
+              onClick={[Function]}
             >
               Thriller
             </a>
           </li>
           <li
             className="catalog__genres-item "
-            onClick={[Function]}
           >
             <a
               className="catalog__genres-link"
               href="#"
+              onClick={[Function]}
             >
               Comedy
             </a>
@@ -249,9 +239,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                Fantastic Beasts: The Crimes of Grindelwald
-              </a>
+              />
             </h3>
           </article>
           <article
@@ -267,9 +255,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                Bohemian Rhapsody
-              </a>
+              />
             </h3>
           </article>
           <article
@@ -285,9 +271,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                Macbeth
-              </a>
+              />
             </h3>
           </article>
           <article
@@ -303,9 +287,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                Aviator
-              </a>
+              />
             </h3>
           </article>
           <article
@@ -321,9 +303,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                We need to talk about Kevin
-              </a>
+              />
             </h3>
           </article>
           <article
@@ -339,9 +319,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                What We Do in the Shadows
-              </a>
+              />
             </h3>
           </article>
           <article
@@ -357,9 +335,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                Revenant
-              </a>
+              />
             </h3>
           </article>
           <article
@@ -375,9 +351,7 @@ Array [
               <a
                 className="small-movie-card__link"
                 href="movie-page.html"
-              >
-                Johnny English
-              </a>
+              />
             </h3>
           </article>
         </div>

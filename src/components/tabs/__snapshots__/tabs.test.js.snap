@@ -58,7 +58,7 @@ Array [
       <span
         className="movie-rating__level"
       >
-        Mocks-Very good
+        Very good
       </span>
       <span
         className="movie-rating__count"
@@ -72,18 +72,17 @@ Array [
     className="movie-card__text movie-tab movie-tab--overview
         "
   >
-    <p>
-      Mock-test-In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
-    </p>
-    <p>
-      Gustave prides himself on providing first-className service to the hotel &#96s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
-    </p>
+    In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
+  Gustave prides himself on providing first-className service to the hotel &#96s
+  guests, including satisfying the sexual needs of the many elderly women who stay there.
+  When one of Gustave &#96s lovers dies mysteriously, Gustave finds himself the recipient
+   of a priceless painting and the chief suspect in her murder.
     <p
       className="movie-card__director"
     >
       <strong>
         Director: 
-        Mock-Wes Andreson
+        Wes Andreson
       </strong>
     </p>
     <p
@@ -91,7 +90,7 @@ Array [
     >
       <strong>
         Starring: 
-        Mock-test-Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+        Bill Murray, Edward Norton, Jude Law, Willem Dafoe
          and other
       </strong>
     </p>
@@ -114,7 +113,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Mock-Wes Andreson
+          Wes Andreson
         </span>
       </p>
       <p
@@ -128,10 +127,42 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Mock-test-Bill Murray, 
-Edward Norton, 
-Jude Law, 
-Willem Dafoe
+          Bill Murray
+           
+          <br />
+          Edward Norton
+           
+          <br />
+          Jude Law
+           
+          <br />
+          Willem Dafoe
+           
+          <br />
+          Saoirse Ronan
+           
+          <br />
+          Tony Revoloru
+           
+          <br />
+          Tilda Swinton
+           
+          <br />
+          Tom Wilkinson
+           
+          <br />
+          Owen Wilkinson
+           
+          <br />
+          Adrien Brody
+           
+          <br />
+          Ralph Fiennes
+           
+          <br />
+          Jeff Goldblum
+           
+          <br />
         </span>
       </p>
     </div>
@@ -166,7 +197,7 @@ Willem Dafoe
         <span
           className="movie-card__details-value"
         >
-          Mock-test-Drama
+          Drama
         </span>
       </p>
       <p
@@ -180,7 +211,7 @@ Willem Dafoe
         <span
           className="movie-card__details-value"
         >
-          2017
+          2014
         </span>
       </p>
     </div>
@@ -214,13 +245,9 @@ Willem Dafoe
             </cite>
             <time
               className="review__date"
-              dateTime="2016-12-24"
+              dateTime="March 15, 2019"
             >
-              December
-               
-              24
-              , 
-              2016
+              March 15, 2019
             </time>
           </footer>
         </blockquote>
@@ -253,13 +280,9 @@ Willem Dafoe
             </cite>
             <time
               className="review__date"
-              dateTime="2015-11-18"
+              dateTime="March 25, 2019"
             >
-              November
-               
-              18
-              , 
-              2015
+              March 25, 2019
             </time>
           </footer>
         </blockquote>
@@ -292,13 +315,9 @@ Willem Dafoe
             </cite>
             <time
               className="review__date"
-              dateTime="2015-11-18"
+              dateTime="March 05, 2019"
             >
-              November
-               
-              18
-              , 
-              2015
+              March 5, 2019
             </time>
           </footer>
         </blockquote>
@@ -309,10 +328,6 @@ Willem Dafoe
         </div>
       </div>
       <br />
-    </div>
-    <div
-      className="movie-card__reviews-col"
-    >
       <div
         className="review"
       >
@@ -335,13 +350,9 @@ Willem Dafoe
             </cite>
             <time
               className="review__date"
-              dateTime="2016-12-20"
+              dateTime="March 15, 2018"
             >
-              December
-               
-              20
-              , 
-              2016
+              March 15, 2018
             </time>
           </footer>
         </blockquote>
@@ -373,13 +384,9 @@ Willem Dafoe
             </cite>
             <time
               className="review__date"
-              dateTime="2016-12-20"
+              dateTime="March 15, 2019"
             >
-              December
-               
-              20
-              , 
-              2016
+              March 15, 2019
             </time>
           </footer>
         </blockquote>
@@ -411,13 +418,9 @@ Willem Dafoe
             </cite>
             <time
               className="review__date"
-              dateTime="2016-12-20"
+              dateTime="March 4, 2019"
             >
-              December
-               
-              24
-              , 
-              2016
+              March 4, 2019
             </time>
           </footer>
         </blockquote>

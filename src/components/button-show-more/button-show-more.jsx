@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/data/data.js';
+import {getMoviesByGenre, getMoviesCount} from '../../reducer/data/selectors.js';
 
 const ButtonShowMore = (props) => {
 
@@ -28,8 +29,8 @@ ButtonShowMore.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  moviesByGenre: state.moviesByGenre,
-  moviesCount: state.moviesCount,
+  moviesByGenre: getMoviesByGenre(state),
+  moviesCount: getMoviesCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

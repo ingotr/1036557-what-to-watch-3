@@ -127,28 +127,21 @@ class VideoPlayerFull extends PureComponent {
 
 VideoPlayerFull.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    runtime: PropTypes.shape({
-      hours: PropTypes.number.isRequired,
-      minutes: PropTypes.number.isRequired,
-    }),
-    poster: PropTypes.shape({
-      big: PropTypes.string.isRequired,
-      bigAlt: PropTypes.string.isRequired,
-    }),
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
-      count: PropTypes.number.isRequired,
-    }),
-    previewSrc: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    description: PropTypes.array.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    reviews: PropTypes.array.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    year: PropTypes.number,
+    image: PropTypes.string,
+    poster: PropTypes.string,
+    cover: PropTypes.string,
+    previewSrc: PropTypes.string,
+    runtime: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    description: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    reviews: PropTypes.array,
   }),
 
   onItemLeave: PropTypes.func.isRequired,
