@@ -15,7 +15,7 @@ const DEFAULT_MOVIES_COUNT = 8;
 const store = mockStore({
   [NameSpace.DATA]: {
     currentGenre: DEFAULT_GENRE,
-    film,
+    movie: {film},
     movies,
     moviesByGenre: movies,
     showedMovies: movies,
@@ -29,13 +29,13 @@ it(`Render App`, () => {
       <App
         film={film}
       />
+
     </Provider>, {
       createNodeMock: () => {
         return {};
       }
     })
     .toJSON();
-
   expect(tree).toMatchSnapshot();
 });
 

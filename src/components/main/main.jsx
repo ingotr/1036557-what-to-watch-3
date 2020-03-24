@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-// import {connect} from 'react-redux';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
@@ -159,9 +158,5 @@ Main.propTypes = {
   onItemLeave: PropTypes.func.isRequired,
   activeItem: PropTypes.any,
 };
-
-// const mapStateToProps = (state) => ({
-//   film: getPromoMovie(state),
-// });
 
 export default Main;
