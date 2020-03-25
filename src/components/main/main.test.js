@@ -21,6 +21,10 @@ const store = mockStore({
     moviesByGenre: movies,
     showedMovies: movies,
     moviesCount: DEFAULT_MOVIES_COUNT,
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    avatarUrl: ``
   }
 });
 
@@ -32,6 +36,7 @@ it(`Main component should render correctly`, () => {
          <BrowserRouter >
            <Main
              authorizationStatus={AuthorizationStatus.NO_AUTH}
+             avatarUrl=""
              film={film}
              onMouseClick={() => {}}
              onMovieHover={() => {}}

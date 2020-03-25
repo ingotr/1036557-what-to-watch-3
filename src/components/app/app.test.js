@@ -15,7 +15,8 @@ const DEFAULT_MOVIES_COUNT = 8;
 
 const store = mockStore({
   [NameSpace.USER]: {
-    authorizationStatus: AuthorizationStatus.NO_AUTH
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    avatarUrl: ``,
   },
   [NameSpace.DATA]: {
     currentGenre: DEFAULT_GENRE,
