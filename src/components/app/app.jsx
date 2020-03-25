@@ -9,9 +9,11 @@ import {getPromoMovie, getMoviesByGenre} from '../../reducer/data/selectors.js';
 import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 import {Operation as UserOperation, AuthorizationStatus} from '../../reducer/user/user.js';
 import SignIn from '../sign-in/sign-in.jsx';
+import withErrorsItem from '../../hocs/with-errors-item/with-errors-item.jsx';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
+const SignInWrapped = withErrorsItem(SignIn);
 
 const movieHoverHandler = () => {};
 
@@ -73,7 +75,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/auth-dev" render={() => {
             if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-              return <SignIn
+              return <SignInWrapped
                 onSubmit={login}
               />;
             } else if (authorizationStatus === AuthorizationStatus.AUTH) {
@@ -137,8 +139,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login(authData) {
-    dispatch(UserOperation.login(authData));
+  login(authData, onSuccess, onError) {
+    dispatch(UserOperation.login(authData, onSuccess, onError));
   },
 });
 

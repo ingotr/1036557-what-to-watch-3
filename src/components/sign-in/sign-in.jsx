@@ -23,6 +23,7 @@ class SignIn extends PureComponent {
   }
 
   render() {
+    const {authErrorMessage} = this.props;
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -39,6 +40,11 @@ class SignIn extends PureComponent {
 
         <div className="sign-in user-page__content">
           <form action="" className="sign-in__form" onSubmit={this.handleSubmit}>
+            {authErrorMessage && (
+              <div className="sign-in__message">
+                <p>{authErrorMessage}</p>
+              </div>
+            )}
             <div className="sign-in__fields">
               <div className="sign-in__field">
                 <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" ref={this.loginRef} />
@@ -75,6 +81,7 @@ class SignIn extends PureComponent {
 
 SignIn.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  authErrorMessage: PropTypes.string,
 };
 
 export default SignIn;
