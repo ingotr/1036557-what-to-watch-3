@@ -7,6 +7,9 @@ it(`Should render SignIn component`, () => {
     .create(
         <SignIn
           onSubmit={() => {}}
+          onHandleSubmit={() => {}}
+          loginError={false}
+          passwordError={false}
         />
     )
     .toJSON();

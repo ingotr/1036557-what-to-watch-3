@@ -46,6 +46,9 @@ exports[`Should render SignIn component 1`] = `
       onSubmit={[Function]}
     >
       <div
+        className="sign-in__message"
+      />
+      <div
         className="sign-in__fields"
       >
         <div
