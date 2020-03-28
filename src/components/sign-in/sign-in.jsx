@@ -1,4 +1,5 @@
 import React, {createRef, PureComponent} from 'react';
+// import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 class SignIn extends PureComponent {
@@ -7,23 +8,10 @@ class SignIn extends PureComponent {
 
     this.loginRef = createRef();
     this.passwordRef = createRef();
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(evt) {
-    const {onSubmit} = this.props;
-
-    evt.preventDefault();
-
-    onSubmit({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
-    });
   }
 
   render() {
-    const {authErrorMessage} = this.props;
+    const {passwordError, loginError, onHandleSubmit} = this.props;
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -39,12 +27,14 @@ class SignIn extends PureComponent {
         </header>
 
         <div className="sign-in user-page__content">
-          <form action="" className="sign-in__form" onSubmit={this.handleSubmit}>
-            {authErrorMessage && (
-              <div className="sign-in__message">
-                <p>{authErrorMessage}</p>
-              </div>
-            )}
+          <form action="" className="sign-in__form" onSubmit={(evt) => {
+            evt.preventDefault();
+            onHandleSubmit(this.loginRef, this.passwordRef);
+          }}>
+            <div className="sign-in__message">
+              {passwordError && <p>We can’t recognize this email <br/> and password combination. Please try again.</p>}
+              {loginError && <p>Please enter a valid email address</p>}
+            </div>
             <div className="sign-in__fields">
               <div className="sign-in__field">
                 <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" ref={this.loginRef} />
@@ -80,8 +70,14 @@ class SignIn extends PureComponent {
 }
 
 SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  authErrorMessage: PropTypes.string,
+  onHandleSubmit: PropTypes.func.isRequired,
+  loginError: PropTypes.bool.isRequired,
+  passwordError: PropTypes.bool.isRequired,
 };
+
+// const mapStateToProps = (state) => ({
+//   login: getUserLogin(state),
+//   password: getUserPassword(state),
+// });
 
 export default SignIn;

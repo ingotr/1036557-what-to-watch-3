@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from "prop-types";
+import validator from "email-validator";
 
 const withErrorsItem = (Component) => {
   class WithErrorsItem extends PureComponent {
@@ -8,33 +9,51 @@ const withErrorsItem = (Component) => {
       super(props);
 
       this.state = {
-        authErrorMessage: ``,
+        loginError: false,
+        passwordError: false,
       };
 
-      this.handleErrorMessage = this.handleErrorMessage.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleErrorMessage(error) {
-      this.setState({
-        authErrorMessage: error,
+    handleSubmit(login, password) {
+      const {onSubmit} = this.props;
+
+      if (!validator.validate(login.current.value)) {
+        this.setState({loginError: true});
+        return;
+      } else {
+        this.setState({loginError: false});
+      }
+
+      if (password.current.value.length === 0) {
+        this.setState({passwordError: true});
+        return;
+      } else {
+        this.setState({passwordError: false});
+      }
+
+      onSubmit({
+        login: login.current.value,
+        password: password.current.value,
       });
     }
 
     render() {
-      const {authErrorMessage} = this.state;
 
       return (
         <Component
           {...this.props}
-          authErrorMessage={authErrorMessage}
-          onError={this.handleErrorMessage}
+          onHandleSubmit={this.handleSubmit}
+          loginError={this.state.loginError}
+          passwordError={this.state.passwordError}
         />
       );
     }
   }
 
   WithErrorsItem.propTypes = {
-    authErrorMessage: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired,
   };
 
   return WithErrorsItem;

@@ -78,7 +78,9 @@ class App extends PureComponent {
               return <SignInWrapped
                 onSubmit={login}
               />;
-            } else if (authorizationStatus === AuthorizationStatus.AUTH) {
+            }
+
+            if (authorizationStatus === AuthorizationStatus.AUTH) {
               return this._renderMainPage();
             }
             return null;
@@ -139,8 +141,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login(authData, onSuccess, onError) {
-    dispatch(UserOperation.login(authData, onSuccess, onError));
+  login(authData) {
+    dispatch(UserOperation.login(authData));
   },
 });
 

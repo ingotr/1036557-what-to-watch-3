@@ -9,7 +9,6 @@ const AuthorizationStatus = {
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  authErrorMessage: null,
   avatarUrl: ``,
 };
 
@@ -30,7 +29,7 @@ const ActionCreator = {
       type: ActionType.SET_AVATAR_URL,
       payload: avatarUrl
     };
-  }
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,7 +59,7 @@ const Operation = {
       });
   },
 
-  login: (authData, onSuccess, onError) => (dispatch, getState, api) => {
+  login: (authData) => (dispatch, getState, api) => {
     return api
       .post(`/login`, {
         email: authData.login,
@@ -69,12 +68,9 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setAvatarUrl(response.data.avatar_url));
-        onSuccess();
       })
-      .catch((error) => {
-        if (error.response) {
-          onError(error.response.data.error);
-        }
+      .catch((err) => {
+        throw err;
       });
   }
 };
