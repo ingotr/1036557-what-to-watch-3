@@ -2,7 +2,11 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
+import {connect} from 'react-redux';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
+import {AuthorizationStatus} from '../../reducer/user/user.js';
+import {getAuthorizationStatus, getAvatarUrl} from "../../reducer/user/selectors";
+import {NavLink} from 'react-router-dom';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
 
@@ -16,7 +20,7 @@ class Main extends PureComponent {
 
   render() {
     const {film, onMouseClick, onMovieHover,
-      activeItem, onItemEnter, onItemLeave} = this.props;
+      activeItem, onItemEnter, onItemLeave, authorizationStatus, avatarUrl} = this.props;
     const {name, genre, year, cover, poster} = film;
 
     return (
@@ -38,11 +42,21 @@ class Main extends PureComponent {
                 </a>
               </div>
 
-              <div className="user-block">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </div>
-              </div>
+              {
+                (authorizationStatus === AuthorizationStatus.AUTH) ?
+                  (<div className="user-block">
+                    <div className="user-block__avatar">
+                      <img
+                        src={avatarUrl}
+                        alt="User avatar"
+                        width="63"
+                        height="63"
+                      />
+                    </div>
+                  </div>) : (
+                    <div className="user-block"><NavLink to="/auth-dev">Sign In</NavLink></div>
+                  )
+              }
             </header>
 
             <div className="movie-card__wrap">
@@ -122,6 +136,9 @@ class Main extends PureComponent {
 }
 
 Main.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
+
   film: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -159,4 +176,11 @@ Main.propTypes = {
   activeItem: PropTypes.any,
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+  avatarUrl: getAvatarUrl(state)
+});
+
+export {Main};
+
+export default connect(mapStateToProps)(Main);

@@ -6,9 +6,14 @@ import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getPromoMovie, getMoviesByGenre} from '../../reducer/data/selectors.js';
+import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
+import {Operation as UserOperation, AuthorizationStatus} from '../../reducer/user/user.js';
+import SignIn from '../sign-in/sign-in.jsx';
+import withErrorsItem from '../../hocs/with-errors-item/with-errors-item.jsx';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
+const SignInWrapped = withErrorsItem(SignIn);
 
 const movieHoverHandler = () => {};
 
@@ -28,12 +33,13 @@ class App extends PureComponent {
   }
 
   _renderMainPage() {
-    const {movies, film} = this.props;
+    const {movies, film, authorizationStatus} = this.props;
     const {showMovieInfo} = this.state;
 
     if (!showMovieInfo) {
       return (
         <MainWrapped
+          authorizationStatus={authorizationStatus}
           film={film}
           onMouseClick={this._clickHandler.bind(this)}
           onMovieHover={movieHoverHandler}
@@ -54,7 +60,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {film} = this.props;
+    const {film, login, authorizationStatus} = this.props;
 
     return (
       <BrowserRouter>
@@ -67,6 +73,18 @@ class App extends PureComponent {
               film={film}
             />
           </Route>
+          <Route exact path="/auth-dev" render={() => {
+            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+              return <SignInWrapped
+                onSubmit={login}
+              />;
+            }
+
+            if (authorizationStatus === AuthorizationStatus.AUTH) {
+              return this._renderMainPage();
+            }
+            return null;
+          }} />
         </Switch>
       </BrowserRouter>
     );
@@ -74,6 +92,9 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
+
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
@@ -114,9 +135,17 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
   movies: getMoviesByGenre(state),
   film: getPromoMovie(state),
 });
+
+const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
+});
+
 export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
