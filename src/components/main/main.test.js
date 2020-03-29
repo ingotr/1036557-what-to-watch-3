@@ -4,8 +4,8 @@ import Main from './main.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../reducer/name-space.js';
-import {BrowserRouter} from "react-router-dom";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {BrowserRouter} from 'react-router-dom';
+import {AuthorizationStatus} from '../../reducer/user/user.js';
 
 import {film, movies} from '../../mocks/test-mocks.js';
 
