@@ -1,5 +1,4 @@
 import React, {createRef, PureComponent} from 'react';
-// import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 class SignIn extends PureComponent {
