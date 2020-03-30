@@ -34,10 +34,10 @@ class AddReview extends PureComponent {
   handleChange(e) {
     switch (true) {
       case e.target.value.length < MESSAGE_LIMIT.min:
-        this.props.changeSendStatusText(`Ваше сообщение менее 50 символов`);
+        this.props.changeSendStatusText(`Ваше сообщение менее ${MESSAGE_LIMIT.min} символов`);
         break;
       case e.target.value.length > MESSAGE_LIMIT.max:
-        this.props.changeSendStatusText(`Ваше сообщение больше 400 символов`);
+        this.props.changeSendStatusText(`Ваше сообщение больше ${MESSAGE_LIMIT.max} символов`);
         break;
       default:
         this.props.changeSendStatusText(``);
