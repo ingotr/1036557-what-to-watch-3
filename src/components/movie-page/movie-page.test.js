@@ -38,6 +38,7 @@ it(`Render App`, () => {
             onMovieHover={() => { }}
             onItemEnter={() => { }}
             onItemLeave={() => { }}
+            onFilmFavoriteStatusClick={() => { }}
           />
         </Provider>, {
           createNodeMock: () => {
