@@ -25,7 +25,8 @@ class MoviePage extends PureComponent {
   }
 
   render() {
-    const {film, onItemEnter, onItemLeave, activeItem, authorizationStatus, avatarUrl} = this.props;
+    const {film, onItemEnter, onItemLeave, activeItem,
+      authorizationStatus, avatarUrl, onFilmFavoriteStatusClick} = this.props;
     const {name, cover, genre, year, poster} = film;
 
     return (
@@ -85,13 +86,25 @@ class MoviePage extends PureComponent {
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
+
+                  <button
+                    className="btn btn--list movie-card__button"
+                    type="button"
+                    onClick={() => {
+                      onFilmFavoriteStatusClick(film.id, +!film.favorite);
+                    }}
+                  >
+                    {film.favorite ?
+                      <svg viewBox="0 0 19 20" width="19" height="20">
+                        <use xlinkHref="#add"></use>
+                      </svg> :
+                      <svg viewBox="0 0 18 14" width="18" height="14">
+                        <use xlinkHref="#in-list"></use>
+                      </svg>
+                    }
                     <span>My list</span>
                   </button>
-                  {authorizationStatus === `AUTH` ? <a href="/dev-review" className="btn movie-card__button">Add review</a> : null}
+                  {authorizationStatus === `AUTH` ? <a href="/login" className="btn movie-card__button">Add review</a> : null}
                 </div>
               </div>
             </div>
@@ -145,6 +158,7 @@ class MoviePage extends PureComponent {
 MoviePage.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
+  onFilmFavoriteStatusClick: PropTypes.func.isRequired,
 
   film: PropTypes.shape({
     id: PropTypes.string,
@@ -161,6 +175,7 @@ MoviePage.propTypes = {
     director: PropTypes.string,
     description: PropTypes.string,
     starring: PropTypes.arrayOf(PropTypes.string),
+    favorite: PropTypes.bool,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string,
@@ -191,6 +206,7 @@ MoviePage.propTypes = {
         director: PropTypes.string,
         description: PropTypes.string,
         starring: PropTypes.arrayOf(PropTypes.string),
+        favorite: PropTypes.bool,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               text: PropTypes.string,
