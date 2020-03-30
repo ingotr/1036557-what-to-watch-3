@@ -4,6 +4,7 @@ import MoviePage from './movie-page.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../reducer/name-space.js';
+import {AuthorizationStatus} from '../../reducer/user/user.js';
 
 import {movies, film} from '../../mocks/test-mocks.js';
 
@@ -19,6 +20,10 @@ it(`Render App`, () => {
       moviesByGenre: movies.slice(0, DEFAULT_MOVIES_COUNT),
       showedMovies: movies,
       moviesCount: DEFAULT_MOVIES_COUNT,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      avatarUrl: ``
     }
   });
 
@@ -26,6 +31,8 @@ it(`Render App`, () => {
     .create(
         <Provider store={store}>
           <MoviePage
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+            avatarUrl=""
             film={film}
             movies={movies}
             onMovieHover={() => { }}

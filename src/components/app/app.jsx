@@ -8,7 +8,9 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getPromoMovie, getMoviesByGenre} from '../../reducer/data/selectors.js';
 import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 import {Operation as UserOperation, AuthorizationStatus} from '../../reducer/user/user.js';
+import {Operation as CommentsOperation} from '../../reducer/review/review.js';
 import SignIn from '../sign-in/sign-in.jsx';
+import AddReview from '../add-review/add-review.jsx';
 import withErrorsItem from '../../hocs/with-errors-item/with-errors-item.jsx';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
@@ -50,6 +52,7 @@ class App extends PureComponent {
     if (showMovieInfo) {
       return (
         <MoviePageWrapped
+          authorizationStatus={authorizationStatus}
           movies={movies}
           film={film}
         />
@@ -60,13 +63,20 @@ class App extends PureComponent {
   }
 
   render() {
-    const {film, login, authorizationStatus} = this.props;
+    const {film, login, authorizationStatus, sendComment} = this.props;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderMainPage()}
+          </Route>
+          <Route exact path="/dev-review">
+            <AddReview
+              filmId={1}
+              onSubmit={sendComment}
+              film={film}
+            />
           </Route>
           <Route exact path="/dev-film">
             <MainWrapped
@@ -94,6 +104,7 @@ class App extends PureComponent {
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
+  sendComment: PropTypes.func.isRequired,
 
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -143,6 +154,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
+  },
+  sendComment(authData, filmId) {
+    dispatch(CommentsOperation.sendComment(authData, filmId));
   },
 });
 

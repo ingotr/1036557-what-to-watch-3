@@ -75,9 +75,4 @@ SignIn.propTypes = {
   passwordError: PropTypes.bool.isRequired,
 };
 
-// const mapStateToProps = (state) => ({
-//   login: getUserLogin(state),
-//   password: getUserPassword(state),
-// });
-
 export default SignIn;
