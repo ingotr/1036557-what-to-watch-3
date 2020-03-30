@@ -1,17 +1,17 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Redirect, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getPromoMovie, getMoviesByGenre} from '../../reducer/data/selectors.js';
 import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 import {Operation as UserOperation, AuthorizationStatus} from '../../reducer/user/user.js';
-import {Operation as CommentsOperation} from '../../reducer/review/review.js';
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 import SignIn from '../sign-in/sign-in.jsx';
-import AddReview from '../add-review/add-review.jsx';
 import withErrorsItem from '../../hocs/with-errors-item/with-errors-item.jsx';
+import history from '../../history.js';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
@@ -35,7 +35,7 @@ class App extends PureComponent {
   }
 
   _renderMainPage() {
-    const {movies, film, authorizationStatus} = this.props;
+    const {movies, film, authorizationStatus, changeFavoriteStatus} = this.props;
     const {showMovieInfo} = this.state;
 
     if (!showMovieInfo) {
@@ -45,6 +45,7 @@ class App extends PureComponent {
           film={film}
           onMouseClick={this._clickHandler.bind(this)}
           onMovieHover={movieHoverHandler}
+          onFilmFavoriteStatusClick={changeFavoriteStatus}
         />
       );
     }
@@ -55,6 +56,7 @@ class App extends PureComponent {
           authorizationStatus={authorizationStatus}
           movies={movies}
           film={film}
+          onFilmFavoriteStatusClick={changeFavoriteStatus}
         />
       );
     }
@@ -63,48 +65,30 @@ class App extends PureComponent {
   }
 
   render() {
-    const {film, login, authorizationStatus, sendComment} = this.props;
+    const {login, authorizationStatus} = this.props;
 
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route exact path="/">
             {this._renderMainPage()}
           </Route>
-          <Route exact path="/dev-review">
-            <AddReview
-              filmId={1}
-              onSubmit={sendComment}
-              film={film}
-            />
+          <Route exact path="/login" render={() => {
+            return (authorizationStatus === AuthorizationStatus.AUTH) ?
+              <Redirect to="/" /> :
+              <SignInWrapped onSubmit={login} />;
+          }}>
           </Route>
-          <Route exact path="/dev-film">
-            <MainWrapped
-              film={film}
-            />
-          </Route>
-          <Route exact path="/auth-dev" render={() => {
-            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-              return <SignInWrapped
-                onSubmit={login}
-              />;
-            }
-
-            if (authorizationStatus === AuthorizationStatus.AUTH) {
-              return this._renderMainPage();
-            }
-            return null;
-          }} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
-  sendComment: PropTypes.func.isRequired,
 
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -155,8 +139,8 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
-  sendComment(authData, filmId) {
-    dispatch(CommentsOperation.sendComment(authData, filmId));
+  changeFavoriteStatus(filmId, status) {
+    dispatch(DataOperation.changeFavoriteStatus(filmId, status));
   },
 });
 
