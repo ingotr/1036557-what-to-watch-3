@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
-import PropTypes from "prop-types";
-import validator from "email-validator";
+import PropTypes from 'prop-types';
+import validator from 'email-validator';
 
 const withErrorsItem = (Component) => {
   class WithErrorsItem extends PureComponent {

@@ -1,5 +1,5 @@
-import React, {createRef, PureComponent} from "react";
-import PropTypes from "prop-types";
+import React, {createRef, PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 const MOVIE_OVER_TIMEOUT = 1000;
 

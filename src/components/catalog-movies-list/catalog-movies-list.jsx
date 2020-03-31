@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 import {getMoviesCount, getMoviesByGenre} from '../../reducer/data/selectors.js';
 
@@ -10,16 +10,15 @@ class CatalogMoviesList extends React.PureComponent {
   }
 
   render() {
-    const {movies, moviesCount, onItemEnter, onItemLeave} = this.props;
+    const {movies, moviesCount, onMovieCardClick, onItemEnter, onItemLeave} = this.props;
 
     return (
       <div className="catalog__movies-list">
         {movies.slice(0, moviesCount).map((movie) => (
           <SmallMovieCard
+            film={movie}
             key={movie.id}
-            name={movie.name}
-            image={movie.image}
-            previewSrc={movie.previewSrc}
+            onMovieCardClick={onMovieCardClick}
             onMovieHover={onItemEnter}
             onMovieLeave={onItemLeave}
           />
@@ -60,7 +59,7 @@ CatalogMoviesList.propTypes = {
 
   moviesCount: PropTypes.number.isRequired,
 
-  onMovieHover: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func,
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,
 };
