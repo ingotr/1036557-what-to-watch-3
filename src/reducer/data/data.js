@@ -1,8 +1,9 @@
 import {extend} from '../../utils.js';
 import adapter from './adapter.js';
-import {commentsAdapter} from "./adapter.js";
+import {commentsAdapter} from './adapter.js';
 
 const DEFAULT_MOVIES_COUNT = 8;
+const RESPONSE_STATUS_OK = 200;
 
 const initialState = {
   movie: {},
@@ -11,6 +12,7 @@ const initialState = {
   moviesByGenre: [],
   showedMovies: [],
   moviesCount: DEFAULT_MOVIES_COUNT,
+  myListMovies: null,
 };
 
 const ActionType = {
@@ -21,6 +23,7 @@ const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
   CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`,
+  LOAD_MY_LIST_MOVIES: `LOAD_MY_LIST_MOVIES`,
 };
 
 const ActionCreator = {
@@ -66,6 +69,13 @@ const ActionCreator = {
       payload: movieId,
     };
   },
+
+  loadMyListMovies: (movies) => {
+    return {
+      type: ActionType.LOAD_MY_LIST_MOVIES,
+      payload: movies,
+    };
+  },
 };
 
 const loadComments = (item) => (dispatch, getState, api) => {
@@ -103,9 +113,22 @@ const Operation = {
   changeFavoriteStatus: (movieId, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${movieId}/${status}`)
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === RESPONSE_STATUS_OK) {
           dispatch(ActionCreator.changeFavoriteStatus(movieId));
         }
+      });
+  },
+  loadMyListMovies: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        const adaptedData = response.data.map((item) => {
+          const adaptedItem = adapter(item);
+          dispatch(loadComments(adaptedItem));
+          return adaptedItem;
+        });
+        dispatch(ActionCreator.loadMyListMovies(adaptedData));
+      })
+      .catch(() => {
       });
   },
 };
@@ -174,6 +197,11 @@ const reducer = (state = initialState, action) => {
         movieCurrent,
         showedMovies,
         movie: promoMovie,
+      });
+
+    case ActionType.LOAD_MY_LIST_MOVIES:
+      return extend(state, {
+        myListMovies: action.payload,
       });
   }
 
