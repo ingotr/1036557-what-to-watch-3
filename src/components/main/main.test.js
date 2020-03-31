@@ -38,6 +38,7 @@ it(`Main component should render correctly`, () => {
              authorizationStatus={AuthorizationStatus.NO_AUTH}
              avatarUrl=""
              film={film}
+             onMovieCardClick={() => {}}
              onMouseClick={() => {}}
              onMovieHover={() => {}}
              onItemEnter={() => { }}

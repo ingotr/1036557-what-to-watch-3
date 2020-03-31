@@ -29,7 +29,8 @@ Array [
         >
           <a
             className="logo__link"
-            href="main.html"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -52,7 +53,8 @@ Array [
           className="user-block"
         >
           <a
-            href="/auth-dev"
+            href="/login"
+            onClick={[Function]}
           >
             Sign In
           </a>
@@ -104,24 +106,32 @@ Array [
                 Play
               </span>
             </button>
-            <button
+            <a
               className="btn btn--list movie-card__button"
+              href="/login"
               onClick={[Function]}
               type="button"
             >
               <svg
-                height="14"
-                viewBox="0 0 18 14"
-                width="18"
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
               >
                 <use
-                  xlinkHref="#in-list"
+                  xlinkHref="#add"
                 />
               </svg>
               <span>
                 My list
               </span>
-            </button>
+            </a>
+            <a
+              className="btn movie-card__button"
+              href="/login"
+              onClick={[Function]}
+            >
+              Add review
+            </a>
           </div>
         </div>
       </div>
@@ -596,6 +606,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -606,12 +617,14 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-011"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -622,12 +635,14 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-012"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -638,12 +653,14 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-013"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -654,12 +671,14 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-014"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -670,12 +689,14 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-015"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -686,12 +707,14 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-016"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -702,12 +725,14 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-017"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -718,7 +743,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-018"
+              onClick={[Function]}
             />
           </h3>
         </article>

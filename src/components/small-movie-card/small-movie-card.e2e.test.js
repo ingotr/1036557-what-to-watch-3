@@ -3,26 +3,21 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import SmallMovieCard from './small-movie-card.jsx';
 
+import {film} from '../../mocks/test-mocks.js';
+
 Enzyme.configure({
   adapter: new Adapter(),
 });
-
-const Movie = {
-  id: `mock-card-test-011`,
-  name: `mock-test-Fantastic Beasts`,
-  image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-};
 
 it(`Should movie card active on mouse hover`, () => {
   const onMovieOver = jest.fn();
   const smallMovieCard = shallow(
       <SmallMovieCard
-        id={Movie.id}
-        title={Movie.name}
-        imgSrc={Movie.image}
-        previewSrc={Movie.previewSrc}
-        onMovieHover={onMovieOver}
+        film={film}
+        key={film.id}
+        onMovieCardClick={() => {}}
+        onMovieHover={() => {}}
+        onMovieLeave={() => {}}
       />
   );
 
