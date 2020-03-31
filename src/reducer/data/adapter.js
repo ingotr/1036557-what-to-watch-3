@@ -14,6 +14,7 @@ const Adapter = (item) => {
     director: item.director,
     description: item.description,
     starring: item.starring,
+    favorite: item.is_favorite,
   };
 };
 

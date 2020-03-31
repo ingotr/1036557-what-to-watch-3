@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
 import {AuthorizationStatus} from '../../reducer/user/user.js';
 import {getAuthorizationStatus, getAvatarUrl} from "../../reducer/user/selectors";
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
 
@@ -20,7 +20,8 @@ class Main extends PureComponent {
 
   render() {
     const {film, onMouseClick, onMovieHover,
-      activeItem, onItemEnter, onItemLeave, authorizationStatus, avatarUrl} = this.props;
+      activeItem, onItemEnter, onItemLeave,
+      authorizationStatus, avatarUrl, onFilmFavoriteStatusClick} = this.props;
     const {name, genre, year, cover, poster} = film;
 
     return (
@@ -54,7 +55,7 @@ class Main extends PureComponent {
                       />
                     </div>
                   </div>) : (
-                    <div className="user-block"><NavLink to="/auth-dev">Sign In</NavLink></div>
+                    <div className="user-block"><Link to="/login">Sign In</Link></div>
                   )
               }
             </header>
@@ -64,7 +65,7 @@ class Main extends PureComponent {
                 <div
                   onClick={onMouseClick}
                   className="movie-card__poster">
-                  <img src={poster} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                  <img src={poster} alt="{name}" width="218" height="327" />
                 </div>
 
                 <div className="movie-card__desc">
@@ -90,10 +91,21 @@ class Main extends PureComponent {
                       </svg>
                       <span>Play</span>
                     </button>
-                    <button className="btn btn--list movie-card__button" type="button">
-                      <svg viewBox="0 0 19 20" width="19" height="20">
-                        <use></use>
-                      </svg>
+                    <button
+                      className="btn btn--list movie-card__button"
+                      type="button"
+                      onClick={() => {
+                        onFilmFavoriteStatusClick(film.id, +!film.favorite);
+                      }}
+                    >
+                      {film.favorite ?
+                        <svg viewBox="0 0 19 20" width="19" height="20">
+                          <use xlinkHref="#add"></use>
+                        </svg> :
+                        <svg viewBox="0 0 18 14" width="18" height="14">
+                          <use xlinkHref="#in-list"></use>
+                        </svg>
+                      }
                       <span>My list</span>
                     </button>
                   </div>
@@ -138,6 +150,7 @@ class Main extends PureComponent {
 Main.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
+  onFilmFavoriteStatusClick: PropTypes.func.isRequired,
 
   film: PropTypes.shape({
     id: PropTypes.string,
@@ -154,6 +167,7 @@ Main.propTypes = {
     director: PropTypes.string,
     description: PropTypes.string,
     starring: PropTypes.arrayOf(PropTypes.string),
+    favorite: PropTypes.bool,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string,

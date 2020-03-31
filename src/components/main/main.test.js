@@ -43,6 +43,7 @@ it(`Main component should render correctly`, () => {
              onItemEnter={() => { }}
              onItemLeave={() => { }}
              activeItem={null}
+             onFilmFavoriteStatusClick={() => { }}
            />
          </BrowserRouter >
        </Provider>)

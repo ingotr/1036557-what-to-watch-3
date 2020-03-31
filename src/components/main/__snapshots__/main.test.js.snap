@@ -50,8 +50,7 @@ exports[`Main component should render correctly 1`] = `
         className="user-block"
       >
         <a
-          aria-current={null}
-          href="/auth-dev"
+          href="/login"
           onClick={[Function]}
         >
           Sign In
@@ -69,7 +68,7 @@ exports[`Main component should render correctly 1`] = `
           onClick={[Function]}
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="{name}"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -119,14 +118,17 @@ exports[`Main component should render correctly 1`] = `
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
-                height="20"
-                viewBox="0 0 19 20"
-                width="19"
+                height="14"
+                viewBox="0 0 18 14"
+                width="18"
               >
-                <use />
+                <use
+                  xlinkHref="#in-list"
+                />
               </svg>
               <span>
                 My list

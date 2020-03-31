@@ -20,6 +20,7 @@ const ActionType = {
   CHANGE_MOVIES_COUNT: `CHANGE_MOVIES_COUNT`,
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
+  CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`,
 };
 
 const ActionCreator = {
@@ -58,6 +59,13 @@ const ActionCreator = {
       payload: movie,
     };
   },
+
+  changeFavoriteStatus: (movieId) => {
+    return {
+      type: ActionType.CHANGE_FAVORITE_STATUS,
+      payload: movieId,
+    };
+  },
 };
 
 const loadComments = (item) => (dispatch, getState, api) => {
@@ -90,6 +98,14 @@ const Operation = {
       })
       .then((movie) => {
         dispatch(ActionCreator.loadPromoMovie(movie));
+      });
+  },
+  changeFavoriteStatus: (movieId, status) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${movieId}/${status}`)
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(ActionCreator.changeFavoriteStatus(movieId));
+        }
       });
   },
 };
@@ -137,6 +153,27 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_PROMO_MOVIE:
       return extend(state, {
         movie: action.payload,
+      });
+
+    case ActionType.CHANGE_FAVORITE_STATUS:
+      const changedMoviesList = state.movies.map((movie) => {
+        if (movie.id === action.payload) {
+          movie.favorite = !movie.favorite;
+        } return movie;
+      });
+      let movieCurrent;
+      if (state.genre === `All genres`) {
+        movieCurrent = state.movies;
+      } else {
+        movieCurrent = state.movies.filter((movie) => movie.genre === state.genre);
+      }
+      const showedMovies = movieCurrent.slice(0, state.moviesCount);
+      const promoMovie = state.movie.id === action.payload ? extend(state, extend(state.movie, {favorite: !state.movie.favorite})) : state.movie;
+      return extend(state, {
+        movies: changedMoviesList,
+        movieCurrent,
+        showedMovies,
+        movie: promoMovie,
       });
   }
 
