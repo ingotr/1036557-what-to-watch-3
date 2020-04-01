@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card';
 import {getMoviesCount, getMoviesByGenre} from '../../reducer/data/selectors';

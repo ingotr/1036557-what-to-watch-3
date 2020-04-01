@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Router, Route, Switch} from 'react-router-dom';
 import Main from '../main/main';

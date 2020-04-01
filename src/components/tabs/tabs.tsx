@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import * as moment from 'moment';
 import {MovieInterface} from '../../types';
 

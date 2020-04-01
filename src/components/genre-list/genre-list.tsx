@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/data/data';
 import {getCurrentGenre, getMovies} from '../../reducer/data/selectors';
@@ -22,7 +22,7 @@ class GenreList extends React.PureComponent<Props, {}> {
     const {movies, onGenreElementClick, onItemEnter, currentGenre} = this.props;
 
     const returnCurrentGenres = () => {
-      let currentGenres = [DEFAULT_GENRE];
+      const currentGenres = [DEFAULT_GENRE];
       movies.map((movie) => {
         if (!currentGenres.includes(movie.genre)) {
           currentGenres.push(movie.genre);

@@ -1,18 +1,18 @@
-import * as React from 'react'
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/data/data';
 import {getMoviesByGenre, getMoviesCount} from '../../reducer/data/selectors';
 import {MovieInterface} from '../../types';
 
 interface Props {
-  moviesByGenre: MovieInterface;
+  moviesByGenre: MovieInterface[];
   moviesCount: number;
   onShowMoreButtonClick: (moviesCount: number) => void;
 }
 
-const ButtonShowMore = (props) => {
+const ButtonShowMore: React.FunctionComponent<Props> = (Props) => {
 
-  const {moviesByGenre, moviesCount, onShowMoreButtonClick} = props;
+  const {moviesByGenre, moviesCount, onShowMoreButtonClick} = Props;
 
   return moviesByGenre.length > moviesCount ?
     <div className="catalog__more">
@@ -21,7 +21,7 @@ const ButtonShowMore = (props) => {
         onClick={
           (event) => {
             event.preventDefault();
-            onShowMoreButtonClick();
+            onShowMoreButtonClick(moviesCount);
           }
         }>Show more</button>
     </div> : null;

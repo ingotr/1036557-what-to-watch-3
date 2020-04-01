@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -22,10 +22,10 @@ const onUnauthorized = () => {
 const api = createAPI(onUnauthorized);
 
 const store = createStore(
-  reducer,
-  composeWithDevTools(
-      applyMiddleware(thunk.withExtraArgument(api))
-  )
+    reducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
 store.dispatch(DataOperation.loadPromoMovie());

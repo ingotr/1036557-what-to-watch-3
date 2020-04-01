@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import VideoPlayer from '../video-player/video-player';
 import withVideo from '../../hocs/with-video/with-video';
 import {Link} from 'react-router-dom';

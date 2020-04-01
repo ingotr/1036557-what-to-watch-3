@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list';
 import GenreList from '../genre-list/genre-list';
 import {connect} from 'react-redux';
@@ -16,7 +16,7 @@ const GenreListWrapperd = withActiveItem(GenreList);
 interface Props {
   authorizationStatus: string;
   avatarUrl: string;
-  activeItem: any;
+  activeItem: MovieInterface;
   onMovieFavoriteStatusClick: (movie: string, status: number) => void;
   onItemEnter: (movie: MovieInterface) => void;
   onItemLeave: () => void;

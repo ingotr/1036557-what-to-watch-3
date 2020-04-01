@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {ActionCreator} from '../../reducer/review/review';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';

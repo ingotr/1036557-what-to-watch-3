@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import Tabs from '../tabs/tabs';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -16,7 +16,7 @@ const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
 interface Props {
   authorizationStatus: string;
-  activeItem: any;
+  activeItem: MovieInterface;
   avatarUrl: string;
   onMovieFavoriteStatusClick: (movie: string, status: number) => void;
   onMovieCardClick: (movie: MovieInterface | null) => void;
@@ -34,7 +34,7 @@ class MoviePage extends React.PureComponent<Props, {}> {
   getSameGenreMovies() {
     const {movies, movie} = this.props;
     const {genre} = movie;
-    return (movies.filter((movie) => movie.genre === genre)).slice(0, SAME_GENRE_MOVIES_MAX_LENGTH);
+    return (movies.filter((item) => item.genre === genre)).slice(0, SAME_GENRE_MOVIES_MAX_LENGTH);
   }
 
   render() {
