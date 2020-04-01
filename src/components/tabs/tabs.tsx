@@ -1,6 +1,6 @@
-import React, {PureComponent, Fragment} from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import * as React from 'react'
+import * as moment from 'moment';
+import {MovieInterface} from '../../types';
 
 const TABS = {
   OVERVIEW: `overview`,
@@ -12,7 +12,14 @@ const VISUALLY_HIDDEN_CLASSNAME = `visually-hidden`;
 const ACTIVE_NAV_ELEMENT = `movie-nav__item--active`;
 const MINUTES_IN_HOUR = 60;
 
-class Tabs extends PureComponent {
+interface Props {
+  activeItem: string;
+  onItemEnter: (TABS: string) => void;
+  onItemLeave: () => void;
+  movie: MovieInterface;
+}
+
+class Tabs extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
@@ -40,14 +47,14 @@ class Tabs extends PureComponent {
   }
 
   render() {
-    const {activeItem, onItemEnter, film} = this.props;
-    const minutes = film.runtime % MINUTES_IN_HOUR;
-    const hours = Math.floor(film.runtime / MINUTES_IN_HOUR);
+    const {activeItem, onItemEnter, movie} = this.props;
+    const minutes = +movie.runtime % MINUTES_IN_HOUR;
+    const hours = Math.floor(+movie.runtime / MINUTES_IN_HOUR);
 
-    const level = this.getMovieRatingLevel(film.rating);
+    const level = this.getMovieRatingLevel(movie.rating);
 
-    const reviewFragmentArr = film.reviews.map((review) => (
-      <Fragment key={review + film.reviews.indexOf(review)}>
+    const reviewFragmentArr = movie.reviews.map((review) => (
+      <React.Fragment key={review.text + movie.reviews.indexOf(review)}>
         <div className="review">
           <blockquote className="review__quote">
             <p className="review__text">{review.text}</p>
@@ -62,7 +69,7 @@ class Tabs extends PureComponent {
           <div className="review__rating">{review.rating}</div>
         </div>
         <br />
-      </Fragment>
+      </React.Fragment>
     )
     );
 
@@ -75,7 +82,7 @@ class Tabs extends PureComponent {
     };
 
     return (
-      <Fragment>
+      <React.Fragment>
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             <li
@@ -107,19 +114,19 @@ class Tabs extends PureComponent {
 
         <div className={`movie-rating movie-tab movie-tab--overview
         ${returnCurrentTabsElements(TABS.OVERVIEW)}`}>
-          <div className="movie-rating__score">{film.rating}</div>
+          <div className="movie-rating__score">{movie.rating}</div>
           <p className="movie-rating__meta">
             <span className="movie-rating__level">{level}</span>
-            <span className="movie-rating__count">{film.votes} ratings</span>
+            <span className="movie-rating__count">{movie.votes} ratings</span>
           </p>
         </div>
 
         <div className={`movie-card__text movie-tab movie-tab--overview
         ${returnCurrentTabsElements(TABS.OVERVIEW)}`}>
-          {film.description}
-          <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
+          {movie.description}
+          <p className="movie-card__director"><strong>Director: {movie.director}</strong></p>
 
-          <p className="movie-card__starring"><strong>Starring: {film.starring.slice(0, 4).join(`, `)} and other</strong></p>
+          <p className="movie-card__starring"><strong>Starring: {movie.starring.slice(0, 4).join(`, `)} and other</strong></p>
         </div>
 
         <div className={`movie-card__text movie-card__row movie-tab movie-tab--details
@@ -127,15 +134,15 @@ class Tabs extends PureComponent {
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Director</strong>
-              <span className="movie-card__details-value">{film.director}</span>
+              <span className="movie-card__details-value">{movie.director}</span>
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Starring</strong>
               <span className="movie-card__details-value">
-                {film.starring.map((actor, index) => (
-                  <Fragment key={actor + index}>
+                {movie.starring.map((actor, index) => (
+                  <React.Fragment key={actor + index}>
                     {actor} <br />
-                  </Fragment>
+                  </React.Fragment>
                 ))}
               </span>
             </p>
@@ -148,11 +155,11 @@ class Tabs extends PureComponent {
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Genre</strong>
-              <span className="movie-card__details-value">{film.genre}</span>
+              <span className="movie-card__details-value">{movie.genre}</span>
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Released</strong>
-              <span className="movie-card__details-value">{film.year}</span>
+              <span className="movie-card__details-value">{movie.year}</span>
             </p>
           </div>
         </div>
@@ -163,44 +170,9 @@ class Tabs extends PureComponent {
             {reviewFragmentArr}
           </div>
         </div>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }
-
-Tabs.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    image: PropTypes.string,
-    poster: PropTypes.string,
-    cover: PropTypes.string,
-    previewSrc: PropTypes.string,
-    runtime: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    description: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          text: PropTypes.string,
-          author: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-          }).isRequired,
-
-          date: PropTypes.string.isRequired,
-          rating: PropTypes.number,
-        })
-    ),
-  }),
-
-  activeItem: PropTypes.string.isRequired,
-  onItemEnter: PropTypes.func.isRequired,
-  onItemLeave: PropTypes.func.isRequired,
-};
 
 export default Tabs;

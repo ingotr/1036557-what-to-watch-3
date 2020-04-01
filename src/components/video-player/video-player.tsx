@@ -1,23 +1,19 @@
-import React, {PureComponent, Fragment} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-class VideoPlayer extends PureComponent {
+interface Props {
+  children: (React.ReactNode | React.ReactNode[]);
+}
+
+class VideoPlayer extends React.PureComponent<Props, {}> {
   render() {
     const {children} = this.props;
 
     return (
-      <Fragment>
+      <React.Fragment>
         {children}
-      </Fragment>
+      </React.Fragment>
     );
   }
 }
-
-VideoPlayer.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-};
 
 export default VideoPlayer;

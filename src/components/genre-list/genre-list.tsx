@@ -1,15 +1,22 @@
-import React, {PureComponent, Fragment} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react'
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/data/data.js';
-import {getCurrentGenre, getMovies} from '../../reducer/data/selectors.js';
+import {ActionCreator} from '../../reducer/data/data';
+import {getCurrentGenre, getMovies} from '../../reducer/data/selectors';
+import {MovieInterface} from '../../types';
 
 const DEFAULT_GENRE = `All genres`;
 const ACTIVE_GENRE_ELEMENT = `catalog__genres-item--active`;
 const GENRE_LIST_MAX_LENGTH = 9;
 const DEFAULT_MOVIE_COUNT = 8;
 
-class GenreList extends PureComponent {
+interface Props {
+  currentGenre: string;
+  onGenreElementClick: (genre: string) => void;
+  onItemEnter: (genre: string) => void;
+  movies: MovieInterface[];
+}
+
+class GenreList extends React.PureComponent<Props, {}> {
 
   render() {
     const {movies, onGenreElementClick, onItemEnter, currentGenre} = this.props;
@@ -35,7 +42,7 @@ class GenreList extends PureComponent {
       const genresElements = [];
       for (const genre of genresList) {
         const genreFragment =
-          <Fragment key={genre + genresList.indexOf(genre)}>
+          <React.Fragment key={genre + genresList.indexOf(genre)}>
             <li className={`catalog__genres-item ${returnCurrentGenreElement(genre)}`}>
               <a
                 href="#"
@@ -47,47 +54,21 @@ class GenreList extends PureComponent {
                 }}
               >{genre}</a>
             </li>
-          </Fragment>;
+          </React.Fragment>;
         genresElements.push(genreFragment);
       }
       return genresElements;
     };
 
     return (
-      <Fragment>
+      <React.Fragment>
         <ul className="catalog__genres-list">
           {returnGenresList()}
         </ul>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }
-
-GenreList.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        genre: PropTypes.string,
-        year: PropTypes.number,
-        image: PropTypes.string,
-        poster: PropTypes.string,
-        cover: PropTypes.string,
-        previewSrc: PropTypes.string,
-        runtime: PropTypes.string,
-        rating: PropTypes.number,
-        votes: PropTypes.number,
-        director: PropTypes.string,
-        description: PropTypes.string,
-        starring: PropTypes.arrayOf(PropTypes.string),
-        reviews: PropTypes.array,
-      })
-  ),
-
-  onGenreElementClick: PropTypes.func.isRequired,
-  onItemEnter: PropTypes.func.isRequired,
-  currentGenre: PropTypes.string.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   movies: getMovies(state),

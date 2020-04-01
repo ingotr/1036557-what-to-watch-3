@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react'
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/data/data.js';
-import {getMoviesByGenre, getMoviesCount} from '../../reducer/data/selectors.js';
+import {ActionCreator} from '../../reducer/data/data';
+import {getMoviesByGenre, getMoviesCount} from '../../reducer/data/selectors';
+import {MovieInterface} from '../../types';
+
+interface Props {
+  moviesByGenre: MovieInterface;
+  moviesCount: number;
+  onShowMoreButtonClick: (moviesCount: number) => void;
+}
 
 const ButtonShowMore = (props) => {
 
@@ -19,13 +25,6 @@ const ButtonShowMore = (props) => {
           }
         }>Show more</button>
     </div> : null;
-};
-
-ButtonShowMore.propTypes = {
-  moviesByGenre: PropTypes.array,
-  moviesCount: PropTypes.number,
-
-  onShowMoreButtonClick: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

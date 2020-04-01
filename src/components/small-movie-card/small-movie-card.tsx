@@ -1,46 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import VideoPlayer from '../video-player/video-player.jsx';
-import withVideo from '../../hocs/with-video/with-video.jsx';
+import * as React from 'react'
+import VideoPlayer from '../video-player/video-player';
+import withVideo from '../../hocs/with-video/with-video';
 import {Link} from 'react-router-dom';
+import {MovieInterface} from '../../types';
+
+interface Props {
+  movie: MovieInterface;
+  onMovieCardClick: (movie: MovieInterface) => void;
+  onMovieHover: () => void;
+  onMovieLeave: () => void;
+}
 
 const VideoPlayerWrapped = withVideo(VideoPlayer);
 
-const SmallMovieCard = (props) => {
+const SmallMovieCard: React.FunctionComponent<Props> = (props: Props) => {
 
-  const {film, onMovieCardClick} = props;
+  const {movie, onMovieCardClick} = props;
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
       onClick={() => {
-        onMovieCardClick(film);
+        onMovieCardClick(movie);
       }}>
       <VideoPlayerWrapped
         isPlaying={false}
-        poster={film.image}
-        src={film.previewSrc}
+        image={movie.image}
+        src={movie.previewSrc}
       />
       <h3 className="small-movie-card__title">
-        <Link to={`/films/` + film.id} className="small-movie-card__link">{film.name}</Link>
+        <Link to={`/films/` + movie.id} className="small-movie-card__link">{movie.name}</Link>
       </h3>
     </article>
   );
-};
-
-SmallMovieCard.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    image: PropTypes.string,
-    previewSrc: PropTypes.string,
-    poster: PropTypes.string,
-    cover: PropTypes.string,
-  }).isRequired,
-
-  onMovieCardClick: PropTypes.func,
 };
 
 export default SmallMovieCard;

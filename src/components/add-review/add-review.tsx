@@ -1,11 +1,11 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {ActionCreator} from '../../reducer/review/review.js';
+import * as React from 'react'
+import {ActionCreator} from '../../reducer/review/review';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {AuthorizationStatus} from '../../reducer/user/user.js';
-import {getText, getSendStatus, getFormBlock, getRating} from '../../reducer/review/selectors.js';
-import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors.js';
+import {AuthorizationStatus} from '../../reducer/user/user';
+import {getText, getSendStatus, getFormBlock, getRating} from '../../reducer/review/selectors';
+import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors';
+import {MovieInterface} from '../../types';
 
 const MESSAGE_LIMIT = {
   min: 50,
@@ -15,7 +15,26 @@ const MESSAGE_LIMIT = {
 const DEFAULT_RATING = 5;
 const DEFAULT_RATING_FACTOR = 2;
 
-class AddReview extends PureComponent {
+interface State {
+  rating: number;
+}
+
+interface Props {
+  authorizationStatus: string;
+  avatarUrl: string;
+  changeRating: (rating: number) => void;
+  changeSendStatusText: (string: string) => void;
+  onSubmit: (authData: object, movie: MovieInterface) => void;
+  formBlock: boolean;
+  movie: MovieInterface;
+  movieId: string;
+  rating: number;
+  sendStatusValue: string;
+  textValue: string;
+  updateNewCommentText: (string: string) => void;
+}
+
+class AddReview extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,14 +66,14 @@ class AddReview extends PureComponent {
   }
 
   handleSubmit(evt) {
-    const {onSubmit, film} = this.props;
+    const {onSubmit, movie} = this.props;
 
     evt.preventDefault();
 
     onSubmit({
       text: this.props.textValue,
       rating: this.props.rating * DEFAULT_RATING_FACTOR,
-    }, film);
+    }, movie);
   }
 
   render() {
@@ -64,7 +83,7 @@ class AddReview extends PureComponent {
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
           <div className="movie-card__bg">
-            <img src={this.props.film.cover} alt={this.props.film.name} />
+            <img src={this.props.movie.cover} alt={this.props.movie.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -81,7 +100,7 @@ class AddReview extends PureComponent {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <Link to={`/films/${this.props.film.id}`} className="breadcrumbs__link">{this.props.film.name}</Link>
+                  <Link to={`/films/${this.props.movie.id}`} className="breadcrumbs__link">{this.props.movie.name}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -108,7 +127,7 @@ class AddReview extends PureComponent {
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">
-            <img src={this.props.film.poster} alt={this.props.film.name} width="218" height="327" />
+            <img src={this.props.movie.poster} alt={this.props.movie.name} width="218" height="327" />
           </div>
         </div>
 
@@ -177,50 +196,6 @@ class AddReview extends PureComponent {
     );
   }
 }
-
-AddReview.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
-
-  changeRating: PropTypes.func.isRequired,
-  changeSendStatusText: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  // filmId: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  updateNewCommentText: PropTypes.func.isRequired,
-  textValue: PropTypes.string.isRequired,
-  sendStatusValue: PropTypes.string.isRequired,
-  formBlock: PropTypes.bool.isRequired,
-
-  film: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    image: PropTypes.string,
-    poster: PropTypes.string,
-    cover: PropTypes.string,
-    previewSrc: PropTypes.string,
-    runtime: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    description: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          text: PropTypes.string,
-          author: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-          }).isRequired,
-
-          date: PropTypes.string,
-          rating: PropTypes.number,
-        })
-    ),
-  }),
-};
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),

@@ -1,9 +1,17 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import validator from 'email-validator';
+import * as React from 'react'
+import * as validator from 'email-validator';
+
+interface Props {
+  onSubmit: (data: {login: string; password: string}) => void;
+}
+
+interface State {
+  loginError: boolean;
+  passwordError: boolean;
+}
 
 const withErrorsItem = (Component) => {
-  class WithErrorsItem extends PureComponent {
+  class WithErrorsItem extends React.PureComponent<Props, State> {
 
     constructor(props) {
       super(props);
@@ -51,10 +59,6 @@ const withErrorsItem = (Component) => {
       );
     }
   }
-
-  WithErrorsItem.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-  };
 
   return WithErrorsItem;
 };

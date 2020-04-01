@@ -1,15 +1,26 @@
-import React, {createRef, PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react'
+import {MovieInterface} from '../../types';
 
-class VideoPlayerFull extends PureComponent {
+interface Props {
+  movie: MovieInterface;
+  onItemLeave: () => void;
+}
+
+interface State {
+  isPlaying: boolean;
+  progress: number;
+  progressValue: number;
+}
+
+class VideoPlayerFull extends React.PureComponent<Props, State> {
+  private _videoRef: React.RefObject<HTMLVideoElement>;
   constructor(props) {
     super(props);
-
-    this._videoRef = createRef();
+    this._videoRef = React.createRef();
 
     this.state = {
       isPlaying: false,
-      progress: ``,
+      progress: 0,
       progressValue: 0
     };
   }
@@ -21,7 +32,7 @@ class VideoPlayerFull extends PureComponent {
 
     const video = this._videoRef.current;
 
-    video.src = this.props.film.previewSrc;
+    video.src = this.props.movie.previewSrc;
 
     video.onended = () => this.setState({
       isPlaying: false,
@@ -63,7 +74,7 @@ class VideoPlayerFull extends PureComponent {
         <video
           ref={this._videoRef}
           className="player__video"
-          poster={this.props.film.poster}
+          poster={this.props.movie.poster}
           autoPlay
         ></video>
 
@@ -104,7 +115,7 @@ class VideoPlayerFull extends PureComponent {
                   <span>Play</span></>
               )}
             </button>
-            <div className="player__name">{this.props.film.name}</div>
+            <div className="player__name">{this.props.movie.name}</div>
 
             <button
               onClick={() => {
@@ -125,27 +136,5 @@ class VideoPlayerFull extends PureComponent {
     );
   }
 }
-
-VideoPlayerFull.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    image: PropTypes.string,
-    poster: PropTypes.string,
-    cover: PropTypes.string,
-    previewSrc: PropTypes.string,
-    runtime: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    description: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    reviews: PropTypes.array,
-  }),
-
-  onItemLeave: PropTypes.func.isRequired,
-};
 
 export default VideoPlayerFull;

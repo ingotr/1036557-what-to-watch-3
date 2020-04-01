@@ -1,13 +1,25 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
-import {getMyListMovies} from '../../reducer/data/selectors.js';
+import SmallMovieCard from '../small-movie-card/small-movie-card';
+import {getMyListMovies} from '../../reducer/data/selectors';
 import {getAvatarUrl} from '../../reducer/user/selectors';
-import {Operation as DataOperation} from '../../reducer/data/data.js';
+import {Operation as DataOperation} from '../../reducer/data/data';
+import {MovieInterface} from '../../types';
 
-class MyList extends PureComponent {
+interface Props {
+  activeItem: MovieInterface | null;
+  avatarUrl: string;
+  onMovieFavoriteStatusClick: () => void;
+  onMovieCardClick: () => void;
+  onItemEnter: () => void;
+  onItemLeave: () => void;
+  loading: () => void;
+  movies: MovieInterface[];
+}
+
+
+class MyList extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -53,7 +65,7 @@ class MyList extends PureComponent {
             <div className="catalog__movies-list">
               {movies.map((movie) => (
                 <SmallMovieCard
-                  film={movie}
+                  movie={movie}
                   key={movie.id}
                   onMovieCardClick={onMovieCardClick}
                   onMovieHover={onItemEnter}
@@ -82,44 +94,6 @@ class MyList extends PureComponent {
     );
   }
 }
-MyList.propTypes = {
-  avatarUrl: PropTypes.string.isRequired,
-
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        genre: PropTypes.string,
-        year: PropTypes.number,
-        image: PropTypes.string,
-        poster: PropTypes.string,
-        cover: PropTypes.string,
-        previewSrc: PropTypes.string,
-        runtime: PropTypes.string,
-        rating: PropTypes.number,
-        votes: PropTypes.number,
-        director: PropTypes.string,
-        description: PropTypes.string,
-        starring: PropTypes.arrayOf(PropTypes.string),
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              rating: PropTypes.number.isRequired,
-              date: PropTypes.string.isRequired,
-              author: PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                name: PropTypes.string.isRequired,
-              }).isRequired,
-              text: PropTypes.string.isRequired,
-            })),
-      })),
-
-  onFilmFavoriteStatusClick: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  onItemEnter: PropTypes.func,
-  onItemLeave: PropTypes.func,
-  loading: PropTypes.func,
-  activeItem: PropTypes.any,
-};
 
 const mapStateToProps = (state) => ({
   avatarUrl: getAvatarUrl(state),

@@ -1,40 +1,52 @@
-import React, {Fragment, PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '../tabs/tabs.jsx';
+import * as React from 'react'
+import Tabs from '../tabs/tabs';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {AuthorizationStatus} from '../../reducer/user/user.js';
-import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors.js';
-import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
+import {AuthorizationStatus} from '../../reducer/user/user';
+import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors';
+import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import VideoPlayerFull from '../video-player-full/video-player-full';
+import {MovieInterface} from '../../types';
 
 const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
 const TabsWrapped = withActiveItem(Tabs);
 
 const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
-class MoviePage extends PureComponent {
+interface Props {
+  authorizationStatus: string;
+  activeItem: any;
+  avatarUrl: string;
+  onMovieFavoriteStatusClick: (movie: string, status: number) => void;
+  onMovieCardClick: (movie: MovieInterface | null) => void;
+  onItemEnter: (movie: MovieInterface) => void;
+  onItemLeave: () => void;
+  movie: MovieInterface;
+  movies: MovieInterface[];
+}
+
+class MoviePage extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
 
   getSameGenreMovies() {
-    const {movies, film} = this.props;
-    const {genre} = film;
+    const {movies, movie} = this.props;
+    const {genre} = movie;
     return (movies.filter((movie) => movie.genre === genre)).slice(0, SAME_GENRE_MOVIES_MAX_LENGTH);
   }
 
   render() {
-    const {film, onItemEnter, onItemLeave, activeItem,
-      authorizationStatus, avatarUrl, onFilmFavoriteStatusClick, onMovieCardClick} = this.props;
+    const {movie, onItemEnter, onItemLeave, activeItem,
+      authorizationStatus, avatarUrl, onMovieFavoriteStatusClick, onMovieCardClick} = this.props;
 
     return (
-      <Fragment>
+      <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
-              <img src={film.cover} alt={film.name} />
+              <img src={movie.cover} alt={movie.name} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -69,17 +81,17 @@ class MoviePage extends PureComponent {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{film.name}</h2>
+                <h2 className="movie-card__title">{movie.name}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{film.genre}</span>
-                  <span className="movie-card__year">{film.year}</span>
+                  <span className="movie-card__genre">{movie.genre}</span>
+                  <span className="movie-card__year">{movie.year}</span>
                 </p>
 
                 <div className="movie-card__buttons">
                   <button
                     className="btn btn--play movie-card__button"
                     onClick={() => {
-                      onItemEnter(film);
+                      onItemEnter(movie);
                     }}
                     type="button"
                   >
@@ -95,11 +107,11 @@ class MoviePage extends PureComponent {
                         className="btn btn--list movie-card__button"
                         type="button"
                         onClick={() => {
-                          onFilmFavoriteStatusClick(film.id, +!film.favorite);
+                          onMovieFavoriteStatusClick(movie.id, +!movie.favorite);
                         }}
                       >
 
-                        {!film.favorite ?
+                        {!movie.favorite ?
                           (<svg viewBox="0 0 19 20" width="19" height="20">
                             <use xlinkHref="#add"></use>
                           </svg>) :
@@ -109,7 +121,7 @@ class MoviePage extends PureComponent {
                         }
                         <span>My list</span>
                       </button>
-                      <Link to={`/films/${film.id}/review`} className="btn movie-card__button">Add review</Link>
+                      <Link to={`/films/${movie.id}/review`} className="btn movie-card__button">Add review</Link>
                     </> :
                     <>
                       <Link
@@ -133,12 +145,12 @@ class MoviePage extends PureComponent {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src={film.poster} alt={film.name} width="218" height="327" />
+                <img src={movie.poster} alt={movie.name} width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
                 <TabsWrapped
-                  film={film}
+                  movie={movie}
                 />
               </div>
             </div>
@@ -169,84 +181,11 @@ class MoviePage extends PureComponent {
             </div>
           </footer>
         </div>
-        {activeItem && (<VideoPlayerFull film={film} onItemLeave={onItemLeave} />)}
-      </Fragment>
+        {activeItem && (<VideoPlayerFull movie={movie} onItemLeave={onItemLeave} />)}
+      </React.Fragment>
     );
   }
 }
-
-MoviePage.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
-  onFilmFavoriteStatusClick: PropTypes.func.isRequired,
-
-  film: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    image: PropTypes.string,
-    poster: PropTypes.string,
-    cover: PropTypes.string,
-    previewSrc: PropTypes.string,
-    runtime: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    description: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    favorite: PropTypes.bool,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          text: PropTypes.string,
-          author: PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-          }).isRequired,
-
-          date: PropTypes.string,
-          rating: PropTypes.number,
-        })
-    ),
-  }),
-
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        genre: PropTypes.string,
-        year: PropTypes.number,
-        image: PropTypes.string,
-        poster: PropTypes.string,
-        cover: PropTypes.string,
-        previewSrc: PropTypes.string,
-        runtime: PropTypes.string,
-        rating: PropTypes.number,
-        votes: PropTypes.number,
-        director: PropTypes.string,
-        description: PropTypes.string,
-        starring: PropTypes.arrayOf(PropTypes.string),
-        favorite: PropTypes.bool,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              text: PropTypes.string,
-              author: PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                name: PropTypes.string.isRequired,
-              }).isRequired,
-
-              date: PropTypes.string.isRequired,
-              rating: PropTypes.number,
-            })
-        ),
-      })
-  ),
-
-  onItemEnter: PropTypes.func.isRequired,
-  onItemLeave: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  activeItem: PropTypes.any,
-};
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),

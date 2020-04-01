@@ -1,28 +1,39 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list.jsx';
-import GenreList from '../genre-list/genre-list.jsx';
+import * as React from 'react'
+import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list';
+import GenreList from '../genre-list/genre-list';
 import {connect} from 'react-redux';
-import ButtonShowMore from '../button-show-more/button-show-more.jsx';
-import {AuthorizationStatus} from '../../reducer/user/user.js';
+import ButtonShowMore from '../button-show-more/button-show-more';
+import {AuthorizationStatus} from '../../reducer/user/user';
 import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors';
 import {Link} from 'react-router-dom';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import VideoPlayerFull from '../video-player-full/video-player-full';
+import {MovieInterface} from '../../types';
 
 const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
 const GenreListWrapperd = withActiveItem(GenreList);
 
-class Main extends PureComponent {
+interface Props {
+  authorizationStatus: string;
+  avatarUrl: string;
+  activeItem: any;
+  onMovieFavoriteStatusClick: (movie: string, status: number) => void;
+  onItemEnter: (movie: MovieInterface) => void;
+  onItemLeave: () => void;
+  onMovieCardClick: (movie: MovieInterface | null) => void;
+  movie: MovieInterface;
+}
+
+class Main extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {film, onMovieCardClick,
+    const {movie, onMovieCardClick,
       activeItem, onItemEnter, onItemLeave,
-      authorizationStatus, avatarUrl, onFilmFavoriteStatusClick} = this.props;
-    const {name, genre, year, cover, poster} = film;
+      authorizationStatus, avatarUrl, onMovieFavoriteStatusClick} = this.props;
+    const {name, genre, year, cover, poster} = movie;
 
     return (
       <>
@@ -83,7 +94,7 @@ class Main extends PureComponent {
                     <button
                       className="btn btn--play movie-card__button"
                       onClick={() => {
-                        onItemEnter(film);
+                        onItemEnter(movie);
                       }}
                       type="button"
                     >
@@ -99,10 +110,10 @@ class Main extends PureComponent {
                           className="btn btn--list movie-card__button"
                           type="button"
                           onClick={() => {
-                            onFilmFavoriteStatusClick(film.id, +!film.favorite);
+                            onMovieFavoriteStatusClick(movie.id, +!movie.favorite);
                           }}
                         >
-                          {!film.favorite ?
+                          {!movie.favorite ?
                             <svg viewBox="0 0 19 20" width="19" height="20">
                               <use xlinkHref="#add"></use>
                             </svg> :
@@ -159,53 +170,11 @@ class Main extends PureComponent {
             </footer>
           </div>
         </div>
-        {activeItem && (<VideoPlayerFull film={film} onItemLeave={onItemLeave} />)}
+        {activeItem && (<VideoPlayerFull movie={movie} onItemLeave={onItemLeave} />)}
       </>
     );
   }
 }
-
-Main.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
-  onFilmFavoriteStatusClick: PropTypes.func.isRequired,
-
-  film: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-    image: PropTypes.string,
-    poster: PropTypes.string,
-    cover: PropTypes.string,
-    previewSrc: PropTypes.string,
-    runtime: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    description: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    favorite: PropTypes.bool,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          text: PropTypes.string,
-          author: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-          }).isRequired,
-
-          date: PropTypes.string.isRequired,
-          rating: PropTypes.number,
-        })
-    ),
-  }),
-
-  onMovieCardClick: PropTypes.func.isRequired,
-
-  onItemEnter: PropTypes.func.isRequired,
-  onItemLeave: PropTypes.func.isRequired,
-  activeItem: PropTypes.any,
-};
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
