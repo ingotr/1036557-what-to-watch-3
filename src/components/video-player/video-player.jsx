@@ -1,4 +1,4 @@
-import React, {PureComponent, Fragment} from "react";
+import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 class VideoPlayer extends PureComponent {

@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import NameSpace from '../../reducer/name-space.js';
+import {BrowserRouter} from 'react-router-dom';
 
 import {movies} from '../../mocks/test-mocks.js';
 
@@ -28,11 +29,13 @@ it(`CatalogMoviesList should render correctly`, () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <CatalogMoviesListWrapped
-            onMovieHover={() => {}}
-          />
-        </Provider>, {
+        <BrowserRouter>
+          <Provider store={store}>
+            <CatalogMoviesListWrapped
+              onMovieHover={() => {}}
+            />
+          </Provider>
+        </BrowserRouter>, {
           createNodeMock: () => {
             return {};
           }

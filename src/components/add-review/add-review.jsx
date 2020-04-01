@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ActionCreator} from '../../reducer/review/review.js';
 import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {AuthorizationStatus} from '../../reducer/user/user.js';
 import {getText, getSendStatus, getFormBlock, getRating} from '../../reducer/review/selectors.js';
 import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors.js';
@@ -71,17 +71,17 @@ class AddReview extends PureComponent {
 
           <header className="page-header">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to="/" className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href={`/films/${this.props.film.id}`} className="breadcrumbs__link">{this.props.film.name}</a>
+                  <Link to={`/films/${this.props.film.id}`} className="breadcrumbs__link">{this.props.film.name}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -101,7 +101,7 @@ class AddReview extends PureComponent {
                     />
                   </div>
                 </div>) : (
-                  <div className="user-block"><NavLink to="/auth-dev">Sign In</NavLink></div>
+                  <div className="user-block"><Link to="/login">Sign In</Link></div>
                 )
             }
 
@@ -185,7 +185,7 @@ AddReview.propTypes = {
   changeRating: PropTypes.func.isRequired,
   changeSendStatusText: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  filmId: PropTypes.number.isRequired,
+  // filmId: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
   updateNewCommentText: PropTypes.func.isRequired,
   textValue: PropTypes.string.isRequired,

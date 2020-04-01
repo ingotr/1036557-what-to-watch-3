@@ -4,6 +4,7 @@ import MoviePage from './movie-page.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../reducer/name-space.js';
+import {BrowserRouter} from 'react-router-dom';
 import {AuthorizationStatus} from '../../reducer/user/user.js';
 
 import {movies, film} from '../../mocks/test-mocks.js';
@@ -29,18 +30,20 @@ it(`Render App`, () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <MoviePage
-            authorizationStatus={AuthorizationStatus.NO_AUTH}
-            avatarUrl=""
-            film={film}
-            movies={movies}
-            onMovieHover={() => { }}
-            onItemEnter={() => { }}
-            onItemLeave={() => { }}
-            onFilmFavoriteStatusClick={() => { }}
-          />
-        </Provider>, {
+        <BrowserRouter>
+          <Provider store={store}>
+            <MoviePage
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              avatarUrl=""
+              film={film}
+              movies={movies}
+              onMovieCardClick={() => { }}
+              onItemEnter={() => { }}
+              onItemLeave={() => { }}
+              onFilmFavoriteStatusClick={() => { }}
+            />
+          </Provider>
+        </BrowserRouter>, {
           createNodeMock: () => {
             return {};
           }

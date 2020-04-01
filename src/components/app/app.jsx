@@ -1,84 +1,106 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Router, Redirect, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {getPromoMovie, getMoviesByGenre} from '../../reducer/data/selectors.js';
 import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 import {Operation as UserOperation, AuthorizationStatus} from '../../reducer/user/user.js';
-import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Operation as CommentsOperation} from '../../reducer/review/review.js';
+import {Operation as DataOperation} from '../../reducer/data/data.js';
 import SignIn from '../sign-in/sign-in.jsx';
+import VideoPlayerFull from '../../components/video-player-full/video-player-full.jsx';
+import AddReview from '../../components/add-review/add-review.jsx';
 import withErrorsItem from '../../hocs/with-errors-item/with-errors-item.jsx';
 import history from '../../history.js';
+import MyList from '../my-list/my-list.jsx';
+import PrivateRoute from '../private-route/private-route.jsx';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
 const SignInWrapped = withErrorsItem(SignIn);
-
-const movieHoverHandler = () => {};
+const MyListWrapped = withActiveItem(MyList);
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showMovieInfo: false
-    };
+    this._onMovieClick = this._onMovieClick.bind(this);
   }
 
-  _clickHandler() {
-    this.setState((state) => ({
-      showMovieInfo: !state.showMovieInfo
-    }));
-  }
-
-  _renderMainPage() {
-    const {movies, film, authorizationStatus, changeFavoriteStatus} = this.props;
-    const {showMovieInfo} = this.state;
-
-    if (!showMovieInfo) {
-      return (
-        <MainWrapped
-          authorizationStatus={authorizationStatus}
-          film={film}
-          onMouseClick={this._clickHandler.bind(this)}
-          onMovieHover={movieHoverHandler}
-          onFilmFavoriteStatusClick={changeFavoriteStatus}
-        />
-      );
-    }
-
-    if (showMovieInfo) {
-      return (
-        <MoviePageWrapped
-          authorizationStatus={authorizationStatus}
-          movies={movies}
-          film={film}
-          onFilmFavoriteStatusClick={changeFavoriteStatus}
-        />
-      );
-    }
-
-    return null;
+  _onMovieClick(film) {
+    this.props.onItemEnter(film);
+    history.push(`/films/${film.id}`);
   }
 
   render() {
-    const {login, authorizationStatus} = this.props;
+    const {movies, film, authorizationStatus, changeFavoriteStatus,
+      login, sendComment, onItemLeave} = this.props;
 
     return (
       <Router history={history}>
         <Switch>
           <Route exact path="/">
-            {this._renderMainPage()}
+            <MainWrapped
+              authorizationStatus={authorizationStatus}
+              film={film}
+              onMovieCardClick={this._onMovieClick}
+              onFilmFavoriteStatusClick={changeFavoriteStatus}
+            />
           </Route>
-          <Route exact path="/login" render={() => {
+          <PrivateRoute
+            exact
+            path="/mylist"
+            render={() => {
+              return (
+                <MyListWrapped
+                  authorizationStatus={authorizationStatus}
+                  movies={movies}
+                  onMovieCardClick={this._onMovieClick}
+                  onFilmFavoriteStatusClick={changeFavoriteStatus}
+                />
+              );
+            }}
+          />
+          <Route exact path="/login" render={(props) => {
             return (authorizationStatus === AuthorizationStatus.AUTH) ?
-              <Redirect to="/" /> :
+              props.history.goBack() :
               <SignInWrapped onSubmit={login} />;
-          }}>
-          </Route>
+          }} />
+          <Route exact path="/films/:id" render={(props) => {
+            const chosenFilm = movies.find((item) => item.id === props.match.params.id);
+            return chosenFilm && (
+              <MoviePageWrapped
+                authorizationStatus={authorizationStatus}
+                film={chosenFilm}
+                movies={movies}
+                onMovieCardClick={this._onMovieClick}
+                onFilmFavoriteStatusClick={changeFavoriteStatus}
+              />
+            );
+          }} />
+          <Route exact path="/player/:id" render={(props) => {
+            const chosenFilm = movies.find((item) => item.id === props.match.params.id);
+            return chosenFilm && <VideoPlayerFull
+              film={chosenFilm}
+              onItemLeaveHandler={onItemLeave}
+            />;
+          }} />
+          <PrivateRoute
+            exact
+            path="/films/:id/review"
+            render={(props) => {
+              const chosenFilm = movies.find((item) => item.id === props.match.params.id);
+              return chosenFilm && (
+                <AddReview
+                  onSubmit={sendComment}
+                  film={chosenFilm}
+                />
+              );
+            }}
+          />
         </Switch>
       </Router>
     );
@@ -89,6 +111,9 @@ App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
+  sendComment: PropTypes.func.isRequired,
+  onItemEnter: PropTypes.func,
+  onItemLeave: PropTypes.func,
 
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -138,6 +163,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
+  },
+  sendComment(authData, filmId) {
+    dispatch(CommentsOperation.sendComment(authData, filmId));
   },
   changeFavoriteStatus(filmId, status) {
     dispatch(DataOperation.changeFavoriteStatus(filmId, status));

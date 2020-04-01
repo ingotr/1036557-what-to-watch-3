@@ -5,7 +5,7 @@ import GenreList from '../genre-list/genre-list.jsx';
 import {connect} from 'react-redux';
 import ButtonShowMore from '../button-show-more/button-show-more.jsx';
 import {AuthorizationStatus} from '../../reducer/user/user.js';
-import {getAuthorizationStatus, getAvatarUrl} from "../../reducer/user/selectors";
+import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors';
 import {Link} from 'react-router-dom';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import VideoPlayerFull from '../video-player-full/video-player-full.jsx';
@@ -19,7 +19,7 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {film, onMouseClick, onMovieHover,
+    const {film, onMovieCardClick,
       activeItem, onItemEnter, onItemLeave,
       authorizationStatus, avatarUrl, onFilmFavoriteStatusClick} = this.props;
     const {name, genre, year, cover, poster} = film;
@@ -36,24 +36,26 @@ class Main extends PureComponent {
 
             <header className="page-header movie-card__head">
               <div className="logo">
-                <a className="logo__link">
+                <Link to="/" className="logo__link">
                   <span className="logo__letter logo__letter--1">W</span>
                   <span className="logo__letter logo__letter--2">T</span>
                   <span className="logo__letter logo__letter--3">W</span>
-                </a>
+                </Link>
               </div>
 
               {
                 (authorizationStatus === AuthorizationStatus.AUTH) ?
                   (<div className="user-block">
-                    <div className="user-block__avatar">
-                      <img
-                        src={avatarUrl}
-                        alt="User avatar"
-                        width="63"
-                        height="63"
-                      />
-                    </div>
+                    <Link to="/mylist">
+                      <div className="user-block__avatar">
+                        <img
+                          src={avatarUrl}
+                          alt="User avatar"
+                          width="63"
+                          height="63"
+                        />
+                      </div>
+                    </Link>
                   </div>) : (
                     <div className="user-block"><Link to="/login">Sign In</Link></div>
                   )
@@ -63,14 +65,12 @@ class Main extends PureComponent {
             <div className="movie-card__wrap">
               <div className="movie-card__info">
                 <div
-                  onClick={onMouseClick}
                   className="movie-card__poster">
                   <img src={poster} alt="{name}" width="218" height="327" />
                 </div>
 
                 <div className="movie-card__desc">
                   <h2
-                    onClick={onMouseClick}
                     className="movie-card__title"
                   >{name}</h2>
                   <p className="movie-card__meta">
@@ -79,6 +79,7 @@ class Main extends PureComponent {
                   </p>
 
                   <div className="movie-card__buttons">
+
                     <button
                       className="btn btn--play movie-card__button"
                       onClick={() => {
@@ -91,23 +92,40 @@ class Main extends PureComponent {
                       </svg>
                       <span>Play</span>
                     </button>
-                    <button
-                      className="btn btn--list movie-card__button"
-                      type="button"
-                      onClick={() => {
-                        onFilmFavoriteStatusClick(film.id, +!film.favorite);
-                      }}
-                    >
-                      {film.favorite ?
-                        <svg viewBox="0 0 19 20" width="19" height="20">
-                          <use xlinkHref="#add"></use>
-                        </svg> :
-                        <svg viewBox="0 0 18 14" width="18" height="14">
-                          <use xlinkHref="#in-list"></use>
-                        </svg>
-                      }
-                      <span>My list</span>
-                    </button>
+
+                    {authorizationStatus === AuthorizationStatus.AUTH ?
+                      <>
+                        <button
+                          className="btn btn--list movie-card__button"
+                          type="button"
+                          onClick={() => {
+                            onFilmFavoriteStatusClick(film.id, +!film.favorite);
+                          }}
+                        >
+                          {!film.favorite ?
+                            <svg viewBox="0 0 19 20" width="19" height="20">
+                              <use xlinkHref="#add"></use>
+                            </svg> :
+                            <svg viewBox="0 0 18 14" width="18" height="14">
+                              <use xlinkHref="#in-list"></use>
+                            </svg>
+                          }
+                          <span>My list</span>
+                        </button>
+                      </> :
+                      <>
+                        <Link
+                          to="/login"
+                          className="btn btn--list movie-card__button"
+                          type="button"
+                        >
+                          <svg viewBox="0 0 19 20" width="19" height="20">
+                            <use xlinkHref="#add"></use>
+                          </svg>
+                          <span>My list</span>
+                        </Link>
+                      </>
+                    }
                   </div>
                 </div>
               </div>
@@ -120,7 +138,7 @@ class Main extends PureComponent {
               <GenreListWrapperd />
 
               <CatalogMoviesListWrapped
-                onMovieHover={onMovieHover}
+                onMovieCardClick={onMovieCardClick}
               />
 
               <ButtonShowMore />
@@ -182,8 +200,7 @@ Main.propTypes = {
     ),
   }),
 
-  onMouseClick: PropTypes.func.isRequired,
-  onMovieHover: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 
   onItemEnter: PropTypes.func.isRequired,
   onItemLeave: PropTypes.func.isRequired,

@@ -3,6 +3,7 @@
 exports[`Render App 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
 >
   <video
     height="175"
@@ -13,9 +14,10 @@ exports[`Render App 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/films/grand-budapest"
+      onClick={[Function]}
     >
-      mock-test-Bohemian Rhapsody
+      The Grand Budapest Hotel
     </a>
   </h3>
 </article>

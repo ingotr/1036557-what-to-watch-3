@@ -1,4 +1,4 @@
-import React, {createRef, PureComponent} from "react";
+import React, {createRef, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 class VideoPlayerFull extends PureComponent {
@@ -70,6 +70,7 @@ class VideoPlayerFull extends PureComponent {
         <button
           onClick={() => {
             this.props.onItemLeave();
+            history.back();
           }}
           type="button"
           className="player__exit"

@@ -28,6 +28,8 @@ exports[`Main component should render correctly 1`] = `
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -65,7 +67,6 @@ exports[`Main component should render correctly 1`] = `
       >
         <div
           className="movie-card__poster"
-          onClick={[Function]}
         >
           <img
             alt="{name}"
@@ -79,7 +80,6 @@ exports[`Main component should render correctly 1`] = `
         >
           <h2
             className="movie-card__title"
-            onClick={[Function]}
           >
             The Grand Budapest Hotel
           </h2>
@@ -116,24 +116,25 @@ exports[`Main component should render correctly 1`] = `
                 Play
               </span>
             </button>
-            <button
+            <a
               className="btn btn--list movie-card__button"
+              href="/login"
               onClick={[Function]}
               type="button"
             >
               <svg
-                height="14"
-                viewBox="0 0 18 14"
-                width="18"
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
               >
                 <use
-                  xlinkHref="#in-list"
+                  xlinkHref="#add"
                 />
               </svg>
               <span>
                 My list
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -236,6 +237,7 @@ exports[`Main component should render correctly 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -246,12 +248,14 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-011"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -262,12 +266,14 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-012"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -278,12 +284,14 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-013"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -294,12 +302,14 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-014"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -310,12 +320,14 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-015"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -326,12 +338,14 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-016"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -342,12 +356,14 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-017"
+              onClick={[Function]}
             />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <video
             height="175"
@@ -358,7 +374,8 @@ exports[`Main component should render correctly 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/mock-test-018"
+              onClick={[Function]}
             />
           </h3>
         </article>
