@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import {configure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import withVideo from '../with-video/with-video.jsx';
+import * as Adapter from 'enzyme-adapter-react-16';
+import withVideo from '../with-video/with-video';
 
 const Movie = {
   id: `mock-snap-001`,
@@ -21,15 +21,13 @@ it(`Should change withVideo`, () => {
   const player = shallow(
       <MockComponentWrapped
         isPlaying={false}
-        poster={Movie.poster}
+        image={Movie.poster}
         src={Movie.src}
-        onMouseOver={onPlayerOver}
-        onMouseOut={onPlayerOut}
       />);
 
   player.simulate(`mouseOver`, onPlayerOver({target: false}));
   player.simulate(`mouseOut`, onPlayerOut({target: false}));
 
-  expect(onPlayerOver.mock.calls.length).toBe(2);
-  expect(onPlayerOut.mock.calls.length).toBe(2);
+  expect(onPlayerOver.mock.calls.length).toBe(1);
+  expect(onPlayerOut.mock.calls.length).toBe(1);
 });

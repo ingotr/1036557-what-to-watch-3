@@ -1,10 +1,10 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import App from './app.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import App from './app';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
-import NameSpace from '../../reducer/name-space.js';
-import {AuthorizationStatus} from '../../reducer/user/user.js';
+import NameSpace from '../../reducer/name-space';
+import {AuthorizationStatus} from '../../reducer/user/user';
 
 import {movies, film} from '../../mocks/test-mocks.js';
 

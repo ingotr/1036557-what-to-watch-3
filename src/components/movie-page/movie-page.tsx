@@ -6,7 +6,7 @@ import {AuthorizationStatus} from '../../reducer/user/user';
 import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors';
 import CatalogMoviesList from '../catalog-movies-list/catalog-movies-list';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
-import VideoPlayerFull from '../video-player-full/video-player-full';
+// import VideoPlayerFull from '../video-player-full/video-player-full';
 import {MovieInterface} from '../../types';
 
 const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
@@ -16,12 +16,9 @@ const SAME_GENRE_MOVIES_MAX_LENGTH = 4;
 
 interface Props {
   authorizationStatus: string;
-  activeItem: MovieInterface;
   avatarUrl: string;
   onMovieFavoriteStatusClick: (movie: string, status: number) => void;
   onMovieCardClick: (movie: MovieInterface | null) => void;
-  onItemEnter: (movie: MovieInterface) => void;
-  onItemLeave: () => void;
   movie: MovieInterface;
   movies: MovieInterface[];
 }
@@ -38,8 +35,8 @@ class MoviePage extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {movie, onItemEnter, onItemLeave, activeItem,
-      authorizationStatus, avatarUrl, onMovieFavoriteStatusClick, onMovieCardClick} = this.props;
+    const {movie, authorizationStatus, avatarUrl,
+      onMovieFavoriteStatusClick, onMovieCardClick} = this.props;
 
     return (
       <React.Fragment>
@@ -88,18 +85,16 @@ class MoviePage extends React.PureComponent<Props, {}> {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button
+                  <Link
+                    to={`/player/${movie.id}`}
                     className="btn btn--play movie-card__button"
-                    onClick={() => {
-                      onItemEnter(movie);
-                    }}
                     type="button"
                   >
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
                     <span>Play</span>
-                  </button>
+                  </Link>
 
                   {authorizationStatus === AuthorizationStatus.AUTH ?
                     <>
@@ -181,7 +176,7 @@ class MoviePage extends React.PureComponent<Props, {}> {
             </div>
           </footer>
         </div>
-        {activeItem && (<VideoPlayerFull movie={movie} onItemLeave={onItemLeave} />)}
+        {/* {activeItem && (<VideoPlayerFull movie={movie} onItemLeave={onItemLeave} />)} */}
       </React.Fragment>
     );
   }

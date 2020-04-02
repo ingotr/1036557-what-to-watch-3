@@ -7,7 +7,6 @@ import {AuthorizationStatus} from '../../reducer/user/user';
 import {getAuthorizationStatus, getAvatarUrl} from '../../reducer/user/selectors';
 import {Link} from 'react-router-dom';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
-import VideoPlayerFull from '../video-player-full/video-player-full';
 import {MovieInterface} from '../../types';
 
 const CatalogMoviesListWrapped = withActiveItem(CatalogMoviesList);
@@ -16,10 +15,7 @@ const GenreListWrapperd = withActiveItem(GenreList);
 interface Props {
   authorizationStatus: string;
   avatarUrl: string;
-  activeItem: MovieInterface;
   onMovieFavoriteStatusClick: (movie: string, status: number) => void;
-  onItemEnter: (movie: MovieInterface) => void;
-  onItemLeave: () => void;
   onMovieCardClick: (movie: MovieInterface | null) => void;
   movie: MovieInterface;
 }
@@ -31,7 +27,6 @@ class Main extends React.PureComponent<Props, {}> {
 
   render() {
     const {movie, onMovieCardClick,
-      activeItem, onItemEnter, onItemLeave,
       authorizationStatus, avatarUrl, onMovieFavoriteStatusClick} = this.props;
     const {name, genre, year, cover, poster} = movie;
 
@@ -91,18 +86,16 @@ class Main extends React.PureComponent<Props, {}> {
 
                   <div className="movie-card__buttons">
 
-                    <button
+                    <Link
+                      to={`/player/${movie.id}`}
                       className="btn btn--play movie-card__button"
-                      onClick={() => {
-                        onItemEnter(movie);
-                      }}
                       type="button"
                     >
                       <svg viewBox="0 0 19 19" width="19" height="19">
                         <use></use>
                       </svg>
                       <span>Play</span>
-                    </button>
+                    </Link>
 
                     {authorizationStatus === AuthorizationStatus.AUTH ?
                       <>
@@ -170,7 +163,7 @@ class Main extends React.PureComponent<Props, {}> {
             </footer>
           </div>
         </div>
-        {activeItem && (<VideoPlayerFull movie={movie} onItemLeave={onItemLeave} />)}
+        {/* {activeItem && (<VideoPlayerFull movie={movie} onItemLeave={onItemLeave} />)} */}
       </>
     );
   }

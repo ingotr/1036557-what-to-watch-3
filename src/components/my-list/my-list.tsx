@@ -19,7 +19,7 @@ interface Props {
 }
 
 
-class MyList extends React.PureComponent<Props, {}> {
+class MyList extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
   }

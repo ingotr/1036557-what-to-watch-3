@@ -9,11 +9,6 @@ exports[`<FullVideoPlayer /> should render correctly 1`] = `
     }
   }
 >
-  <video
-    autoPlay={true}
-    className="player__video"
-    poster="img/the-grand-budapest-hotel-poster.jpg"
-  />
   <button
     className="player__exit"
     onClick={[Function]}
@@ -33,13 +28,13 @@ exports[`<FullVideoPlayer /> should render correctly 1`] = `
         <progress
           className="player__progress"
           max="100"
-          value={0}
+          value="0"
         />
         <div
           className="player__toggler"
           style={
             Object {
-              "left": "0%",
+              "left": "14px",
             }
           }
         >
@@ -49,7 +44,7 @@ exports[`<FullVideoPlayer /> should render correctly 1`] = `
       <div
         className="player__time-value"
       >
-        0:00:0
+        0
       </div>
     </div>
     <div
@@ -57,7 +52,6 @@ exports[`<FullVideoPlayer /> should render correctly 1`] = `
     >
       <button
         className="player__play"
-        onClick={[Function]}
         type="button"
       >
         <svg
@@ -80,7 +74,6 @@ exports[`<FullVideoPlayer /> should render correctly 1`] = `
       </div>
       <button
         className="player__full-screen"
-        onClick={[Function]}
         type="button"
       >
         <svg

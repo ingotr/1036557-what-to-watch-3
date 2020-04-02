@@ -1,20 +1,21 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import SmallMovieCard from './small-movie-card.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import SmallMovieCard from './small-movie-card';
 import {BrowserRouter} from 'react-router-dom';
+import testFunc from '../../utils';
 
-import {film} from '../../mocks/test-mocks.js';
+import {film} from '../../mocks/test-mocks';
 
 it(`Render App`, () => {
   const tree = renderer
     .create(
         <BrowserRouter>
           <SmallMovieCard
-            film={film}
+            movie={film}
             key={film.id}
-            onMovieCardClick={() => {}}
-            onMovieHover={() => {}}
-            onMovieLeave={() => {}}
+            onMovieCardClick={testFunc}
+            onMovieHover={testFunc}
+            onMovieLeave={testFunc}
           />
         </BrowserRouter>, {
           createNodeMock: () => {

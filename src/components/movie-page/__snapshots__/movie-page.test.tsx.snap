@@ -88,8 +88,9 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/grand-budapest"
               onClick={[Function]}
               type="button"
             >
@@ -105,7 +106,7 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <a
               className="btn btn--list movie-card__button"
               href="/login"

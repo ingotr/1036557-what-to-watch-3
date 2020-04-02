@@ -1,7 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import VideoPlayer from './video-player.jsx';
-import PropTypes from "prop-types";
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import VideoPlayer from './video-player';
 
 const Movie = {
   id: `mock-snap-001`,
@@ -14,9 +13,6 @@ it(`VideoPlayer is rendered correctly`, () => {
   const tree = renderer
    .create(<VideoPlayer
      key={Movie.id}
-     isPlaying={false}
-     poster={Movie.imgSrc}
-     src={Movie.src}
    >
      children=testIntance.children
    </VideoPlayer>, {
@@ -28,9 +24,3 @@ it(`VideoPlayer is rendered correctly`, () => {
   expect(tree).toMatchSnapshot();
 });
 
-VideoPlayer.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-};

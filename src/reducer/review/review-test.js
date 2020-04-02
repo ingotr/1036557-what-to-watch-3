@@ -5,6 +5,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     text: ``,
     sendStatusMessage: ``,
     formBlock: false,
+    rating: 5,
   });
 });
 
@@ -13,6 +14,7 @@ it(`Reducer should change text`, () => {
     text: ``,
     sendStatusMessage: ``,
     formBlock: false,
+    rating: 5,
   }, {
     type: ActionType.UPDATE_NEW_COMMENT_TEXT,
     payload: `Comedies`,
@@ -20,6 +22,7 @@ it(`Reducer should change text`, () => {
     text: `Comedies`,
     sendStatusMessage: ``,
     formBlock: false,
+    rating: 5,
   });
 });
 
@@ -28,6 +31,7 @@ it(`Reducer should change sendStatusMessage`, () => {
     text: ``,
     sendStatusMessage: ``,
     formBlock: false,
+    rating: 5,
   }, {
     type: ActionType.CHNGE_SEND_STATUS_TEXT,
     payload: `Comedies`,
@@ -35,6 +39,7 @@ it(`Reducer should change sendStatusMessage`, () => {
     text: ``,
     sendStatusMessage: `Comedies`,
     formBlock: false,
+    rating: 5,
   });
 });
 
@@ -43,6 +48,7 @@ it(`Reducer should change formBlock`, () => {
     text: ``,
     sendStatusMessage: ``,
     formBlock: false,
+    rating: 5,
   }, {
     type: ActionType.CHANGE_BLOCK_FORM,
     payload: true,
@@ -50,5 +56,6 @@ it(`Reducer should change formBlock`, () => {
     text: ``,
     sendStatusMessage: ``,
     formBlock: true,
+    rating: 5,
   });
 });

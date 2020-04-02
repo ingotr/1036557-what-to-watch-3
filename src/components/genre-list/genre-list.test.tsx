@@ -1,12 +1,12 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import GenreList from './genre-list.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import GenreList from './genre-list';
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import NameSpace from '../../reducer/name-space.js';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import NameSpace from '../../reducer/name-space';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
-import {movies} from '../../mocks/test-mocks.js';
+import {movies} from '../../mocks/test-mocks';
 
 const DEFAULT_GENRE = `All genres`;
 const mockStore = configureStore([]);

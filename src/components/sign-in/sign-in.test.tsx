@@ -1,15 +1,15 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import SignIn from './sign-in.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import SignIn from './sign-in';
 import {BrowserRouter} from 'react-router-dom';
+import testFunc from '../../utils';
 
 it(`Should render SignIn component`, () => {
   const tree = renderer
     .create(
         <BrowserRouter>
           <SignIn
-            onSubmit={() => {}}
-            onHandleSubmit={() => {}}
+            onHandleSubmit={testFunc}
             loginError={false}
             passwordError={false}
           />

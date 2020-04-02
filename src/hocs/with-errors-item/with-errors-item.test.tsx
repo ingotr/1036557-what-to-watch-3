@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import {configure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import withErrorsItem from './with-errors-item.jsx';
+import * as Adapter from 'enzyme-adapter-react-16';
+import withErrorsItem from './with-errors-item';
 
 configure({adapter: new Adapter()});
 

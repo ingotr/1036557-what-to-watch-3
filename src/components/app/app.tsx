@@ -13,6 +13,7 @@ import SignIn from '../sign-in/sign-in';
 import VideoPlayerFull from '../../components/video-player-full/video-player-full';
 import AddReview from '../../components/add-review/add-review';
 import withErrorsItem from '../../hocs/with-errors-item/with-errors-item';
+import withFullVideo from '../../hocs/with-video-full/with-video-full';
 import history from '../../history';
 import MyList from '../my-list/my-list';
 import PrivateRoute from '../private-route/private-route';
@@ -22,6 +23,7 @@ const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
 const SignInWrapped = withErrorsItem(SignIn);
 const MyListWrapped = withActiveItem(MyList);
+const VideoPlayerFullWrapped = withFullVideo(VideoPlayerFull);
 
 interface Props {
   authorizationStatus: string;
@@ -96,7 +98,7 @@ class App extends React.PureComponent<Props, {}> {
           }} />
           <Route exact path="/player/:id" render={(props) => {
             const chosenFilm = movies.find((item) => item.id === props.match.params.id);
-            return chosenFilm && <VideoPlayerFull
+            return chosenFilm && <VideoPlayerFullWrapped
               movie={chosenFilm}
               onItemLeave={onItemLeave}
             />;
