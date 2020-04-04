@@ -131,6 +131,7 @@ const film = {
   runtime: `99`,
   rating: 8.9,
   votes: 240,
+  favorite: false,
   director: `Wes Andreson`,
   description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave &#96s friend and protege.
   Gustave prides himself on providing first-className service to the hotel &#96s

@@ -1,6 +1,9 @@
 
 import {reducer, ActionCreator, ActionType, AuthorizationStatus} from './user.js';
 
+const NEW_SHORT_AVATAR_URL = `img/5.png`;
+const NEW_FULL_AVATAR_URL = `https://htmlacademy-react-3.appspot.com/img/5.png`;
+
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -77,5 +80,18 @@ describe(`Action creators work correctly`, () => {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: AuthorizationStatus.AUTH,
     });
+  });
+});
+
+it(`Reducer should change avatarUrl by a given value`, () => {
+  expect(reducer({
+    authorizationStatus: AuthorizationStatus.AUTH,
+    avatarUrl: ``,
+  }, {
+    type: ActionType.SET_AVATAR_URL,
+    payload: NEW_SHORT_AVATAR_URL,
+  })).toEqual({
+    authorizationStatus: AuthorizationStatus.AUTH,
+    avatarUrl: NEW_FULL_AVATAR_URL,
   });
 });

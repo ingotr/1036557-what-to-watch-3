@@ -59,3 +59,20 @@ it(`Reducer should change formBlock`, () => {
     rating: 5,
   });
 });
+
+it(`Reducer should change rating`, () => {
+  expect(reducer({
+    text: ``,
+    sendStatusMessage: ``,
+    formBlock: false,
+    rating: 5,
+  }, {
+    type: ActionType.CHANGE_RATING,
+    payload: 3,
+  })).toEqual({
+    text: ``,
+    sendStatusMessage: ``,
+    formBlock: false,
+    rating: 3,
+  });
+});

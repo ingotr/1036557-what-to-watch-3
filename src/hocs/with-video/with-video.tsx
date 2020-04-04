@@ -19,6 +19,8 @@ const withVideo = (Component) => {
   class WithVideo extends React.PureComponent<Props, State> {
     private _videoRef: React.RefObject<HTMLVideoElement>;
 
+    private timeoutOnMouseOver: ReturnType<typeof setTimeout>;
+
     constructor(props) {
       super(props);
 
@@ -33,7 +35,7 @@ const withVideo = (Component) => {
     }
 
     onMouseEnter() {
-      setTimeout(() => {
+      this.timeoutOnMouseOver = setTimeout(() => {
         this.setState({isPlaying: true});
       }, MOVIE_OVER_TIMEOUT);
     }
@@ -63,6 +65,7 @@ const withVideo = (Component) => {
       };
       videoRef.onmouseout = () => {
         this.setState({isPlaying: false});
+        clearTimeout(this.timeoutOnMouseOver);
       };
       videoRef.src = this.props.src;
       videoRef.poster = this.props.image;
@@ -76,7 +79,11 @@ const withVideo = (Component) => {
       videoRef.onplay = null;
       videoRef.onpause = null;
       videoRef.ontimeupdate = null;
+      videoRef.onmouseover = null;
+      videoRef.onmouseout = null;
+
       videoRef.src = ``;
+      clearTimeout(this.timeoutOnMouseOver);
     }
 
     componentDidUpdate() {

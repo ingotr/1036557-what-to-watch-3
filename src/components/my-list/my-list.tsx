@@ -14,7 +14,7 @@ interface Props {
   onMovieCardClick: () => void;
   onItemEnter: () => void;
   onItemLeave: () => void;
-  loading: () => void;
+  getMyListMovies: () => void;
   movies: MovieInterface[];
 }
 
@@ -25,7 +25,7 @@ class MyList extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
-    this.props.loading();
+    this.props.getMyListMovies();
   }
 
   render() {
@@ -101,7 +101,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loading() {
+  getMyListMovies() {
     dispatch(DataOperation.loadMyListMovies());
   }
 });

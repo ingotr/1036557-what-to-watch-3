@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import {MovieInterface} from '../../types';
+import {getMovieRatingLevel} from '../../utils';
 
 const TABS = {
   OVERVIEW: `overview`,
@@ -22,56 +23,45 @@ interface Props {
 class Tabs extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
-
-    this.props.onItemEnter(TABS.OVERVIEW);
   }
 
-  getMovieRatingLevel(rating) {
-    let level = ``;
-    if ((rating >= 0) && (rating < 3)) {
-      level = `Bad`;
-    }
-    if ((rating >= 3) && (rating < 5)) {
-      level = `Normal`;
-    }
-    if ((rating >= 5) && (rating < 8)) {
-      level = `Good`;
-    }
-    if ((rating >= 8) && (rating < 10)) {
-      level = `Very good`;
-    }
-    if (rating === 10.0) {
-      level = `Awesome`;
-    }
-    return level;
+  componentDidMount() {
+    this.props.onItemEnter(TABS.OVERVIEW);
   }
 
   render() {
     const {activeItem, onItemEnter, movie} = this.props;
+
+    const {reviews} = movie;
+
     const minutes = +movie.runtime % MINUTES_IN_HOUR;
     const hours = Math.floor(+movie.runtime / MINUTES_IN_HOUR);
 
-    const level = this.getMovieRatingLevel(movie.rating);
+    const level = getMovieRatingLevel(movie.rating);
 
-    const reviewFragmentArr = movie.reviews.map((review) => (
-      <React.Fragment key={review.text + movie.reviews.indexOf(review)}>
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">{review.text}</p>
+    let reviewFragmentArr = [];
 
-            <footer className="review__details">
-              <cite className="review__author">{review.author.name}</cite>
-              <time className="review__date" dateTime={review.date}>
-                {moment(review.date).format(`MMMM D, YYYY`)}</time>
-            </footer>
-          </blockquote>
+    if (reviews) {
+      reviewFragmentArr = reviews.map((review) => (
+        <React.Fragment key={review.text + reviews.indexOf(review)}>
+          <div className="review">
+            <blockquote className="review__quote">
+              <p className="review__text">{review.text}</p>
 
-          <div className="review__rating">{review.rating}</div>
-        </div>
-        <br />
-      </React.Fragment>
-    )
-    );
+              <footer className="review__details">
+                <cite className="review__author">{review.author.name}</cite>
+                <time className="review__date" dateTime={review.date}>
+                  {moment(review.date).format(`MMMM D, YYYY`)}</time>
+              </footer>
+            </blockquote>
+
+            <div className="review__rating">{review.rating}</div>
+          </div>
+          <br />
+        </React.Fragment>
+      )
+      );
+    }
 
     const returnCurrentNavElement = (typeOfTab) => {
       return activeItem === typeOfTab ? ACTIVE_NAV_ELEMENT : ``;

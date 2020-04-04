@@ -4,16 +4,14 @@ interface Props {
   children: (React.ReactNode | React.ReactNode[]);
 }
 
-class VideoPlayer extends React.PureComponent<Props, {}> {
-  render() {
-    const {children} = this.props;
+const VideoPlayer: React.FunctionComponent<Props> = (Props) =>{
+  const {children} = Props;
 
-    return (
-      <React.Fragment>
-        {children}
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      {children}
+    </React.Fragment>
+  );
+};
 
 export default VideoPlayer;
