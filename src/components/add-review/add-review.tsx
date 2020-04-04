@@ -12,6 +12,9 @@ const MESSAGE_LIMIT = {
   max: 400
 };
 
+const ADD_REVIEW_PLACEHOLDER_TEXT = `Введите сообщение от
+${MESSAGE_LIMIT.min} до ${MESSAGE_LIMIT.max} символов`;
+
 const DEFAULT_RATING = 5;
 const DEFAULT_RATING_FACTOR = 2;
 
@@ -74,10 +77,11 @@ class AddReview extends React.PureComponent<Props, State> {
       text: this.props.textValue,
       rating: this.props.rating * DEFAULT_RATING_FACTOR,
     }, movie);
+
   }
 
   render() {
-    const {authorizationStatus, avatarUrl} = this.props;
+    const {authorizationStatus, avatarUrl, movie} = this.props;
     const postDisabled = this.props.textValue.length < MESSAGE_LIMIT.min || this.props.textValue.length > MESSAGE_LIMIT.max;
     return (
       <section className="movie-card movie-card--full">
@@ -177,15 +181,18 @@ class AddReview extends React.PureComponent<Props, State> {
                 className="add-review__textarea"
                 name="review-text"
                 id="review-text"
-                placeholder="Review text"
+                placeholder={ADD_REVIEW_PLACEHOLDER_TEXT}
                 value={this.props.textValue}
                 onChange={(e) => {
                   this.handleChange(e);
                 }}
               />
+
               <div className="add-review__submit">
                 <div style={{margin: `0 auto`}}>{this.props.sendStatusValue}</div>
-                {postDisabled || this.props.formBlock ? <button className="add-review__btn" type="submit" disabled>Post</button> : <button className="add-review__btn" type="submit">Post</button>}
+                {postDisabled || this.props.formBlock ?
+                  <button className="add-review__btn" type="submit" disabled>Post</button>
+                  : <Link to={`/films/` + movie.id} className="add-review__btn" type="submit">Post</Link>}
               </div>
 
             </div>

@@ -16,59 +16,57 @@ interface Props {
   movies: MovieInterface[];
 }
 
-class GenreList extends React.PureComponent<Props, {}> {
+const GenreList: React.FunctionComponent<Props> = (Props) =>{
 
-  render() {
-    const {movies, onGenreElementClick, onItemEnter, currentGenre} = this.props;
+  const {movies, onGenreElementClick, onItemEnter, currentGenre} = Props;
 
-    const returnCurrentGenres = () => {
-      const currentGenres = [DEFAULT_GENRE];
-      movies.map((movie) => {
-        if (!currentGenres.includes(movie.genre)) {
-          currentGenres.push(movie.genre);
-        }
-      });
-
-      return currentGenres;
-    };
-
-    const genresList = returnCurrentGenres().slice(0, GENRE_LIST_MAX_LENGTH);
-
-    const returnCurrentGenreElement = (genre) => {
-      return currentGenre === genre ? ACTIVE_GENRE_ELEMENT : ``;
-    };
-
-    const returnGenresList = () => {
-      const genresElements = [];
-      for (const genre of genresList) {
-        const genreFragment =
-          <React.Fragment key={genre + genresList.indexOf(genre)}>
-            <li className={`catalog__genres-item ${returnCurrentGenreElement(genre)}`}>
-              <a
-                href="#"
-                className="catalog__genres-link"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  onGenreElementClick(genre);
-                  onItemEnter(genre);
-                }}
-              >{genre}</a>
-            </li>
-          </React.Fragment>;
-        genresElements.push(genreFragment);
+  const returnCurrentGenres = () => {
+    const currentGenres = [DEFAULT_GENRE];
+    movies.map((movie) => {
+      if (!currentGenres.includes(movie.genre)) {
+        currentGenres.push(movie.genre);
       }
-      return genresElements;
-    };
+    });
 
-    return (
-      <React.Fragment>
-        <ul className="catalog__genres-list">
-          {returnGenresList()}
-        </ul>
-      </React.Fragment>
-    );
-  }
-}
+    return currentGenres;
+  };
+
+  const genresList = returnCurrentGenres().slice(0, GENRE_LIST_MAX_LENGTH);
+
+  const returnCurrentGenreElement = (genre) => {
+    return currentGenre === genre ? ACTIVE_GENRE_ELEMENT : ``;
+  };
+
+  const returnGenresList = () => {
+    const genresElements = [];
+    for (const genre of genresList) {
+      const genreFragment =
+        <React.Fragment key={genre + genresList.indexOf(genre)}>
+          <li className={`catalog__genres-item ${returnCurrentGenreElement(genre)}`}>
+            <a
+              href="#"
+              className="catalog__genres-link"
+              onClick={(evt) => {
+                evt.preventDefault();
+                onGenreElementClick(genre);
+                onItemEnter(genre);
+              }}
+            >{genre}</a>
+          </li>
+        </React.Fragment>;
+      genresElements.push(genreFragment);
+    }
+    return genresElements;
+  };
+
+  return (
+    <React.Fragment>
+      <ul className="catalog__genres-list">
+        {returnGenresList()}
+      </ul>
+    </React.Fragment>
+  );
+};
 
 const mapStateToProps = (state) => ({
   movies: getMovies(state),

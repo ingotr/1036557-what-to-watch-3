@@ -18,7 +18,7 @@ it(`Render MyList`, () => {
                   onMovieFavoriteStatusClick={testFunc}
                   onItemEnter={testFunc}
                   onItemLeave={testFunc}
-                  loading={testFunc}
+                  getMyListMovies={testFunc}
                 />
               </BrowserRouter>, {
                 createNodeMock: () => {

@@ -3,8 +3,12 @@ import {connect} from 'react-redux';
 import SmallMovieCard from '../small-movie-card/small-movie-card';
 import {getMoviesCount, getMoviesByGenre} from '../../reducer/data/selectors';
 import {MovieInterface} from '../../types';
+import {getSameGenreMovies} from './helpers/helpers';
 
 interface Props {
+  ifSameGenre: boolean;
+  getSameGenreMovies: () => void;
+  movie: MovieInterface;
   movies: MovieInterface[];
   moviesCount: number;
   onMovieCardClick: () => void;
@@ -12,29 +16,30 @@ interface Props {
   onItemLeave: () => void;
 }
 
-class CatalogMoviesList extends React.PureComponent<Props, {}> {
-  constructor(props) {
-    super(props);
+const CatalogMoviesList: React.FunctionComponent<Props> = (Props) => {
+  const {movie, movies, moviesCount, onMovieCardClick, onItemEnter, onItemLeave, ifSameGenre} = Props;
+
+  let moviesList = movies;
+
+  if (ifSameGenre) {
+    const sameGenreMovies = getSameGenreMovies(movie, movies);
+    moviesList = sameGenreMovies;
   }
 
-  render() {
-    const {movies, moviesCount, onMovieCardClick, onItemEnter, onItemLeave} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {movies.slice(0, moviesCount).map((movie) => (
-          <SmallMovieCard
-            movie={movie}
-            key={movie.id}
-            onMovieCardClick={onMovieCardClick}
-            onMovieHover={onItemEnter}
-            onMovieLeave={onItemLeave}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {moviesList.slice(0, moviesCount).map((item) => (
+        <SmallMovieCard
+          movie={item}
+          key={item.id}
+          onMovieCardClick={onMovieCardClick}
+          onMovieHover={onItemEnter}
+          onMovieLeave={onItemLeave}
+        />
+      ))}
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   movies: getMoviesByGenre(state),

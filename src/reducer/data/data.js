@@ -1,6 +1,7 @@
 import {extend} from '../../utils.js';
 import adapter from './adapter.js';
 import {commentsAdapter} from './adapter.js';
+// import {getNewMoviesList} from './helpers/helpers';
 
 const DEFAULT_MOVIES_COUNT = 8;
 const RESPONSE_STATUS_OK = 200;
@@ -114,6 +115,24 @@ const Operation = {
     return api.post(`/favorite/${movieId}/${status}`)
       .then((response) => {
         if (response.status === RESPONSE_STATUS_OK) {
+
+          const state = getState().DATA;
+          const movies = state.movies;
+          const promoMovie = state.movie;
+
+          if (promoMovie.id === movieId) {
+            const changedPromoMovie = extend(promoMovie, {favorite: !promoMovie.favorite});
+            dispatch(ActionCreator.loadPromoMovie(changedPromoMovie));
+          }
+
+          const changedMovies = movies.map((item) => {
+            if (item.id === movieId) {
+              item.favorite = !item.favorite;
+            }
+            return item;
+          });
+          dispatch(ActionCreator.loadMovies(changedMovies));
+
           dispatch(ActionCreator.changeFavoriteStatus(movieId));
         }
       });
@@ -178,27 +197,6 @@ const reducer = (state = initialState, action) => {
         movie: action.payload,
       });
 
-    case ActionType.CHANGE_FAVORITE_STATUS:
-      const changedMoviesList = state.movies.map((movie) => {
-        if (movie.id === action.payload) {
-          movie.favorite = !movie.favorite;
-        } return movie;
-      });
-      let movieCurrent;
-      if (state.genre === `All genres`) {
-        movieCurrent = state.movies;
-      } else {
-        movieCurrent = state.movies.filter((movie) => movie.genre === state.genre);
-      }
-      const showedMovies = movieCurrent.slice(0, state.moviesCount);
-      const promoMovie = state.movie.id === action.payload ? extend(state, extend(state.movie, {favorite: !state.movie.favorite})) : state.movie;
-      return extend(state, {
-        movies: changedMoviesList,
-        movieCurrent,
-        showedMovies,
-        movie: promoMovie,
-      });
-
     case ActionType.LOAD_MY_LIST_MOVIES:
       return extend(state, {
         myListMovies: action.payload,
@@ -209,3 +207,5 @@ const reducer = (state = initialState, action) => {
 };
 
 export {reducer, ActionType, ActionCreator, Operation};
+
+

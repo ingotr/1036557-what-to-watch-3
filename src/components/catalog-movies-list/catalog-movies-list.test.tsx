@@ -8,7 +8,7 @@ import NameSpace from '../../reducer/name-space';
 import {BrowserRouter} from 'react-router-dom';
 import testFunc from '../../utils';
 
-import {movies} from '../../mocks/test-mocks';
+import {movies, film} from '../../mocks/test-mocks';
 
 const mockStore = configureStore([]);
 
@@ -21,6 +21,7 @@ it(`CatalogMoviesList should render correctly`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       currentGenre: DEFAULT_GENRE,
+      film,
       movies,
       moviesByGenre: movies,
       showedMovies: movies,
@@ -33,6 +34,7 @@ it(`CatalogMoviesList should render correctly`, () => {
         <BrowserRouter>
           <Provider store={store}>
             <CatalogMoviesListWrapped
+              ifSameGenre={false}
               onMovieHover={testFunc}
             />
           </Provider>

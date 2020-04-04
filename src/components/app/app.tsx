@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {Router, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import Main from '../main/main';
 import MoviePage from '../movie-page/movie-page';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
@@ -18,6 +18,7 @@ import history from '../../history';
 import MyList from '../my-list/my-list';
 import PrivateRoute from '../private-route/private-route';
 import {MovieInterface} from '../../types';
+import {AppRoute} from '../../routes/app-route';
 
 const MoviePageWrapped = withActiveItem(MoviePage);
 const MainWrapped = withActiveItem(Main);
@@ -57,7 +58,7 @@ class App extends React.PureComponent<Props, {}> {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.MAIN}>
             <MainWrapped
               authorizationStatus={authorizationStatus}
               movie={movie}
@@ -65,9 +66,14 @@ class App extends React.PureComponent<Props, {}> {
               onMovieFavoriteStatusClick={changeFavoriteStatus}
             />
           </Route>
+          <Route exact path={AppRoute.SIGN_IN} render={() => {
+            return (authorizationStatus === AuthorizationStatus.AUTH) ?
+              <Redirect to={AppRoute.MAIN} /> :
+              <SignInWrapped onSubmit={login} />;
+          }} />
           <PrivateRoute
             exact
-            path="/mylist"
+            path={AppRoute.MY_LIST}
             render={() => {
               return (
                 <MyListWrapped
@@ -79,12 +85,7 @@ class App extends React.PureComponent<Props, {}> {
               );
             }}
           />
-          <Route exact path="/login" render={(props) => {
-            return (authorizationStatus === AuthorizationStatus.AUTH) ?
-              props.history.goBack() :
-              <SignInWrapped onSubmit={login} />;
-          }} />
-          <Route exact path="/films/:id" render={(props) => {
+          <Route exact path={AppRoute.FILM} render={(props) => {
             const chosenFilm = movies.find((item) => item.id === props.match.params.id);
             return chosenFilm && (
               <MoviePageWrapped
@@ -96,7 +97,7 @@ class App extends React.PureComponent<Props, {}> {
               />
             );
           }} />
-          <Route exact path="/player/:id" render={(props) => {
+          <Route exact path={AppRoute.PLAYER} render={(props) => {
             const chosenFilm = movies.find((item) => item.id === props.match.params.id);
             return chosenFilm && <VideoPlayerFullWrapped
               movie={chosenFilm}
@@ -105,7 +106,7 @@ class App extends React.PureComponent<Props, {}> {
           }} />
           <PrivateRoute
             exact
-            path="/films/:id/review"
+            path={AppRoute.ADD_REVIEW}
             render={(props) => {
               const chosenFilm = movies.find((item) => item.id === props.match.params.id);
               return chosenFilm && (
